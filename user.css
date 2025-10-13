@@ -972,22 +972,72 @@ img.marketplace-customCSS-image-preview {
   background-color: transparent !important;
 }
 
-.lyrics-lyrics-contentContainer .lyrics-lyrics-contentWrapper{
+.lyrics-lyrics-contentContainer .lyrics-lyrics-contentWrapper {
   width: fit-content !important;
   align-items: center;
 }
 
-.lyrics-lyricsContent-lyric{
+.lyrics-lyricsContent-lyric {
   width: fit-content !important;
 }
 
-main section .search-searchCategory-categoryGrid{
+main section .search-searchCategory-categoryGrid {
   margin-top: -2.5rem;
   margin-bottom: 2rem;
   width: 100%;
   height: calc(100% + 5rem);
 }
 
-.K9MVLAI8oad6VYdMtUJD:after, .K9MVLAI8oad6VYdMtUJD:before{
+.K9MVLAI8oad6VYdMtUJD:after,
+.K9MVLAI8oad6VYdMtUJD:before {
   background: transparent !important;
+}
+
+.LegacyChip__LegacyChipComponent-sc-tzfq94-0:hover>.ChipInnerComponent-sm-selected.ChipInnerComponent-sm-selected {
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+.iyhPyoc2dxd1Eno74TCO {
+  border-radius: 20px !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.iyhPyoc2dxd1Eno74TCO:hover {
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  border-radius: 20px !important;
+  transform: scale(1.01);
+}
+
+.jMkF9P0MOVAsPeHbK88D {
+  border-radius: 20px !important;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  background-color: transparent !important;
+  backdrop-filter: blur(2rem);
+}
+
+.artist-artistDiscography-headerContainer {
+  background: transparent !important;
+  backdrop-filter: blur(2rem);
+  border-radius: 20px !important;
+  margin-bottom: 20px;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+.artist-artistDiscography-topBar {
+  padding-left: 62px;
+}
+
+.Button-combobox-buttonTertiary-small-iconTrailing-useBrowserDefaultFocusStyle {
+  margin-right: 30px;
+}
+
+.artist-artistDiscography-topBar.d84DMXKrEmJd3hjqfhBw {
+  background-color: transparent;
+  backdrop-filter: blur(2rem);
+  width: 93%;
+  margin: auto;
+  border-radius: 20px;
+  padding: 6px;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  top: 70px;
 }

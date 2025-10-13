@@ -981,3 +981,13 @@ img.marketplace-customCSS-image-preview {
   width: fit-content !important;
 }
 
+main section .search-searchCategory-categoryGrid{
+  margin-top: -2.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  height: calc(100% + 5rem);
+}
+
+.K9MVLAI8oad6VYdMtUJD:after, .K9MVLAI8oad6VYdMtUJD:before{
+  background: transparent !important;
+}

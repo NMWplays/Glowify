@@ -1041,3 +1041,101 @@ main section .search-searchCategory-categoryGrid {
   box-shadow: 0 0 25px 8px var(--accent-color);
   top: 70px;
 }
+
+.fV7K0WKOKzGdPkbhoHPF{
+  background: transparent !important;
+}
+
+.VZpSxFV1mVKehHTF1r9W {
+  overflow: visible !important;
+}
+
+.ZuOMABESRg0Bpv8S9642 {
+  background-color: transparent !important;
+  backdrop-filter: blur(2rem);
+  border-radius: 30px;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+.ZuOMABESRg0Bpv8S9642.ljMZJ72BUdC7c85IE6GQ {
+  border-radius: 30px !important;
+}
+
+.iIaWJ3qSDLsKHwNCvv_g {
+  background-color: transparent !important;
+  backdrop-filter: blur(2rem);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 15px;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  margin-top: 10px;
+}
+
+.jX1eb5CcZMAuXo_wmZI0,
+.yOSFN8gjw7LPo74pYe_g {
+  background-color: transparent !important;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding-top: 15px;
+}
+
+.Z35LRd6m4Po7n12dYmKu {
+  margin-bottom: 5px;
+}
+
+.Z35LRd6m4Po7n12dYmKu.JFITZPkvP8evQ3h7K2UQ {
+  border-radius: 20px;
+}
+
+.Z35LRd6m4Po7n12dYmKu:focus-within,
+.Z35LRd6m4Po7n12dYmKu:not([disabled]) {
+  border-radius: 20px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.Z35LRd6m4Po7n12dYmKu:focus-within,
+.Z35LRd6m4Po7n12dYmKu:hover:not([disabled]) {
+  border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.sue5UWY_USOrJJ8zsEqd {
+  border-radius: 10px;
+}
+
+.LhcWvY6PV7Ias42x53Ho {
+  border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+._DkkBJVcHZawjorfrSRN:before {
+  border-radius: 13px;
+}
+
+.CBiDL2Ry7eHHcTjB4SME {
+  border-radius: 6px !important;
+}
+
+.b9Kcg1EhPM183QfPHEAg{
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.b9Kcg1EhPM183QfPHEAg:hover {
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  transform: scale(1.01);
+}
+
+.LegacyChip__LegacyChipComponent-sc-tzfq94-0 > .ChipInnerComponent-sm.ChipInnerComponent-sm{
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+.LegacyChip__LegacyChipComponent-sc-tzfq94-0:hover > .ChipInnerComponent-sm.ChipInnerComponent-sm{
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  transform: scale(1.01);
+}

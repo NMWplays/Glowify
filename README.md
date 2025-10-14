@@ -3,8 +3,4 @@ Glowify is a glow-infused Spicetify theme for Spotify featuring a modern, lumino
 
 <img width="2559" height="1377" alt="preview" src="https://github.com/user-attachments/assets/e21906ca-0a18-4ddf-8bc9-c8552969e98f" />
 
-
-
-
-
 <img width="2555" height="1378" alt="playlist-view" src="https://github.com/user-attachments/assets/d711aaf5-3e0a-4d3b-a222-b18083cd8c02" />

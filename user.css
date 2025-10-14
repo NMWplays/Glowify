@@ -1205,3 +1205,111 @@ main section .search-searchCategory-categoryGrid {
 img.main-image-image.ItdVdZMKPbFCHifT6feL.main-image-loaded {
   border-radius: 15px !important;
 }
+
+.d9fVEV27N0lWaeQajcC2 {
+  backdrop-filter: none !important;
+  background-color: transparent !important;
+}
+
+.xGrVCnYsA9aDj2f8VAj_ {
+  border: transparent !important;
+  border-radius: 20px !important;
+  background-color: transparent !important;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  background-image: none !important;
+}
+
+.madaLABKCn3HDMHk7bBQ {
+  border-radius: 10px !important;
+}
+
+.xvG1g4UaMyY0DW6j8XzX {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
+.BPmQqb9D_rN4hvkCC0jg {
+  border-radius: 20px !important;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+.n_VwJ2YeUb7y3CHbJ3As {
+  overflow: visible;
+}
+
+.RLx9IUmPpPeLH0cWnocs {
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+.h6KcnSRTHGBMCEv288Ha .oI9M0dyjtCBPoup_4Sxv .NtpYi46fEElnZKhNUPK4 {
+  border-radius: 20px !important;
+}
+
+.oI9M0dyjtCBPoup_4Sxv:after {
+  display: none;
+}
+
+.OcwUYvKcnj9kvPBwybGI {
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+.OcwUYvKcnj9kvPBwybGI:hover {
+  background-color: transparent !important;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  transform: scale(1.01);
+}
+
+.oyVGfynGkVn_6VcTnd6h {
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+.oyVGfynGkVn_6VcTnd6h:hover {
+  background-color: transparent !important;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  transform: scale(1.01);
+}
+
+.main-editImageButton-image {
+  border-radius: 20px !important;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+.main-playlistEditDetailsModal-container {
+  background-color: transparent !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+.main-playlistEditDetailsModal-titleInput{
+  border-radius: 15px !important;
+}
+
+textarea.main-playlistEditDetailsModal-textElement.main-playlistEditDetailsModal-descriptionTextarea{
+  border-radius: 15px !important;
+}
+
+.main-playlistEditDetailsModal-textElement:focus{
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+.RDlmt3TnmiGDFq273xIf{
+  background-color: transparent !important;
+  backdrop-filter: blur(2rem);
+  border-radius: 20px !important;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+.CjGVphOR96me80esGFpV:hover{
+  background-color: transparent !important;
+}
+
+.ypMcUr3T8yEiOFBVWe9I{
+  border-radius: 20px !important;
+}
+
+.e-91000-box--tinted{
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}

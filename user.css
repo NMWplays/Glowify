@@ -1325,3 +1325,16 @@ textarea.main-playlistEditDetailsModal-textElement.main-playlistEditDetailsModal
 .KUtjDbODlBlv4b9T25y2 {
   background: none !important;
 }
+
+.main-connectBar-connectBar.main-connectBar-connected {
+  display: none !important;
+}
+
+.x-progressBar-progressBarBg,
+.x-progressBar-sliderArea {
+  height: 5px !important;
+}
+
+.player-controls__buttons {
+  margin-bottom: 6px !important;
+}

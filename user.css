@@ -1373,3 +1373,7 @@ h2.e-91000-text.encore-text-title-small.encore-internal-color-text-base {
 p.e-91000-text.encore-text-body-small.encore-internal-color-text-base {
   color: white !important;
 }
+
+.E6B69KorCyIUBzy_sSt8:after {
+  --radial-color-to: transparent !important;
+}

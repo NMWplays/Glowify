@@ -1339,10 +1339,22 @@ textarea.main-playlistEditDetailsModal-textElement.main-playlistEditDetailsModal
   margin-bottom: 6px !important;
 }
 
-.Fzs1Gw606u66zPtoSEvC{
+.Fzs1Gw606u66zPtoSEvC {
   content-visibility: visible !important
 }
 
-.Uw4tcZdmh7s4BMdgCCuu{
+.Uw4tcZdmh7s4BMdgCCuu {
   background-color: transparent !important;
+}
+
+.E6B69KorCyIUBzy_sSt8.QcsHcNfHCKg08GkZUvGH:after {
+  border-radius: 20px !important;
+}
+
+img.main-image-image.main-trackList-rowImage {
+  border-radius: 10px !important;
+}
+
+.e-91000-box--bordered {
+  border: transparent !important;
 }

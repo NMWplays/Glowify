@@ -1358,3 +1358,18 @@ img.main-image-image.main-trackList-rowImage {
 .e-91000-box--bordered {
   border: transparent !important;
 }
+
+.main-confirmDialog-container {
+  background-color: transparent !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+h2.e-91000-text.encore-text-title-small.encore-internal-color-text-base {
+  color: white !important;
+}
+
+p.e-91000-text.encore-text-body-small.encore-internal-color-text-base {
+  color: white !important;
+}

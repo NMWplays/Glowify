@@ -1191,6 +1191,7 @@ main section .search-searchCategory-categoryGrid {
   padding: 15px;
   border-radius: 20px;
   box-shadow: 0 0 25px 8px var(--accent-color);
+  width: fit-content;
 }
 
 .mymNwYxikCgx40ErG9H7 {

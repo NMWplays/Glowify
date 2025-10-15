@@ -1388,3 +1388,18 @@ p.e-91000-text.encore-text-body-small.encore-internal-color-text-base {
   background-color: transparent !important;
   backdrop-filter: blur(2rem);
 }
+
+.G7Iy1rF5gVWMtmsJ5EDX:focus-within,
+.G7Iy1rF5gVWMtmsJ5EDX {
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+.G7Iy1rF5gVWMtmsJ5EDX:focus-within,
+.G7Iy1rF5gVWMtmsJ5EDX:hover {
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  transform: scale(1.01);
+}
+
+.G7Iy1rF5gVWMtmsJ5EDX {
+  border-radius: 20px !important;
+}

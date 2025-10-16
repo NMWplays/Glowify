@@ -961,7 +961,7 @@ img.marketplace-customCSS-image-preview {
 }
 
 .main-nowPlayingView-section.lyrics-npv.card-open {
-  height: 340px !important;
+  height: 314px !important;
 }
 
 .lyrics-lyrics-background {
@@ -1498,4 +1498,21 @@ p.e-91000-text.encore-text-body-small.encore-internal-color-text-base {
   backdrop-filter: brightness(2.12);
   width: 135px;
   height: 64px;
+}
+
+#Desktop_PanelContainer_Id {
+  border-radius: 20px !important;
+}
+
+.artist-artistOnTour-date,
+.main-nowPlayingView-credits,
+.main-nowPlayingView-section {
+  border-radius: 20px !important;
+}
+
+.now-playing-widget {
+  .cover-art-container {
+    border-radius: 30px !important;
+    box-shadow: 0 0 25px 8px var(--accent-color);
+  }
 }

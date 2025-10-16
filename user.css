@@ -1488,3 +1488,14 @@ p.e-91000-text.encore-text-body-small.encore-internal-color-text-base {
 .yzh4JJgNvDAyPmJSqjVl {
   border-radius: 15px !important;
 }
+
+/*transparent controls*/
+.spotify__container--is-desktop:not(.fullscreen) body::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  z-index: 999;
+  backdrop-filter: brightness(2.12);
+  width: 135px;
+  height: 64px;
+}

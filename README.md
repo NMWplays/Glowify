@@ -2,11 +2,10 @@
 Glowify is a glow-infused Spicetify theme for Spotify featuring a modern, luminous interface and smooth animations. Beatiful Lyrics, Spicy Lyrics and Lucid Lyrics are supported by default.
 
 For support join:
+
 <a href="https://discord.gg/QRMnrgjhvq" target="_blank">
   <img src="images/discord-icon.png" alt="Discord-server-link" width="64" />
 </a>
-
-
 
 <img width="2559" height="1377" alt="preview" src="https://github.com/user-attachments/assets/e21906ca-0a18-4ddf-8bc9-c8552969e98f" />
 

@@ -1516,3 +1516,7 @@ p.e-91000-text.encore-text-body-small.encore-internal-color-text-base {
     box-shadow: 0 0 25px 8px var(--accent-color);
   }
 }
+
+.Root__right-sidebar:has(.main-nowPlayingView-section, canvas) .BeautifulLyricsBackground div:has(>video) video {
+  filter: none !important;
+}

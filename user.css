@@ -1534,3 +1534,20 @@ p.e-91000-text.encore-text-body-small.encore-internal-color-text-base {
 button.Button-sc-1dqy6lx-0.Button-buttonTertiary-textBase-medium-useBrowserDefaultFocusStyle-condensedAll.encore-text-body-medium-bold.e-91000-overflow-wrap-anywhere.e-91000-button-tertiary--condensed.main-userWidget-box {
   background-color: transparent !important;
 }
+
+/*try to fix homescreen filter button glow*/
+.u_wTfCtgm9HvxrphUxKd>* {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.main-entityHeader-container.gmKBgPCnX785KDicbdJu {
+  max-height: none !important;
+}
+
+.jGqRK1aWJbi9E8KQfXNk {
+  background: transparent;
+  color: white;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}

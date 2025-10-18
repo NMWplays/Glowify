@@ -12,3 +12,5 @@ For support join:
 <img width="2557" height="1378" alt="Playlist view" src="https://github.com/user-attachments/assets/1d6b7cf4-256f-4993-ba10-e7735d0b028b" />
 
 <img width="2555" height="1377" alt="artist page" src="https://github.com/user-attachments/assets/cc615cd7-3ba5-4d61-aff6-cf1648c075e1" />
+
+<img width="2557" height="1376" alt="glowify settings" src="https://github.com/user-attachments/assets/fe8214a3-62e1-4f78-92f7-20cb20ab6a55" />

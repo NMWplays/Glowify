@@ -1525,3 +1525,8 @@ p.e-91000-text.encore-text-body-small.encore-internal-color-text-base {
   border-radius: 20px !important;
   box-shadow: 0 0 25px 8px var(--accent-color);
 }
+
+.x-filterBox-expandedOrHasFilter .x-filterBox-filterInput {
+  border-radius: 20px !important;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}

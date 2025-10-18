@@ -1520,3 +1520,8 @@ p.e-91000-text.encore-text-body-small.encore-internal-color-text-base {
 .Root__right-sidebar:has(.main-nowPlayingView-section, canvas) .BeautifulLyricsBackground div:has(>video) video {
   filter: none !important;
 }
+
+.GEo_ZmtdsGF5OCzbpaRY {
+  border-radius: 20px !important;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}

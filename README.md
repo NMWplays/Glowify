@@ -7,6 +7,8 @@ For support join:
   <img src="images/discord-icon.png" alt="Discord-server-link" width="64" />
 </a>
 
-<img width="2559" height="1377" alt="preview" src="https://github.com/user-attachments/assets/e21906ca-0a18-4ddf-8bc9-c8552969e98f" />
+<img width="2557" height="1376" alt="main view" src="https://github.com/user-attachments/assets/aba543ba-df67-4f33-830b-0b100da8e595" />
 
-<img width="2555" height="1378" alt="playlist-view" src="https://github.com/user-attachments/assets/d711aaf5-3e0a-4d3b-a222-b18083cd8c02" />
+<img width="2557" height="1378" alt="Playlist view" src="https://github.com/user-attachments/assets/1d6b7cf4-256f-4993-ba10-e7735d0b028b" />
+
+<img width="2555" height="1377" alt="artist page" src="https://github.com/user-attachments/assets/cc615cd7-3ba5-4d61-aff6-cf1648c075e1" />

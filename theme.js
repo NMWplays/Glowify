@@ -42,16 +42,26 @@
   }
 
   async function updateBackgroundAndAccent() {
-    const url = getCoverUrl();
-    if (!url) return;
+    const bgMode = localStorage.getItem("glowify-bg-mode") || "dynamic";
+    const customImage = localStorage.getItem("glowify-bg-image");
 
-    root.style.setProperty("--image_url", `url("${url}")`);
+    if (bgMode === "custom" && customImage) {
+      root.style.setProperty("--image_url", `url("${customImage}")`);
+    } else {
+      const url = getCoverUrl();
+      if (!url) return;
+      root.style.setProperty("--image_url", `url("${url}")`);
+    }
 
-    const color = await getDominantColor(url);
+    const coverUrl = getCoverUrl();
+    if (!coverUrl) return;
+    const color = await getDominantColor(coverUrl);
     document.documentElement.style.setProperty("--accent-color", color);
   }
 
   updateBackgroundAndAccent();
 
   Spicetify.Player.addEventListener("songchange", updateBackgroundAndAccent);
+
+  window.addEventListener("glowifyBackgroundChange", updateBackgroundAndAccent);
 })();

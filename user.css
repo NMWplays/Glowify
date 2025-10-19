@@ -1551,3 +1551,19 @@ button.Button-sc-1dqy6lx-0.Button-buttonTertiary-textBase-medium-useBrowserDefau
   color: white;
   box-shadow: 0 0 25px 8px var(--accent-color);
 }
+
+.main-contextMenu-tippy,
+.main-contextMenu-tippyEnterActive {
+  background: transparent !important;
+  backdrop-filter: blur(16px) saturate(1.5);
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  border-radius: 10px;
+}
+
+button.Button-sc-1dqy6lx-0.Button-buttonTertiary-textBase-medium-isUsingKeyboard-useBrowserDefaultFocusStyle-condensedAll.encore-text-body-medium-bold.e-91000-overflow-wrap-anywhere.e-91000-button-tertiary--condensed.main-userWidget-box {
+  background-color: transparent !important;
+}
+
+input#accent-picker {
+  width: 50px !important;
+}

@@ -1568,3 +1568,15 @@ button.Button-sc-1dqy6lx-0.Button-buttonTertiary-textBase-medium-isUsingKeyboard
 input#accent-picker {
   width: 50px !important;
 }
+
+span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inner.encore-inverted-light-set.e-91000-button-icon-only--small {
+  background-color: transparent !important;
+  color: #b3b3b3;
+  scale: 1.2;
+}
+
+span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inner.encore-inverted-light-set.e-91000-button-icon-only--small:hover {
+  transition-duration: var(--shortest-1);
+  color: #ffffff;
+  scale: 1.25;
+}

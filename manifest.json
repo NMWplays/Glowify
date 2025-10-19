@@ -3,7 +3,7 @@
   "description": "A modern, rounded and glowified theme for Spicetify.",
   "preview": "preview.png",
   "readme": "README.md",
-  "usercss": "user.css",
+  "usercss": "https://nmwplays.github.io/Glowify/user.css",
   "schemes": "color.ini",
   "include": ["https://nmwplays.github.io/Glowify/theme.js", "https://nmwplays.github.io/Glowify/glowify-settings.js"],
   "authors": [

@@ -1572,11 +1572,11 @@ input#accent-picker {
 span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inner.encore-inverted-light-set.e-91000-button-icon-only--small {
   background-color: transparent !important;
   color: #b3b3b3;
-  scale: 1.2;
+  scale: 1.3;
 }
 
 span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inner.encore-inverted-light-set.e-91000-button-icon-only--small:hover {
   transition-duration: var(--shortest-1);
   color: #ffffff;
-  scale: 1.25;
+  scale: 1.35;
 }

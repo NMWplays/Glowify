@@ -1580,3 +1580,7 @@ span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inn
   color: #ffffff;
   scale: 1.35;
 }
+
+.e-91000-box.e-91000-baseline.e-91000-box--naked.e-91000-box--interactive.e-91000-box--browser-default-focus.e-91000-box--padding-custom.e-91000-box--min-size.e-91000-Box-sc-8t9c76-0.Box-group-listRow-isInteractive-hasLeadingOrMedia-minBlockSize_56px-padding_8px.ypMcUr3T8yEiOFBVWe9I.kZ5GDMby476XO7Vg0aCk.Box-sc-8t9c76-0.Box-group-listRow-isInteractive-hasLeadingOrMedia-minBlockSize_56px-padding_8px.ypMcUr3T8yEiOFBVWe9I.kZ5GDMby476XO7Vg0aCk:hover {
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}

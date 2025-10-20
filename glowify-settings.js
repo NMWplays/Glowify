@@ -159,7 +159,7 @@ if (!window.glowifyObserverInitialized) {
 
   function ensurePlayerWidthApplied() {
     const mode = localStorage.getItem("glowify-player-width") || "default";
-    const radius = parseInt(localStorage.getItem("glowify-player-radius") || "0", 10);
+    const radius = parseInt(localStorage.getItem("glowify-player-radius") || "30", 10); // 🟢 Default = 30
     const player = document.querySelector(".Root__now-playing-bar");
 
     if (player) {
@@ -193,7 +193,7 @@ if (!window.glowifyObserverInitialized) {
   applySavedBackground();
   ensurePlayerWidthApplied();
 
-  // === Observer für dynamic accent ===
+  // === Dynamic Accent Observer ===
   if (!window.glowifyDynamicObserver) {
     window.glowifyDynamicObserver = new MutationObserver(() => {
       const mode = localStorage.getItem("glowify-accent-mode");
@@ -220,9 +220,7 @@ if (!window.glowifyObserverInitialized) {
           </button>
         `;
         btn.closest("li").after(newItem);
-        document
-          .querySelector("#glowify-settings-btn")
-          .addEventListener("click", showGlowifySettingsMenu);
+        document.querySelector("#glowify-settings-btn").addEventListener("click", showGlowifySettingsMenu);
         break;
       }
     }
@@ -379,7 +377,7 @@ if (!window.glowifyObserverInitialized) {
     const currentColor = localStorage.getItem("glowify-custom-color") || "#1DB954";
     const currentBgMode = localStorage.getItem("glowify-bg-mode") || "dynamic";
     const currentWidth = localStorage.getItem("glowify-player-width") || "default";
-    const currentRadius = parseInt(localStorage.getItem("glowify-player-radius") || "0", 10);
+    const currentRadius = parseInt(localStorage.getItem("glowify-player-radius") || "30", 10); // 🟢 Default = 30
 
     modeSelect.value = currentMode;
     bgSelect.value = currentBgMode;
@@ -405,6 +403,7 @@ if (!window.glowifyObserverInitialized) {
     });
 
     picker.addEventListener("input", (e) => applyAccent(e.target.value));
+
     bgSelect.addEventListener("change", (e) => {
       const value = e.target.value;
       if (value === "custom") {

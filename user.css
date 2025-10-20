@@ -1595,3 +1595,24 @@ span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inn
 .IPTj3y235_KY00eMEBnw {
   background-color: #00000045;
 }
+
+.Sgs4Ht3jSj96ueGuMvbh {
+  border-radius: 15px !important;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+img.dYzfkHQyY6RBW3qoyayA {
+  border-radius: 10px;
+}
+
+.tir72uZFKHgxueTttFMR {
+  border-radius: 20px !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.tir72uZFKHgxueTttFMR:hover {
+  background-color: transparent !important;
+  border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  transform: translateY(-1px);
+}

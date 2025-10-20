@@ -132,7 +132,53 @@ if (!window.glowifyObserverInitialized) {
     }
   }
 
-  // === Laden bei Start ===
+  // === Player Width Handling ===
+  function applyPlayerWidth(mode) {
+    const player = document.querySelector(".Root__now-playing-bar");
+    if (!player) return;
+
+    if (mode === "theme") {
+      player.style.width = "65%";
+      player.style.margin = "0 auto 5px";
+    } else {
+      player.style.margin = "calc(var(--panel-gap) * -1)";
+      player.style.width = "unset";
+    }
+
+    localStorage.setItem("glowify-player-width", mode);
+  }
+
+  // === Player Border Radius Handling ===
+  function applyPlayerRadius(px) {
+    const player = document.querySelector(".Root__now-playing-bar");
+    if (!player) return;
+
+    player.style.borderRadius = px + "px";
+    localStorage.setItem("glowify-player-radius", px);
+  }
+
+  function ensurePlayerWidthApplied() {
+    const mode = localStorage.getItem("glowify-player-width") || "default";
+    const radius = parseInt(localStorage.getItem("glowify-player-radius") || "0", 10);
+    const player = document.querySelector(".Root__now-playing-bar");
+
+    if (player) {
+      applyPlayerWidth(mode);
+      applyPlayerRadius(radius);
+    } else {
+      const obs = new MutationObserver(() => {
+        const found = document.querySelector(".Root__now-playing-bar");
+        if (found) {
+          applyPlayerWidth(mode);
+          applyPlayerRadius(radius);
+          obs.disconnect();
+        }
+      });
+      obs.observe(document.body, { childList: true, subtree: true });
+    }
+  }
+
+  // === Initialisieren ===
   const savedAccentMode = localStorage.getItem("glowify-accent-mode") || "default";
   const savedAccentColor = localStorage.getItem("glowify-custom-color") || "#1DB954";
 
@@ -145,8 +191,9 @@ if (!window.glowifyObserverInitialized) {
   }
 
   applySavedBackground();
+  ensurePlayerWidthApplied();
 
-  // === Dynamic Accent Observer ===
+  // === Observer für dynamic accent ===
   if (!window.glowifyDynamicObserver) {
     window.glowifyDynamicObserver = new MutationObserver(() => {
       const mode = localStorage.getItem("glowify-accent-mode");
@@ -173,7 +220,9 @@ if (!window.glowifyObserverInitialized) {
           </button>
         `;
         btn.closest("li").after(newItem);
-        document.querySelector("#glowify-settings-btn").addEventListener("click", showGlowifySettingsMenu);
+        document
+          .querySelector("#glowify-settings-btn")
+          .addEventListener("click", showGlowifySettingsMenu);
         break;
       }
     }
@@ -215,6 +264,23 @@ if (!window.glowifyObserverInitialized) {
           </select>
           <input type="file" id="background-file" accept="image/*" style="display:none;">
         </div>
+
+        <div class="accent-row">
+          <label for="player-width">Player Width:</label>
+          <select id="player-width">
+            <option value="default">Default</option>
+            <option value="theme">Theme</option>
+          </select>
+        </div>
+
+        <div class="accent-row">
+          <label for="player-radius">Player Border Radius:</label>
+          <div class="radius-control">
+            <button id="radius-minus">-</button>
+            <input type="number" id="player-radius" min="0" max="100" step="1">
+            <button id="radius-plus">+</button>
+          </div>
+        </div>
       </div>
     `;
     document.body.appendChild(popup);
@@ -249,60 +315,52 @@ if (!window.glowifyObserverInitialized) {
         position: relative;
       }
 
-      .spotify-x-icon {
-        fill: white !important;
-      }
+      .spotify-x-icon { fill: white !important; }
 
-      h3 {
-        align-self: center;
-        margin: 0 0 8px 0;
-      }
+      h3 { align-self: center; margin: 0 0 8px 0; }
 
       #close-glowify-popup {
-        position: absolute;
-        top: 5px;
-        right: -9px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        opacity: 0.7;
-        transition: opacity 0.2s ease, transform 0.15s ease;
+        position: absolute; top: 5px; right: -9px;
+        background: none; border: none; cursor: pointer;
+        opacity: 0.7; transition: opacity 0.2s ease, transform 0.15s ease;
       }
 
-      #close-glowify-popup:hover {
-        opacity: 1;
-        transform: scale(1.1);
-      }
+      #close-glowify-popup:hover { opacity: 1; transform: scale(1.1); }
 
       .accent-row {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 10px;
-        width: 100%;
+        display: flex; align-items: center; justify-content: flex-start;
+        gap: 10px; width: 100%;
       }
 
-      label {
-        min-width: 110px;
-        text-align: left;
-      }
+      label { min-width: 150px; text-align: left; }
 
-      #accent-mode, #background-mode {
-        background: #00000057;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        padding: 4px 8px;
-        cursor: pointer;
+      #accent-mode, #background-mode, #player-width {
+        background: #00000057; color: white; border: none;
+        border-radius: 10px; padding: 4px 8px; cursor: pointer;
       }
 
       #accent-picker, #background-file {
-        border: none;
-        border-radius: 10px;
-        background: none;
-        transition: all 0.2s ease;
-        width: 178px;
+        border: none; border-radius: 10px; background: none;
+        transition: all 0.2s ease; width: 178px;
         box-shadow: 0 0 25px 8px var(--accent-color);
+      }
+
+      .radius-control {
+        display: flex; align-items: center; gap: 6px;
+      }
+
+      .radius-control button {
+        background: #00000057; border: none; color: white;
+        border-radius: 6px; width: 24px; height: 24px;
+        cursor: pointer; transition: background 0.2s;
+      }
+
+      .radius-control button:hover { background: var(--accent-color); }
+
+      #player-radius {
+        width: 50px; text-align: center; border: none;
+        border-radius: 6px; padding: 4px;
+        background: #00000057; color: white;
       }
     `;
     if (!document.querySelector("#glowify-style")) document.head.appendChild(style);
@@ -312,13 +370,22 @@ if (!window.glowifyObserverInitialized) {
     const modeSelect = document.getElementById("accent-mode");
     const bgSelect = document.getElementById("background-mode");
     const bgFile = document.getElementById("background-file");
+    const widthSelect = document.getElementById("player-width");
+    const radiusInput = document.getElementById("player-radius");
+    const radiusMinus = document.getElementById("radius-minus");
+    const radiusPlus = document.getElementById("radius-plus");
 
     const currentMode = localStorage.getItem("glowify-accent-mode") || "default";
     const currentColor = localStorage.getItem("glowify-custom-color") || "#1DB954";
     const currentBgMode = localStorage.getItem("glowify-bg-mode") || "dynamic";
+    const currentWidth = localStorage.getItem("glowify-player-width") || "default";
+    const currentRadius = parseInt(localStorage.getItem("glowify-player-radius") || "0", 10);
 
     modeSelect.value = currentMode;
     bgSelect.value = currentBgMode;
+    widthSelect.value = currentWidth;
+    radiusInput.value = currentRadius;
+
     picker.value = currentColor;
     picker.style.display = currentMode === "custom" ? "block" : "none";
     bgFile.style.display = currentBgMode === "custom" ? "block" : "none";
@@ -338,7 +405,6 @@ if (!window.glowifyObserverInitialized) {
     });
 
     picker.addEventListener("input", (e) => applyAccent(e.target.value));
-
     bgSelect.addEventListener("change", (e) => {
       const value = e.target.value;
       if (value === "custom") {
@@ -361,6 +427,22 @@ if (!window.glowifyObserverInitialized) {
       if (e.target.files && e.target.files[0]) {
         await applyCustomBackground(e.target.files[0]);
       }
+    });
+
+    widthSelect.addEventListener("change", (e) => applyPlayerWidth(e.target.value));
+
+    radiusInput.addEventListener("input", (e) => applyPlayerRadius(e.target.value));
+    radiusMinus.addEventListener("click", () => {
+      let val = parseInt(radiusInput.value || "0", 10);
+      val = Math.max(0, val - 1);
+      radiusInput.value = val;
+      applyPlayerRadius(val);
+    });
+    radiusPlus.addEventListener("click", () => {
+      let val = parseInt(radiusInput.value || "0", 10);
+      val = Math.min(100, val + 1);
+      radiusInput.value = val;
+      applyPlayerRadius(val);
     });
 
     document.querySelector("#close-glowify-popup").addEventListener("click", () => popup.remove());

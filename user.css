@@ -462,6 +462,7 @@ img.main-image-image.main-trackList-rowImage.main-image-loaded {
   box-shadow: 0 0 25px 8px var(--accent-color);
   background-color: transparent;
   backdrop-filter: blur(2rem);
+  background: var(--accent-color) !important;
 }
 
 .Wwot_NoO8I52DIWFsJtA {
@@ -1645,4 +1646,10 @@ img.dYzfkHQyY6RBW3qoyayA {
 .L7Q0vlYYEzm_VlplzWgI:active {
   background-color: #ffffff26;
   border-radius: 20px;
+}
+
+.main-yourLibraryX-libraryItemContainer .os-scrollbar-vertical:active .os-scrollbar-handle[data-group-by]:after {
+  background-color: transparent !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 25px 8px var(--accent-color);
 }

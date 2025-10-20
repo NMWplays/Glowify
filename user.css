@@ -1653,3 +1653,8 @@ img.dYzfkHQyY6RBW3qoyayA {
   border-radius: 10px !important;
   box-shadow: 0 0 25px 8px var(--accent-color);
 }
+
+.BeautifulLyricsPage.Fullscreen .Content .PlayPanel .MediaSpace .CoverArt {
+  border-radius: 30px !important;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}

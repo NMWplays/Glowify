@@ -158,8 +158,8 @@ if (!window.glowifyObserverInitialized) {
   }
 
   function ensurePlayerWidthApplied() {
-    const mode = localStorage.getItem("glowify-player-width") || "default";
-    const radius = parseInt(localStorage.getItem("glowify-player-radius") || "30", 10); // 🟢 Default = 30
+    const mode = localStorage.getItem("glowify-player-width") || "theme"; // Standardwert jetzt THEME
+    const radius = parseInt(localStorage.getItem("glowify-player-radius") || "30", 10); // Default = 30
     const player = document.querySelector(".Root__now-playing-bar");
 
     if (player) {

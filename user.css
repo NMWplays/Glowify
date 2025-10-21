@@ -1658,3 +1658,16 @@ img.dYzfkHQyY6RBW3qoyayA {
   border-radius: 30px !important;
   box-shadow: 0 0 25px 8px var(--accent-color);
 }
+
+.vz7U3rwOWk5ld8SRcmUG:focus-within,
+.vz7U3rwOWk5ld8SRcmUG {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-radius: 20px !important;
+}
+
+.vz7U3rwOWk5ld8SRcmUG:focus-within,
+.vz7U3rwOWk5ld8SRcmUG:hover {
+  border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  transform: translateY(-1px);
+}

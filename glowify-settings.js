@@ -316,114 +316,128 @@ if (!window.glowifyObserverInitialized) {
                 </div>
         `;
         document.body.appendChild(popup);
-        // === Popup Styling ===
-        const style = document.createElement("style");
-        style.id = "glowify-style";
-        style.textContent = `
-            #glowify-settings-popup {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: transparent;
-                border: none;
-                border-radius: 20px;
-                padding: 20px 28px 24px;
-                z-index: 99999;
-                box-shadow: 0 0 25px 8px var(--accent-color);
-                color: white;
-                font-family: sans-serif;
-                animation: fadeIn 0.6s ease;
-                backdrop-filter: blur(2rem);
-                width: fit-content;
-            }
+            // === Popup Styling ===
+            const style = document.createElement("style");
+            style.id = "glowify-style";
+            style.textContent = `
+                #glowify-settings-popup {
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: transparent;
+                    border: none;
+                    border-radius: 20px;
+                    padding: 20px 28px 24px;
+                    z-index: 99999;
+                    box-shadow: 0 0 25px 8px var(--accent-color);
+                    color: white;
+                    font-family: sans-serif;
+                    animation: fadeIn 0.6s ease;
+                    backdrop-filter: blur(2rem);
+                    width: fit-content;
+                }
 
-            .glowify-popup-inner {
-                display: flex;
-                flex-direction: column;
-                gap: 14px;
-                align-items: flex-start;
-                position: relative;
-            }
+                #glowify-settings-popup .glowify-popup-inner {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 14px;
+                    align-items: flex-start;
+                    position: relative;
+                }
 
-            .spotify-x-icon { fill: white !important; }
+                #glowify-settings-popup .spotify-x-icon { fill: white !important; }
 
-            h3 { align-self: center; margin: 0 0 8px 0; }
+                #glowify-settings-popup h3 { 
+                    align-self: center; 
+                    margin: 0 0 8px 0; 
+                }
 
-            #close-glowify-popup {
-                position: absolute;
-                top: 5px;
-                right: -9px;
-                background: none;
-                border: none;
-                cursor: pointer;
-                opacity: 0.7;
-                transition: opacity 0.2s ease, transform 0.15s ease;
-            }
+                #glowify-settings-popup #close-glowify-popup {
+                    position: absolute;
+                    top: 5px;
+                    right: -9px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    opacity: 0.7;
+                    transition: opacity 0.2s ease, transform 0.15s ease;
+                }
 
-            #close-glowify-popup:hover {
-                opacity: 1;
-                transform: scale(1.1);
-            }
+                #glowify-settings-popup #close-glowify-popup:hover {
+                    opacity: 1;
+                    transform: scale(1.1);
+                }
 
-            .accent-row {
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                gap: 10px;
-                width: 100%;
-            }
+                #glowify-settings-popup .accent-row {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 10px;
+                    width: 100%;
+                }
 
-            label { min-width: 206px; text-align: left; }
+                #glowify-settings-popup label { 
+                    min-width: 206px; 
+                    text-align: left; 
+                }
 
-            #accent-mode, #background-mode, #player-width {
-                background: #00000057;
-                color: white;
-                border: none;
-                border-radius: 10px;
-                padding: 4px 8px;
-                cursor: pointer;
-            }
+                #glowify-settings-popup #accent-mode,
+                #glowify-settings-popup #background-mode,
+                #glowify-settings-popup #player-width {
+                    background: #00000057;
+                    color: white;
+                    border: none;
+                    border-radius: 10px;
+                    padding: 4px 8px;
+                    cursor: pointer;
+                }
 
-            #accent-picker, #background-file {
-                border: none;
-                border-radius: 10px;
-                background: none;
-                transition: all 0.2s ease;
-                width: 178px;
-                box-shadow: 0 0 25px 8px var(--accent-color);
-            }
+                #glowify-settings-popup #accent-picker,
+                #glowify-settings-popup #background-file {
+                    border: none;
+                    border-radius: 10px;
+                    background: none;
+                    transition: all 0.2s ease;
+                    width: 178px;
+                    box-shadow: 0 0 25px 8px var(--accent-color);
+                }
 
-            .radius-control {
-                display: flex;
-                align-items: center;
-                gap: 6px;
-            }
+                #glowify-settings-popup .radius-control {
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                }
 
-            .radius-control button {
-                background: #00000057;
-                border: none;
-                color: white;
-                border-radius: 6px;
-                width: 24px;
-                height: 24px;
-                cursor: pointer;
-                transition: background 0.2s;
-            }
+                #glowify-settings-popup .radius-control button {
+                    background: #00000057;
+                    border: none;
+                    color: white;
+                    border-radius: 6px;
+                    width: 24px;
+                    height: 24px;
+                    cursor: pointer;
+                    transition: background 0.2s;
+                }
 
-            .radius-control button:hover { background: var(--accent-color); }
+                #glowify-settings-popup .radius-control button:hover { 
+                    background: var(--accent-color); 
+                }
 
-            #player-radius, #tc-width, #tc-height {
-                width: 50px;
-                text-align: center;
-                border: none;
-                border-radius: 6px;
-                padding: 4px;
-                background: #00000057;
-                color: white;
-            }
-        `;
-        if (!document.querySelector("#glowify-style")) document.head.appendChild(style);
+                #glowify-settings-popup #player-radius,
+                #glowify-settings-popup #tc-width,
+                #glowify-settings-popup #tc-height {
+                    width: 50px;
+                    text-align: center;
+                    border: none;
+                    border-radius: 6px;
+                    padding: 4px;
+                    background: #00000057;
+                    color: white;
+                }
+            `;
+            if (!document.querySelector("#glowify-style")) document.head.appendChild(style);
+
 
         // === Add Transparent Controls Inputs ===
         const popupInner = popup.querySelector(".glowify-popup-inner");

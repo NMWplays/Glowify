@@ -1711,4 +1711,13 @@ img.dYzfkHQyY6RBW3qoyayA {
 
 .Root__cinema-view {
   z-index: 1000 !important;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  outline: none !important;
+}
+
+.Root__cinema-view.E3V79f6uQHeTnFxMhoju.Root__cinema-view--controls-hidden {
+  border-radius: 20px !important;
+  margin-bottom: -100px !important;
 }

@@ -1,5 +1,5 @@
 # ✨ Glowify Theme Spicetify ✨
-Glowify is a glow-infused Spicetify theme for Spotify featuring a modern, luminous interface and smooth animations. Beatiful Lyrics, Spicy Lyrics and Lucid Lyrics are supported by default.
+Glowify is a glow-infused Spicetify theme for Spotify featuring a modern, luminous interface and smooth animations. It also offers customization options and Beatiful Lyrics, Spicy Lyrics and Lucid Lyrics are supported by default. If you like the theme, consider starring the repository on GitHub! ⭐
 
 For support join:
 
@@ -7,10 +7,10 @@ For support join:
   <img src="images/discord-icon.png" alt="Discord-server-link" width="64" />
 </a>
 
-<img width="2557" height="1376" alt="main view" src="https://github.com/user-attachments/assets/aba543ba-df67-4f33-830b-0b100da8e595" />
+<img width="2557" height="1377" alt="home view" src="https://github.com/user-attachments/assets/f1aff4b2-9f51-4bd5-81e8-8751a78a9a75" />
 
-<img width="2557" height="1378" alt="Playlist view" src="https://github.com/user-attachments/assets/1d6b7cf4-256f-4993-ba10-e7735d0b028b" />
+<img width="2556" height="1377" alt="playlist view" src="https://github.com/user-attachments/assets/f3ae828b-d49b-4aba-a05c-6e6594383dfc" />
 
-<img width="2555" height="1377" alt="artist page" src="https://github.com/user-attachments/assets/cc615cd7-3ba5-4d61-aff6-cf1648c075e1" />
+<img width="2557" height="1377" alt="artist view" src="https://github.com/user-attachments/assets/f5b2574b-0241-43a4-b34f-72e8b0eb02e6" />
 
-<img width="2557" height="1376" alt="glowify settings" src="https://github.com/user-attachments/assets/fe8214a3-62e1-4f78-92f7-20cb20ab6a55" />
+<img width="2556" height="1377" alt="glowify-settings" src="https://github.com/user-attachments/assets/3994ec7b-530d-4a20-860e-400b78f78c79" />

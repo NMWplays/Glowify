@@ -1698,3 +1698,8 @@ img.dYzfkHQyY6RBW3qoyayA {
   border-radius: 20px !important;
   transform: translateY(-1px);
 }
+
+.Textarea-formTextarea-small-useBrowserDefaultFocusStyle:hover,
+.Textarea-formTextarea-small-useBrowserDefaultFocusStyle[readonly]:hover {
+  box-shadow: 0 0 25px 8px var(--accent-color) !important;
+}

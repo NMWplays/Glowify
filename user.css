@@ -1708,3 +1708,7 @@ img.dYzfkHQyY6RBW3qoyayA {
   border-radius: 30px !important;
   box-shadow: 0 0 25px 8px var(--accent-color);
 }
+
+.Root__cinema-view {
+  z-index: 1000 !important;
+}

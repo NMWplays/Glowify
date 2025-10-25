@@ -1743,3 +1743,33 @@ img.Image-sc-1u215sg-3.Image-image.ListRowImage__ListRowImageComponent-sc-1uaxq9
 .HzFr0RR3h12KSHxTlDOJ {
   border-radius: 13px !important;
 }
+
+.main-entityHeader-container.DFuKwT5bvhKZoYr2gfZe.NUi6SfjGmKAXb2XYVrxo {
+  border-radius: 20px;
+  background-color: transparent !important;
+  backdrop-filter: blur(2rem);
+  width: 97%;
+  margin: auto;
+  margin-top: 20px;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+  height: fit-content !important;
+}
+
+.Fy7zhxN3izitcVwNo3kg {
+  border-radius: 7px !important;
+}
+
+.WBgZ2c0j35R2QXZPfNyP {
+  background: transparent !important;
+  backdrop-filter: blur(2rem);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}
+
+.fL6_p0AyUi7EDTCczQas {
+  border-radius: 20px !important;
+  border: none !important;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--accent-color);
+}

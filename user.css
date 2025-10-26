@@ -1317,6 +1317,7 @@ textarea.main-playlistEditDetailsModal-textElement.main-playlistEditDetailsModal
   box-shadow: 0 0 25px 8px var(--accent-color);
   transition: box-shadow 0.3s ease, transform 0.3s ease !important;
   border-radius: 20px !important;
+  backdrop-filter: blur(2rem);
 }
 
 .PK2uHqvpXFYSpnTV0Gz8 {

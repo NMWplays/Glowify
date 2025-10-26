@@ -973,7 +973,7 @@ img.marketplace-customCSS-image-preview {
 }
 
 .lyrics-lyrics-contentContainer .lyrics-lyrics-contentWrapper {
-  width: fit-content !important;
+  text-align: center;
   align-items: center;
 }
 

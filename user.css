@@ -684,7 +684,8 @@ a.main-contextMenu-menuItemButton:hover {
   border-radius: 20px;
   backdrop-filter: blur(2rem);
   box-shadow: 0 0 25px 8px var(--accent-color);
-  height: 838px;
+  height: fit-content;
+  max-height: 838px !important;
 }
 
 .spicetify-exp-features input.search {
@@ -1777,4 +1778,10 @@ img.Image-sc-1u215sg-3.Image-image.ListRowImage__ListRowImageComponent-sc-1uaxq9
 
 span.VrI8jP8wkOIpseiHkdBl {
   text-align: center;
+}
+
+.marketplace-add-snippet-btn {
+  position: absolute !important;
+  bottom: 32px;
+  left: 89%;
 }

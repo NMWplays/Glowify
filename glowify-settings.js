@@ -66,6 +66,20 @@ if (!window.glowifyObserverInitialized) {
         localStorage.setItem("glowify-accent-mode", "default");
     }
 
+    // === Glow Accent Handling ===
+    function applyGlowAccent(color) {
+        document.documentElement.style.setProperty("--glowify-glow-accent", color);
+        localStorage.setItem("glowify-glow-mode", "custom");
+        localStorage.setItem("glowify-glow-color", color);
+    }
+
+    function resetGlowAccentToDefault() {
+        const defaultColor = "var(--accent-color)";
+        document.documentElement.style.setProperty("--glowify-glow-accent", defaultColor);
+        localStorage.setItem("glowify-glow-mode", "default");
+    }
+
+
     // === Background Handling ===
     async function fileToBase64(file) {
         return new Promise((resolve, reject) => {
@@ -210,6 +224,27 @@ if (!window.glowifyObserverInitialized) {
         const height = parseInt(localStorage.getItem("glowify-tc-height") || "64", 10);
         applyTransparentControls(width, height);
     }
+
+    // === Backgorund-Picture-Blur ===
+    // === Background Blur Handling ===
+    function applyBackgroundBlur(px) {
+        document.documentElement.style.setProperty("--glowify-bg-blur", px + "px");
+        localStorage.setItem("glowify-bg-blur", px);
+    }
+
+    function ensureBackgroundBlurApplied() {
+        const saved = parseInt(localStorage.getItem("glowify-bg-blur") || "7", 10);
+        applyBackgroundBlur(saved);
+    }
+
+    const savedGlowMode = localStorage.getItem("glowify-glow-mode") || "default";
+    const savedGlowColor = localStorage.getItem("glowify-glow-color") || "#1DB954";
+    if (savedGlowMode === "custom") {
+        applyGlowAccent(savedGlowColor);
+    } else {
+        resetGlowAccentToDefault();
+    }
+
     // === Initialization ===
     const savedAccentMode = localStorage.getItem("glowify-accent-mode") || "default";
     const savedAccentColor = localStorage.getItem("glowify-custom-color") || "#1DB954";
@@ -225,6 +260,7 @@ if (!window.glowifyObserverInitialized) {
     applySavedBackground();
     ensurePlayerWidthApplied();
     ensureTransparentControlsApplied();
+    ensureBackgroundBlurApplied();
 
     // === Dynamic Accent Observer ===
     if (!window.glowifyDynamicObserver) {
@@ -280,13 +316,22 @@ if (!window.glowifyObserverInitialized) {
                 <h3>Glowify Settings</h3>
 
                 <div class="accent-row">
-                    <label for="accent-mode">Accent Color:</label>
+                    <label for="accent-mode">Button Accent Color:</label>
                     <select id="accent-mode">
                         <option value="default">Default</option>
                         <option value="custom">Custom</option>
                         <option value="dynamic">Dynamic</option>
                     </select>
                     <input type="color" id="accent-picker" value="#1DB954" style="display:none;">
+                </div>
+
+                <div class="accent-row">
+                    <label for="glow-mode">Glow Accent Color:</label>
+                    <select id="glow-mode">
+                        <option value="default">Default</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                    <input type="color" id="glow-picker" value="#1DB954" style="display:none;">
                 </div>
 
                 <div class="accent-row">
@@ -314,6 +359,15 @@ if (!window.glowifyObserverInitialized) {
                         <button id="radius-plus">+</button>
                     </div>
                 </div>
+
+                <div class="accent-row">
+                    <label>Background Blur:</label>
+                    <div class="radius-control">
+                        <button id="bg-blur-minus">-</button>
+                        <input type="number" id="bg-blur" min="0" max="40" step="1">
+                        <button id="bg-blur-plus">+</button>
+                    </div>
+                </div>
         `;
         document.body.appendChild(popup);
             // === Popup Styling ===
@@ -330,7 +384,7 @@ if (!window.glowifyObserverInitialized) {
                     border-radius: 20px;
                     padding: 20px 28px 24px;
                     z-index: 99999;
-                    box-shadow: 0 0 25px 8px var(--accent-color);
+                    box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
                     color: white;
                     font-family: sans-serif;
                     animation: fadeIn 0.6s ease;
@@ -382,9 +436,7 @@ if (!window.glowifyObserverInitialized) {
                     text-align: left; 
                 }
 
-                #glowify-settings-popup #accent-mode,
-                #glowify-settings-popup #background-mode,
-                #glowify-settings-popup #player-width {
+                #glowify-settings-popup select {
                     background: #00000057;
                     color: white;
                     border: none;
@@ -426,7 +478,8 @@ if (!window.glowifyObserverInitialized) {
 
                 #glowify-settings-popup #player-radius,
                 #glowify-settings-popup #tc-width,
-                #glowify-settings-popup #tc-height {
+                #glowify-settings-popup #tc-height,
+                #glowify-settings-popup #bg-blur {
                     width: 50px;
                     text-align: center;
                     border: none;
@@ -467,6 +520,8 @@ if (!window.glowifyObserverInitialized) {
         // === Logic ===
         const picker = document.getElementById("accent-picker");
         const modeSelect = document.getElementById("accent-mode");
+        const glowMode = document.getElementById("glow-mode");
+        const glowPicker = document.getElementById("glow-picker");
         const bgSelect = document.getElementById("background-mode");
         const bgFile = document.getElementById("background-file");
         const widthSelect = document.getElementById("player-width");
@@ -488,6 +543,8 @@ if (!window.glowifyObserverInitialized) {
         const currentRadius = parseInt(localStorage.getItem("glowify-player-radius") || "30", 10);
         const curTCWidth = parseInt(localStorage.getItem("glowify-tc-width") || "135", 10);
         const curTCHeight = parseInt(localStorage.getItem("glowify-tc-height") || "64", 10);
+        const currentGlowMode = localStorage.getItem("glowify-glow-mode") || "default";
+        const currentGlowColor = localStorage.getItem("glowify-glow-color") || "#1DB954";
 
         modeSelect.value = currentMode;
         bgSelect.value = currentBgMode;
@@ -496,10 +553,26 @@ if (!window.glowifyObserverInitialized) {
         picker.value = currentColor;
         tcWidth.value = curTCWidth;
         tcHeight.value = curTCHeight;
+        glowMode.value = currentGlowMode;
+        glowPicker.value = currentGlowColor;
+        glowPicker.style.display = currentGlowMode === "custom" ? "block" : "none";
 
         picker.style.display = currentMode === "custom" ? "block" : "none";
         bgFile.style.display = currentBgMode === "custom" ? "block" : "none";
 
+        glowMode.addEventListener("change", (e) => {
+            const value = e.target.value;
+            if (value === "custom") {
+                glowPicker.style.display = "block";
+                applyGlowAccent(glowPicker.value);
+            } else {
+                glowPicker.style.display = "none";
+                resetGlowAccentToDefault();
+            }
+        });
+
+glowPicker.addEventListener("input", (e) => applyGlowAccent(e.target.value));
+        
         modeSelect.addEventListener("change", (e) => {
             const value = e.target.value;
             if (value === "custom") {
@@ -582,6 +655,30 @@ if (!window.glowifyObserverInitialized) {
             let val = Math.min(300, parseInt(tcHeight.value, 10) + 1);
             tcHeight.value = val;
             applyTransparentControls(parseInt(tcWidth.value, 10), val);
+        });
+
+        // === Background Blur Handlers ===
+        const bgBlur = document.getElementById("bg-blur");
+        const bgBlurMinus = document.getElementById("bg-blur-minus");
+        const bgBlurPlus = document.getElementById("bg-blur-plus");
+
+        const currentBlur = parseInt(localStorage.getItem("glowify-bg-blur") || "7", 10);
+        bgBlur.value = currentBlur;
+
+        bgBlur.addEventListener("input", () => {
+            applyBackgroundBlur(parseInt(bgBlur.value, 10));
+        });
+
+        bgBlurMinus.addEventListener("click", () => {
+            let val = Math.max(0, parseInt(bgBlur.value, 10) - 1);
+            bgBlur.value = val;
+            applyBackgroundBlur(val);
+        });
+
+        bgBlurPlus.addEventListener("click", () => {
+            let val = Math.min(40, parseInt(bgBlur.value, 10) + 1);
+            bgBlur.value = val;
+            applyBackgroundBlur(val);
         });
 
         // === Close Popup ===

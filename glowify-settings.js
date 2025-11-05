@@ -36,11 +36,17 @@ if (!window.glowifyObserverInitialized) {
         localStorage.setItem("glowify-custom-color", color);
     }
 
+    let lastDynamicColor = null;
+
     function applyDynamicAccent() {
         const dynamicColor = getComputedStyle(document.documentElement)
             .getPropertyValue("--accent-color")
             .trim();
-        if (dynamicColor) applyAccent(dynamicColor);
+
+        if (!dynamicColor || dynamicColor === lastDynamicColor) return;
+        lastDynamicColor = dynamicColor;
+
+        applyAccent(dynamicColor);
         document.documentElement.style.setProperty("--glowify-dynamic-color", dynamicColor);
         localStorage.setItem("glowify-accent-mode", "dynamic");
     }

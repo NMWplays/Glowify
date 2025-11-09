@@ -1806,3 +1806,19 @@ span.VrI8jP8wkOIpseiHkdBl {
 }
 
 /*Discover Weekly Button fix end*/
+
+.hzIuAZ {
+  backdrop-filter: blur(2rem);
+  border-radius: 20px;
+  background-color: transparent;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.kvDaIU:hover {
+  color: white !important;
+}
+
+
+.gTJweU:hover {
+  border: 1px solid white;
+}

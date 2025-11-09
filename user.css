@@ -1822,3 +1822,23 @@ span.VrI8jP8wkOIpseiHkdBl {
 .gTJweU:hover {
   border: 1px solid white;
 }
+
+.marketplace-grid .main-card-draggable .main-card-cardMetadata li.marketplace-card__tag {
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.marketplace-header__right {
+  margin-top: 2px;
+}
+
+.marketplace-grid .main-card-draggable .main-card-cardMetadata .marketplace-card__tags-more-btn {
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.Dropdown-root.is-open .Dropdown-menu {
+  border-top-left-radius: 0 !important;
+}

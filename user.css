@@ -1842,3 +1842,10 @@ span.VrI8jP8wkOIpseiHkdBl {
 .Dropdown-root.is-open .Dropdown-menu {
   border-top-left-radius: 0 !important;
 }
+
+.TooltipWrapper-tooltip-tooltip-isVisible {
+  background: transparent;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  border-radius: 13px !important;
+  backdrop-filter: blur(2rem);
+}

@@ -210,7 +210,7 @@
 .main-card-cardContainer:hover {
   border-radius: 20px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
-  transform: translateY(-1px);
+  transform: scale(1.02);
 }
 
 .wuQsKLTukGW5aeEAHxiu .XkDqS8M3CEkouTbj8y5H {

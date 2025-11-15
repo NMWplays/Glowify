@@ -1849,3 +1849,15 @@ span.VrI8jP8wkOIpseiHkdBl {
   border-radius: 13px !important;
   backdrop-filter: blur(2rem);
 }
+
+.qPSeZQBGdMfGdWr9VgQ1:hover {
+  background-color: transparent;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  border-radius: 20px;
+  transform: scale(1.01);
+}
+
+.qPSeZQBGdMfGdWr9VgQ1 {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-radius: 20px;
+}

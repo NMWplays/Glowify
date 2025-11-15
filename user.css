@@ -210,7 +210,7 @@
 .main-card-cardContainer:hover {
   border-radius: 20px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .wuQsKLTukGW5aeEAHxiu .XkDqS8M3CEkouTbj8y5H {
@@ -1860,4 +1860,42 @@ span.VrI8jP8wkOIpseiHkdBl {
 .qPSeZQBGdMfGdWr9VgQ1 {
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   border-radius: 20px;
+}
+
+.Button-buttonSecondary-small-useBrowserDefaultFocusStyle {
+  border: none;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  backdrop-filter: blur(2rem);
+  transition: transform 0.3s ease !important;
+}
+
+.Button-buttonSecondary-small-useBrowserDefaultFocusStyle:hover {
+  border: none;
+  transform: scale(1.06) !important;
+}
+
+.gJM69SPy348cM1KPSqJw {
+  background-color: transparent;
+  border-radius: 20px;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+option {
+  background-color: #484848;
+}
+
+.CgGNDh1suyDyp2D3Azit:focus-visible,
+.CgGNDh1suyDyp2D3Azit:hover,
+.vQCU_DaVRyijGqgAQvPz:focus-visible,
+.vQCU_DaVRyijGqgAQvPz:hover {
+  background-color: transparent;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  border-radius: 20px;
+}
+
+.CgGNDh1suyDyp2D3Azit,
+.vQCU_DaVRyijGqgAQvPz {
+  border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }

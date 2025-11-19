@@ -17,7 +17,7 @@
   will-change: transform;
   opacity: 0.55;
   z-index: 0;
-  filter: blur(var(--glowify-bg-blur, 7px));
+  filter: blur(var(--glowify-bg-blur, 7px)) brightness(80%);
 }
 
 /*Playlist Bereich mit buttons shuffle download etc*/

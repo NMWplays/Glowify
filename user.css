@@ -2006,7 +2006,14 @@ input.main-embedWidgetGenerator-darkControl:hover {
   transform: scale(1.05) !important;
 }
 
-.Button-buttonSecondary-small-disabled-useBrowserDefaultFocusStyle:disabled, .Button-buttonSecondary-small-disabled-useBrowserDefaultFocusStyle[aria-disabled="true"]{
+.Button-buttonSecondary-small-disabled-useBrowserDefaultFocusStyle:disabled,
+.Button-buttonSecondary-small-disabled-useBrowserDefaultFocusStyle[aria-disabled="true"] {
+  border: none;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.Button-buttonSecondary-small-disabled-isUsingKeyboard-useBrowserDefaultFocusStyle:disabled,
+.Button-buttonSecondary-small-disabled-isUsingKeyboard-useBrowserDefaultFocusStyle[aria-disabled="true"] {
   border: none;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }

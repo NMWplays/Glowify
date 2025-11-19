@@ -1,7 +1,9 @@
 # ✨ Glowify Theme Spicetify ✨
 Glowify is a glow-infused Spicetify theme for Spotify featuring a modern, luminous interface and smooth animations.
 
-It also offers customization options and Beatiful Lyrics, Spicy Lyrics and Lucid Lyrics are supported by default.
+It also offers many customization options and Beatiful Lyrics, Spicy Lyrics and Lucid Lyrics are supported by default.
+
+If your transparent controls don’t look fully transparent — for example when zooming in on Spotify — you can easily change the width and height of them in the Glowify Settings to make them fully transparent again.
 
 If you like the theme, consider starring the repository on GitHub! ⭐
 

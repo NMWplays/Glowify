@@ -1983,3 +1983,30 @@ input.main-embedWidgetGenerator-darkControl:hover {
   width: 95%;
   margin: auto;
 }
+
+.Button-buttonSecondary-small-iconTrailing-isUsingKeyboard-useBrowserDefaultFocusStyle {
+  border: none;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  transition: transform 0.3s ease !important;
+}
+
+.Button-buttonSecondary-small-iconTrailing-isUsingKeyboard-useBrowserDefaultFocusStyle:hover {
+  border: none;
+  transform: scale(1.05) !important;
+}
+
+.Button-buttonSecondary-small-isUsingKeyboard-useBrowserDefaultFocusStyle {
+  border: none;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  transition: transform 0.3s ease !important;
+}
+
+.Button-buttonSecondary-small-isUsingKeyboard-useBrowserDefaultFocusStyle:hover {
+  border: none;
+  transform: scale(1.05) !important;
+}
+
+.Button-buttonSecondary-small-disabled-useBrowserDefaultFocusStyle:disabled, .Button-buttonSecondary-small-disabled-useBrowserDefaultFocusStyle[aria-disabled="true"]{
+  border: none;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}

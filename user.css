@@ -687,7 +687,6 @@ a.main-contextMenu-menuItemButton:hover {
 .main-embedWidgetGenerator-container {
   background-color: transparent;
   border-radius: 20px;
-  backdrop-filter: blur(2rem);
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
   height: fit-content;
   max-height: 838px !important;
@@ -800,6 +799,7 @@ a.main-contextMenu-menuItemButton:hover {
 
 .GenericModal {
   background-color: transparent !important;
+  backdrop-filter: blur(2rem);
 }
 
 .main-card-card {
@@ -1892,10 +1892,54 @@ option {
   background-color: transparent;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
   border-radius: 20px;
+  transform: scale(1.01);
 }
 
 .CgGNDh1suyDyp2D3Azit,
 .vQCU_DaVRyijGqgAQvPz {
   border-radius: 20px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.Button-buttonSecondary-small-iconTrailing-useBrowserDefaultFocusStyle {
+  border: none;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  transition: transform 0.3s ease !important;
+}
+
+.Button-buttonSecondary-small-iconTrailing-useBrowserDefaultFocusStyle:hover {
+  border: none;
+  transform: scale(1.05) !important;
+}
+
+span.e-91000-text.encore-text-body-medium.encore-internal-color-text-base {
+  color: white;
+}
+
+.e-91000-box.e-91000-baseline.e-91000-box--elevated.e-91000-box--browser-default-focus.encore-light-theme.encore-layout-themes.CGvXvS7oksVDyPuwPFCI.encore-light-theme.encore-layout-themes.CGvXvS7oksVDyPuwPFCI {
+  background-color: transparent;
+  border-radius: 20px;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+dialog {
+  backdrop-filter: blur(2rem);
+  border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.desktopmodals-aboutSpotifyModal-container {
+  background-color: transparent;
+}
+
+.desktopmodals-aboutSpotifyModal-licensing {
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.desktopmodals-versionStatus-copyButton {
+  background: transparent;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }

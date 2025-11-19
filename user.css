@@ -1942,6 +1942,7 @@ dialog {
 .desktopmodals-versionStatus-copyButton {
   background: transparent;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  transition: transform 0.3s ease;
 }
 
 .main-embedWidgetGenerator-contentCode,
@@ -2016,4 +2017,8 @@ input.main-embedWidgetGenerator-darkControl:hover {
 .Button-buttonSecondary-small-disabled-isUsingKeyboard-useBrowserDefaultFocusStyle[aria-disabled="true"] {
   border: none;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+dialog::backdrop {
+  display: none;
 }

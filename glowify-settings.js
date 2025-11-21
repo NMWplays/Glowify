@@ -33,6 +33,10 @@ if (!window.glowifyObserverInitialized) {
             .e-91000-button-primary:hover .e-91000-button-primary__inner {
                 background-color: ${color} !important;
             }
+
+            .e-91000-button-primary:active .e-91000-button-primary__inner {
+                background-color: ${color} !important;
+            }
         `;
         updateStyle(css);
 
@@ -71,6 +75,10 @@ if (!window.glowifyObserverInitialized) {
             }
 
             .e-91000-button-primary:hover .e-91000-button-primary__inner {
+                background-color: #3be477;
+            }
+
+            .e-91000-button-primary:active .e-91000-button-primary__inner {
                 background-color: #3be477;
             }
         `;

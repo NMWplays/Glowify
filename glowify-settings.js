@@ -14,19 +14,23 @@ if (!window.glowifyObserverInitialized) {
 
     // === Accent Handling ===
     function applyAccent(color) {
+        document.documentElement.style.setProperty("--spice-button", color);
         document.documentElement.style.setProperty("--spice-button-active", color);
+
+        document.documentElement.style.setProperty("--background-highlight", color);
+
         document.documentElement.style.setProperty("--glowify-accent", color);
 
         const css = `
-            .encore-dark-theme .encore-bright-accent-set {
-                --background-base: ${color};
-                --background-highlight: ${color};
-                --background-press: ${color};
+            .AZ6uIUy8_YPogVERteBi:hover .r9ZhqDYZeNTrb4R4Te8W {
+                fill: ${color} !important;
             }
-            .main-genericButton-button.main-genericButton-buttonActive {
-                color: ${color} !important;
+
+            .AZ6uIUy8_YPogVERteBi:hover .t_sZQVE189C6jf_gtE_w {
+                fill: ${color} !important;
             }
-            .main-genericButton-button.main-genericButton-buttonActiveDot:after {
+
+            .e-91000-button-primary:hover .e-91000-button-primary__inner {
                 background-color: ${color} !important;
             }
         `;
@@ -52,24 +56,28 @@ if (!window.glowifyObserverInitialized) {
     }
 
     function resetAccentToDefault() {
-        const defaultColor = "#1ed760";
-        document.documentElement.style.setProperty("--spice-button-active", defaultColor);
+        document.documentElement.style.setProperty("--spice-button", "");
+        document.documentElement.style.setProperty("--spice-button-active", "");
+        document.documentElement.style.setProperty("--background-highlight", "");
+        document.documentElement.style.setProperty("--glowify-accent", "");
 
         const css = `
-            .encore-dark-theme .encore-bright-accent-set {
-                --background-base: var(--spice-button-active);
-                --background-highlight: #3be477;
-                --background-press: #1abc54;
+            .AZ6uIUy8_YPogVERteBi:hover .r9ZhqDYZeNTrb4R4Te8W {
+                fill: #3be477;
             }
-            .main-genericButton-button.main-genericButton-buttonActive {
-                color: var(--spice-button);
+
+            .AZ6uIUy8_YPogVERteBi:hover .t_sZQVE189C6jf_gtE_w {
+                fill: #3be477;
             }
-            .main-genericButton-button.main-genericButton-buttonActiveDot:after {
-                background-color: var(--spice-button);
+
+            .e-91000-button-primary:hover .e-91000-button-primary__inner {
+                background-color: #3be477;
             }
         `;
         updateStyle(css);
+
         localStorage.setItem("glowify-accent-mode", "default");
+        localStorage.removeItem("glowify-custom-color");
     }
 
     // === Glow Accent Handling ===
@@ -577,7 +585,7 @@ if (!window.glowifyObserverInitialized) {
             }
         });
 
-glowPicker.addEventListener("input", (e) => applyGlowAccent(e.target.value));
+        glowPicker.addEventListener("input", (e) => applyGlowAccent(e.target.value));
         
         modeSelect.addEventListener("change", (e) => {
             const value = e.target.value;
@@ -586,6 +594,7 @@ glowPicker.addEventListener("input", (e) => applyGlowAccent(e.target.value));
                 applyAccent(picker.value);
             } else if (value === "dynamic") {
                 picker.style.display = "none";
+                lastDynamicColor = null; // <-- hier zurücksetzen
                 applyDynamicAccent();
             } else {
                 picker.style.display = "none";

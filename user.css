@@ -2022,3 +2022,7 @@ input.main-embedWidgetGenerator-darkControl:hover {
 dialog::backdrop {
   display: none;
 }
+
+.main-entityHeader-imageContainerNew {
+  align-self: center;
+}

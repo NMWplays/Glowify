@@ -2114,6 +2114,8 @@ span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inn
   background-color: transparent;
 }
 
+/*Focused lyrics*/
+
 .lyrics-lyricsContent-lyric {
   width: fit-content !important;
   filter: blur(1.5px);
@@ -2125,4 +2127,10 @@ span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inn
 .lyrics-lyricsContent-lyric.lyrics-lyricsContent-active {
   filter: none;
   transform: scale(1.4);
+}
+
+/*Focused Lyrics End*/
+
+div#lyrics-background-root {
+  opacity: 0;
 }

@@ -2109,3 +2109,7 @@ span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inn
   transition-timing-function:
     ease-in;
 }
+
+.main-playlistEditDetailsModal-textElement:focus {
+  background-color: transparent;
+}

@@ -1170,7 +1170,6 @@ main section .search-searchCategory-categoryGrid {
   border-radius: 20px;
   padding: 23px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
-  width: fit-content !important;
   height: fit-content;
   margin-top: 20px;
 }

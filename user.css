@@ -309,9 +309,6 @@ aside#Desktop_PanelContainer_Id {
 
 .BbQ_PXpS76W_dUlm6x7x>video {
   border-radius: 20px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
-  mask-repeat: no-repeat;
-  mask-size: 100% 100%;
 }
 
 .main-nowPlayingView-trackInfo {
@@ -2020,4 +2017,63 @@ input.main-embedWidgetGenerator-darkControl:hover {
 
 dialog::backdrop {
   display: none;
+}
+
+.main-watchFeed-modal {
+  background-color: transparent;
+  backdrop-filter: blur(2rem);
+}
+
+.main-watchFeed-container {
+  background-image: none;
+  background-color: transparent !important;
+  border: none;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  border-radius: 30px;
+}
+
+.main-watchFeed-playerImage {
+  border-radius: 12px;
+}
+
+/*Right sidebar canvas mask*/
+.u_oJcTzbq1mJ8qfhBggZ .Of__Db4QgB9osz_mFxhw {
+  opacity: 1;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+.main-watchFeed-imageWrapper:after {
+  border-radius: 30px;
+}
+
+.main-watchFeed-imageWrapper {
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.main-watchFeed-canvasContainer {
+  border-radius: 30px;
+}
+
+.Button-buttonSecondary-textBase-small-iconLeading-useBrowserDefaultFocusStyle {
+  border: none;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  backdrop-filter: blur(2rem);
+  transition: transform 0.3s ease !important;
+}
+
+.Button-buttonSecondary-textBase-small-iconLeading-useBrowserDefaultFocusStyle:hover {
+  border: none;
+  transform: scale(1.05) !important;
+}
+
+.s8si4rql4vKx7KIDkQMx {
+  background: transparent;
+}
+
+.s8si4rql4vKx7KIDkQMx:before {
+  background: transparent;
 }

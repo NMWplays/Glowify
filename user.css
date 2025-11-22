@@ -2094,3 +2094,18 @@ dialog::backdrop {
 .x0lJCeJrx_56dJTWdATl.mpdgC9UTkN5_fMm1pFiz {
   background-color: transparent;
 }
+
+/*Button color transition*/
+span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inner.encore-bright-accent-set.e-91000-button-icon-only--large,
+.main-genericButton-button.main-genericButton-buttonActive,
+.main-genericButton-button.main-genericButton-buttonActiveDot:after,
+span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inner.encore-bright-accent-set.e-91000-button-icon-only--medium {
+  -webkit-transition-duration: .4s;
+  transition-duration: .4s;
+  -webkit-transition-property: background-color, color;
+  transition-property: background-color, color;
+  -webkit-transition-timing-function:
+    ease-in;
+  transition-timing-function:
+    ease-in;
+}

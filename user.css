@@ -868,7 +868,6 @@ img.marketplace-customCSS-image-preview {
 }
 
 .RSOVjwDmB9S4xPy2hC4K.F7ZGEmabEqd1JjefhfOQ {
-  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
   border-radius: 20px;
 }
 
@@ -1724,6 +1723,7 @@ img.dYzfkHQyY6RBW3qoyayA {
   border-radius: 20px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
   outline: none !important;
+  backdrop-filter: blur(2rem);
 }
 
 .Root__cinema-view.E3V79f6uQHeTnFxMhoju.Root__cinema-view--controls-hidden {
@@ -2076,4 +2076,21 @@ dialog::backdrop {
 
 .s8si4rql4vKx7KIDkQMx:before {
   background: transparent;
+}
+
+.w3RBm0dgJerrtbWOvNpr {
+  background-color: transparent;
+}
+
+.OJnLE_7zXqf8eKorQpQI {
+  background-image: none;
+}
+
+.x81eiLoZ5zWkSS1y28Oj {
+  background-image: none;
+  background-color: transparent;
+}
+
+.x0lJCeJrx_56dJTWdATl.mpdgC9UTkN5_fMm1pFiz {
+  background-color: transparent;
 }

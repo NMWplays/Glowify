@@ -2106,6 +2106,29 @@ span.e-91000-baseline.e-91000-overflow-wrap-anywhere.e-91000-button-primary__inn
     ease-in;
 }
 
+.iOYIF7U58Aeo92u0kCSG,
+.main-genericButton-button {
+  -webkit-transition-duration: .4s;
+  transition-duration: .4s;
+  -webkit-transition-property: color, color;
+  transition-property: color, color;
+  -webkit-transition-timing-function:
+    ease-in;
+  transition-timing-function:
+    ease-in;
+}
+
+svg.e-91000-icon.e-91000-baseline {
+  -webkit-transition-duration: .4s;
+  transition-duration: .4s;
+  -webkit-transition-property: fill, color;
+  transition-property: fill, color;
+  -webkit-transition-timing-function:
+    ease-in;
+  transition-timing-function:
+    ease-in;
+}
+
 .main-playlistEditDetailsModal-textElement:focus {
   background-color: transparent;
 }

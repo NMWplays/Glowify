@@ -2181,3 +2181,23 @@ div#lyrics-background-root {
   border-radius: 12px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }
+
+.bZu9z5uN3CYG_zTFA97L:focus-visible,
+.bZu9z5uN3CYG_zTFA97L {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-radius: 20px;
+}
+
+.bZu9z5uN3CYG_zTFA97L:focus-visible,
+.bZu9z5uN3CYG_zTFA97L {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-radius: 20px;
+}
+
+.bZu9z5uN3CYG_zTFA97L:active {
+  background-color: transparent;
+}
+
+a.qPSeZQBGdMfGdWr9VgQ1.Uxt8HzMKLW_ZXsxT9NgQ {
+  box-shadow: none;
+}

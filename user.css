@@ -1,23 +1,23 @@
 :root {
   --glowify-glow-accent: var(--accent-color);
-  /* Fallback, falls kein Custom gesetzt ist */
 }
 
-.Root__top-container::before {
-  content: "";
-  background-image: var(--image_url);
+.glowify-bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  position: fixed;
-  display: block;
-  inset: 0;
-  pointer-events: none;
-  backface-visibility: hidden;
-  will-change: transform;
-  opacity: 0.55;
-  z-index: 0;
   filter: blur(var(--glowify-bg-blur, 7px)) brightness(80%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.layer-a.active,
+.layer-b.active {
+  opacity: 0.55;
 }
 
 /*Playlist Bereich mit buttons shuffle download etc*/

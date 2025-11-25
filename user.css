@@ -2175,3 +2175,9 @@ div#lyrics-background-root {
 .VeD7NAcigQaaIUn8jrkN {
   border-radius: 10px;
 }
+
+#spicetify-update pre {
+    background-color: transparent;
+    border-radius: 12px;
+    box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}

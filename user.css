@@ -242,7 +242,6 @@
 
 .main-nowPlayingView-coverArt {
   border-radius: 20px;
-  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }
 
 .Q8TIE2Y2AX304EkuFSZh {
@@ -259,7 +258,6 @@
 
 .mzBZbIt7NDzzTffimVhn.TjX06ItOHm0J21btzLaj {
   background: transparent !important;
-  margin-top: 90px;
 }
 
 .UrfDp0_mKGL9hkfh9g_R:before {
@@ -2182,12 +2180,4 @@ div#lyrics-background-root {
   background-color: transparent;
   border-radius: 12px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
-}
-
-.xjf0Pj3YnoegOkJUpaPS {
-  margin-bottom: -90px;
-}
-
-.EnViFhuIR5WVeEopJHu3 {
-  box-shadow: none !important;
 }

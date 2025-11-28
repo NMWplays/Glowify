@@ -37,10 +37,6 @@ if (!window.glowifyObserverInitialized) {
             .e-91000-button-primary:active .e-91000-button-primary__inner {
                 background-color: ${color} !important;
             }
-
-            .custom-playing-bar {
-                fill: ${color} !important;
-            }
         `;
         updateStyle(css);
 
@@ -85,115 +81,12 @@ if (!window.glowifyObserverInitialized) {
             .e-91000-button-primary:active .e-91000-button-primary__inner {
                 background-color: #3be477;
             }
-
-            .custom-playing-bar {
-                fill: #3be477;
-            }
         `;
         updateStyle(css);
 
         localStorage.setItem("glowify-accent-mode", "default");
         localStorage.removeItem("glowify-custom-color");
     }
-
-    /*Custom SVG*/
-
-    (async function () {
-        while (!Spicetify?.Player || !Spicetify?.Player?.data) {
-            await new Promise(r => setTimeout(r, 300));
-        }
-
-        let lastSvg = null;
-
-        function createBars(indicator) {
-            const parent = indicator.parentNode;
-
-            if (lastSvg) {
-                lastSvg.remove();
-                lastSvg = null;
-            }
-
-            const rectHeight = parent.offsetHeight;
-            const bottom = rectHeight - 2;
-            const svgNS = "http://www.w3.org/2000/svg";
-            const svg = document.createElementNS(svgNS, "svg");
-
-            svg.setAttribute("width", "16");
-            svg.setAttribute("height", rectHeight);
-            svg.style.position = "absolute";
-            svg.style.left = "0px";
-            svg.style.top = "0px";
-            svg.style.pointerEvents = "none";
-            svg.dataset.customPlayingIndicator = "true";
-
-            const bars = [];
-            const speeds = [];
-            const phases = [];
-
-            for (let i = 0; i < 4; i++) {
-                const bar = document.createElementNS(svgNS, "rect");
-                bar.setAttribute("x", i * 4);
-                bar.setAttribute("width", "3");
-                bar.setAttribute("y", bottom - 4);
-                bar.setAttribute("height", 4);
-                bar.classList.add("custom-playing-bar");
-                svg.appendChild(bar);
-                bars.push(bar);
-
-                speeds.push(0.008 + Math.random() * 0.007);
-                phases.push(Math.random() * Math.PI * 2);
-            }
-
-            parent.insertBefore(svg, indicator);
-            lastSvg = svg;
-
-            const start = performance.now();
-
-            function animate() {
-                const playButton = parent.querySelector(".main-trackList-rowImagePlayButton");
-                const playVisible = playButton && window.getComputedStyle(playButton).opacity !== "0";
-
-                svg.style.display = (!playVisible && Spicetify.Player.isPlaying()) ? "block" : "none";
-
-                const now = performance.now();
-                const t = now - start;
-
-                bars.forEach((bar, i) => {
-                    const maxHeight = rectHeight * 0.7;
-                    const minHeight = 3;
-                    const height = minHeight + (Math.sin(t * speeds[i] + phases[i]) + 1) / 2 * (maxHeight - minHeight);
-                    bar.setAttribute("height", height);
-                    bar.setAttribute("y", bottom - height);
-                });
-
-                requestAnimationFrame(animate);
-            }
-
-            requestAnimationFrame(animate);
-        }
-
-        async function replaceSpotifyIndicator() {
-            document.querySelectorAll("svg[data-custom-playing-indicator]").forEach(svg => svg.remove());
-            await new Promise(r => setTimeout(r, 50));
-
-            const indicator = document.querySelector(
-                ".X_HqPouENflGygaUXNus:not([style*='display: none']), [data-playing-indicator]:not([style*='display: none'])"
-            );
-            if (!indicator) return false;
-            createBars(indicator);
-            return true;
-        }
-
-        Spicetify.Player.addEventListener("songchange", replaceSpotifyIndicator);
-
-        (async function pollForCurrentSong() {
-            let done = false;
-            while (!done) {
-                done = await replaceSpotifyIndicator();
-                if (!done) await new Promise(r => setTimeout(r, 200));
-            }
-        })();
-    })();
 
     // === Glow Accent Handling ===
     function applyGlowAccent(color) {

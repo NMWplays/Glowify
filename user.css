@@ -2201,3 +2201,16 @@ div#lyrics-background-root {
 a.qPSeZQBGdMfGdWr9VgQ1.Uxt8HzMKLW_ZXsxT9NgQ {
   box-shadow: none;
 }
+
+.X_HqPouENflGygaUXNus,
+[data-playing-indicator] {
+  display: none;
+}
+
+img.H70qcBekoGWOlskuON5R {
+  display: none;
+}
+
+.custom-playing-bar {
+  scale: 1.2;
+}

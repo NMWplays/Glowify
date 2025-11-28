@@ -108,7 +108,6 @@ if (!window.glowifyObserverInitialized) {
         function createBars(indicator) {
             const parent = indicator.parentNode;
 
-            // Alte SVG entfernen
             if (lastSvg) {
                 lastSvg.remove();
                 lastSvg = null;
@@ -154,7 +153,6 @@ if (!window.glowifyObserverInitialized) {
                 const playButton = parent.querySelector(".main-trackList-rowImagePlayButton");
                 const playVisible = playButton && window.getComputedStyle(playButton).opacity !== "0";
 
-                // Balken nur anzeigen, wenn Track spielt
                 svg.style.display = (!playVisible && Spicetify.Player.isPlaying()) ? "block" : "none";
 
                 const now = performance.now();
@@ -186,10 +184,8 @@ if (!window.glowifyObserverInitialized) {
             return true;
         }
 
-        // Songwechsel Listener
         Spicetify.Player.addEventListener("songchange", replaceSpotifyIndicator);
 
-        // Polling für aktuellen Song beim Start
         (async function pollForCurrentSong() {
             let done = false;
             while (!done) {

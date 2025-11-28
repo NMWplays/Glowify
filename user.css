@@ -2177,8 +2177,8 @@ div#lyrics-background-root {
 }
 
 #spicetify-update pre {
-  background-color: transparent;
-  border-radius: 12px;
+  background-color: transparent !important;
+  border-radius: 12px !important;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }
 
@@ -2200,4 +2200,9 @@ div#lyrics-background-root {
 
 a.qPSeZQBGdMfGdWr9VgQ1.Uxt8HzMKLW_ZXsxT9NgQ {
   box-shadow: none;
+}
+
+.X_HqPouENflGygaUXNus,
+[data-playing-indicator] {
+  display: none;
 }

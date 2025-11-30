@@ -2210,3 +2210,15 @@ a.qPSeZQBGdMfGdWr9VgQ1.Uxt8HzMKLW_ZXsxT9NgQ {
 img.H70qcBekoGWOlskuON5R {
   display: none;
 }
+
+.main-coverSlotCollapsed-expandButton {
+  background: transparent;
+  color: white;
+  backdrop-filter: blur(2rem);
+  transition: transform 0.3s ease !important;
+}
+
+.main-coverSlotCollapsed-expandButton:focus,
+.main-coverSlotCollapsed-expandButton:hover {
+  background: transparent;
+}

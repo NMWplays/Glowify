@@ -2240,3 +2240,10 @@ img.H70qcBekoGWOlskuON5R {
 .sl_aPp6GDg05ItSfmsS7 {
   display: none;
 }
+
+aside video {
+  filter: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+  transition: none;
+}

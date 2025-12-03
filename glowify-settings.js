@@ -663,6 +663,25 @@ if (!window.glowifyObserverInitialized) {
                     dynamic: "Dinamik",
                     theme: "Tema"
                 }
+            },
+            hi: {
+                settingsTitle: "Glowify सेटिंग्स",
+                title: "Glowify सेटिंग्स",
+                accentColor: "बटन एक्सेंट रंग:",
+                glowColor: "ग्लो एक्सेंट रंग:",
+                background: "पृष्ठभूमि:",
+                playerWidth: "प्लेयर चौड़ाई:",
+                playerRadius: "प्लेयर बॉर्डर रेडियस:",
+                backgroundBlur: "पृष्ठभूमि धुंधलापन:",
+                transparentWidth: "पारदर्शी कंट्रोल चौड़ाई:",
+                transparentHeight: "पारदर्शी कंट्रोल ऊँचाई:",
+                close: "बंद करें",
+                dropdown: {
+                    default: "डिफ़ॉल्ट",
+                    custom: "कस्टम",
+                    dynamic: "डायनेमिक",
+                    theme: "थीम"
+                }
             }
         };
 

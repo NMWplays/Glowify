@@ -201,7 +201,7 @@ if (!window.glowifyObserverInitialized) {
                 return false;
             }
 
-            // Prüfen, ob Track pausiert
+            // check if track is paused
             const playButton = indicator.parentNode.querySelector(".main-trackList-rowImagePlayButton");
             const isPlaying = Spicetify.Player.isPlaying() && (!playButton || window.getComputedStyle(playButton).opacity === "0");
 
@@ -232,7 +232,7 @@ if (!window.glowifyObserverInitialized) {
 
     (function () {
 
-        const homeSvgs = new Map(); // img → { svg, bars, rectHeight, bottom }
+        const homeSvgs = new Map();
         const svgNS = "http://www.w3.org/2000/svg";
 
         function createHomeVisualizer(img) {
@@ -259,7 +259,7 @@ if (!window.glowifyObserverInitialized) {
                 bar.setAttribute("width", "3");
                 bar.setAttribute("y", bottom - 4);
                 bar.setAttribute("height", 4);
-                bar.classList.add("home-visualizer-bar"); // CSS-Klasse für Farbe
+                bar.classList.add("home-visualizer-bar"); // CSS-Class for color
                 svg.appendChild(bar);
                 bars.push({
                     element: bar,
@@ -283,7 +283,7 @@ if (!window.glowifyObserverInitialized) {
         const homeObserver = new MutationObserver(updateHomeScreenVisualizer);
         homeObserver.observe(document.body, { childList: true, subtree: true });
 
-        // Globaler Animationsloop
+        // global animation loop
         const start = performance.now();
         function animate() {
             const t = performance.now() - start;
@@ -312,7 +312,6 @@ if (!window.glowifyObserverInitialized) {
         animate();
         updateHomeScreenVisualizer();
 
-        // Pause → SVGs entfernen
         Spicetify.Player.addEventListener("onplaypause", () => {
             if (!Spicetify.Player.isPlaying()) {
                 homeSvgs.forEach(data => data.svg.remove());
@@ -529,6 +528,148 @@ if (!window.glowifyObserverInitialized) {
         window.glowifyDynamicObserver.observe(document.body, { attributes: true, subtree: true });
     }
 
+    // === Popup Languages ===
+
+        const glowifyTranslations = {
+            de: {
+                settingsTitle: "Glowify Einstellungen",
+                title: "Glowify Einstellungen",
+                accentColor: "Button-Farbe:",
+                glowColor: "Glow-Farbe:",
+                background: "Hintergrund:",
+                playerWidth: "Player-Breite:",
+                playerRadius: "Player Border Radius:",
+                backgroundBlur: "Hintergrund-Unschärfe:",
+                transparentWidth: "Transparente Controls Breite:",
+                transparentHeight: "Transparente Controls Höhe:",
+                close: "Schließen",
+                dropdown: {
+                    default: "Standard",
+                    custom: "Benutzerdefiniert",
+                    dynamic: "Dynamisch",
+                    theme: "Theme"
+                }
+            },
+            en: {
+                settingsTitle: "Glowify Settings",
+                title: "Glowify Settings",
+                accentColor: "Button Accent Color:",
+                glowColor: "Glow Accent Color:",
+                background: "Background:",
+                playerWidth: "Player Width:",
+                playerRadius: "Player Border Radius:",
+                backgroundBlur: "Background Blur:",
+                transparentWidth: "Transparent Controls Width:",
+                transparentHeight: "Transparent Controls Height:",
+                close: "Close",
+                dropdown: {
+                    default: "Default",
+                    custom: "Custom",
+                    dynamic: "Dynamic",
+                    theme: "Theme"
+                }
+            },
+            ru: {
+                settingsTitle: "Настройки Glowify",
+                title: "Настройки Glowify",
+                accentColor: "Цвет акцента кнопок:",
+                glowColor: "Цвет свечения:",
+                background: "Фон:",
+                playerWidth: "Ширина плеера:",
+                playerRadius: "Скругление углов плеера:",
+                backgroundBlur: "Размытие фона:",
+                transparentWidth: "Ширина прозрачных элементов:",
+                transparentHeight: "Высота прозрачных элементов:",
+                close: "Закрыть",
+                dropdown: {
+                    default: "Стандартно",
+                    custom: "Пользовательский",
+                    dynamic: "Динамический",
+                    theme: "Тема"
+                }
+            },
+            es: {
+                settingsTitle: "Configuración de Glowify",
+                title: "Configuración de Glowify",
+                accentColor: "Color de acento del botón:",
+                glowColor: "Color del brillo:",
+                background: "Fondo:",
+                playerWidth: "Ancho del reproductor:",
+                playerRadius: "Radio del borde del reproductor:",
+                backgroundBlur: "Desenfoque del fondo:",
+                transparentWidth: "Ancho de controles transparentes:",
+                transparentHeight: "Altura de controles transparentes:",
+                close: "Cerrar",
+                dropdown: {
+                    default: "Predeterminado",
+                    custom: "Personalizado",
+                    dynamic: "Dinámico",
+                    theme: "Tema"
+                }
+            },
+            fr: {
+                settingsTitle: "Paramètres Glowify",
+                title: "Paramètres Glowify",
+                accentColor: "Couleur d’accent du bouton:",
+                glowColor: "Couleur de l’effet lumineux:",
+                background: "Arrière-plan:",
+                playerWidth: "Largeur du lecteur:",
+                playerRadius: "Rayon de bord du lecteur:",
+                backgroundBlur: "Flou de l’arrière-plan:",
+                transparentWidth: "Largeur des contrôles transparents:",
+                transparentHeight: "Hauteur des contrôles transparents:",
+                close: "Fermer",
+                dropdown: {
+                    default: "Par défaut",
+                    custom: "Personnalisé",
+                    dynamic: "Dynamique",
+                    theme: "Thème"
+                }
+            },
+            pt: {
+                settingsTitle: "Configurações do Glowify",
+                title: "Configurações do Glowify",
+                accentColor: "Cor de destaque do botão:",
+                glowColor: "Cor do brilho:",
+                background: "Fundo:",
+                playerWidth: "Largura do player:",
+                playerRadius: "Raio do canto do player:",
+                backgroundBlur: "Desfoque do fundo:",
+                transparentWidth: "Largura dos controles transparentes:",
+                transparentHeight: "Altura dos controles transparentes:",
+                close: "Fechar",
+                dropdown: {
+                    default: "Padrão",
+                    custom: "Personalizado",
+                    dynamic: "Dinâmico",
+                    theme: "Tema"
+                }
+            },
+            tr: {
+                settingsTitle: "Glowify Ayarları",
+                title: "Glowify Ayarları",
+                accentColor: "Düğme vurgu rengi:",
+                glowColor: "Parlama rengi:",
+                background: "Arka plan:",
+                playerWidth: "Oynatıcı genişliği:",
+                playerRadius: "Oynatıcı köşe yuvarlama:",
+                backgroundBlur: "Arka plan bulanıklığı:",
+                transparentWidth: "Şeffaf kontroller genişliği:",
+                transparentHeight: "Şeffaf kontroller yüksekliği:",
+                close: "Kapat",
+                dropdown: {
+                    default: "Varsayılan",
+                    custom: "Özel",
+                    dynamic: "Dinamik",
+                    theme: "Tema"
+                }
+            }
+        };
+
+        const clientLocale = (Spicetify?.Platform?.Session?.locale || navigator.language || "en").split("-")[0];
+        const lang = glowifyTranslations[clientLocale] ? clientLocale : "en";
+        const t = glowifyTranslations[lang];
+
     // === Context-Menu Integration ===
     const observer = new MutationObserver(() => {
         const menu = document.querySelector("#context-menu");
@@ -542,7 +683,7 @@ if (!window.glowifyObserverInitialized) {
                 newItem.innerHTML = `
                     <button class="main-contextMenu-menuItemButton" id="glowify-settings-btn">
                         <span class="e-91000-text encore-text-body-small main-contextMenu-menuItemLabel">
-                            Glowify Settings
+                            ${t.settingsTitle}
                         </span>
                     </button>
                 `;
@@ -556,6 +697,7 @@ if (!window.glowifyObserverInitialized) {
     });
     observer.observe(document.body, { childList: true, subtree: true });
 
+
     // === Popup Window ===
     window.showGlowifySettingsMenu = function () {
         const existing = document.querySelector("#glowify-settings-popup");
@@ -565,52 +707,52 @@ if (!window.glowifyObserverInitialized) {
         popup.id = "glowify-settings-popup";
         popup.innerHTML = `
             <div class="glowify-popup-inner">
-                <button id="close-glowify-popup" aria-label="Close settings">
+                <button id="close-glowify-popup" aria-label="${t.close}">
                     <svg role="img" height="16" width="16" viewBox="0 0 16 16" class="spotify-x-icon">
                         <path d="M1.47 1.47a.75.75 0 011.06 0L8 6.94l5.47-5.47a.75.75 0 111.06 1.06L9.06 8l5.47 5.47a.75.75 0 11-1.06 1.06L8 9.06l-5.47 5.47a.75.75 0 11-1.06-1.06L6.94 8 1.47 2.53a.75.75 0 010-1.06z"></path>
                     </svg>
                 </button>
 
-                <h3>Glowify Settings</h3>
+                <h3>${t.title}</h3>
 
                 <div class="accent-row">
-                    <label for="accent-mode">Button Accent Color:</label>
+                    <label for="accent-mode">${t.accentColor}</label>
                     <select id="accent-mode">
-                        <option value="default">Default</option>
-                        <option value="custom">Custom</option>
-                        <option value="dynamic">Dynamic</option>
+                        <option value="default">${t.dropdown.default}</option>
+                        <option value="custom">${t.dropdown.custom}</option>
+                        <option value="dynamic">${t.dropdown.dynamic}</option>
                     </select>
                     <input type="color" id="accent-picker" value="#1DB954" style="display:none;">
                 </div>
 
                 <div class="accent-row">
-                    <label for="glow-mode">Glow Accent Color:</label>
+                    <label for="glow-mode">${t.glowColor}</label>
                     <select id="glow-mode">
-                        <option value="default">Default</option>
-                        <option value="custom">Custom</option>
+                        <option value="default">${t.dropdown.default}</option>
+                        <option value="custom">${t.dropdown.custom}</option>
                     </select>
                     <input type="color" id="glow-picker" value="#1DB954" style="display:none;">
                 </div>
 
                 <div class="accent-row">
-                    <label for="background-mode">Background:</label>
+                    <label for="background-mode">${t.background}</label>
                     <select id="background-mode">
-                        <option value="dynamic">Dynamic</option>
-                        <option value="custom">Custom Image</option>
+                        <option value="dynamic">${t.dropdown.dynamic}</option>
+                        <option value="custom">${t.dropdown.custom}</option>
                     </select>
                     <input type="file" id="background-file" accept="image/*" style="display:none;">
                 </div>
 
                 <div class="accent-row">
-                    <label for="player-width">Player Width:</label>
+                    <label for="player-width">${t.playerWidth}</label>
                     <select id="player-width">
-                        <option value="default">Default</option>
-                        <option value="theme">Theme</option>
+                        <option value="default">${t.dropdown.default}</option>
+                        <option value="theme">${t.dropdown.theme}</option>
                     </select>
                 </div>
 
                 <div class="accent-row">
-                    <label for="player-radius">Player Border Radius:</label>
+                    <label for="player-radius">${t.playerRadius}</label>
                     <div class="radius-control">
                         <button id="radius-minus">-</button>
                         <input type="number" id="player-radius" min="0" max="100" step="1">
@@ -619,14 +761,34 @@ if (!window.glowifyObserverInitialized) {
                 </div>
 
                 <div class="accent-row">
-                    <label>Background Blur:</label>
+                    <label>${t.backgroundBlur}</label>
                     <div class="radius-control">
                         <button id="bg-blur-minus">-</button>
                         <input type="number" id="bg-blur" min="0" max="40" step="1">
                         <button id="bg-blur-plus">+</button>
                     </div>
                 </div>
+                
+                <div class="accent-row">
+                    <label>${t.transparentWidth}</label>
+                    <div class="radius-control">
+                        <button id="tc-width-minus">-</button>
+                        <input type="number" id="tc-width" min="50" max="400" step="1">
+                        <button id="tc-width-plus">+</button>
+                    </div>
+                </div>
+
+                <div class="accent-row">
+                    <label>${t.transparentHeight}</label>
+                    <div class="radius-control">
+                        <button id="tc-height-minus">-</button>
+                        <input type="number" id="tc-height" min="20" max="300" step="1">
+                        <button id="tc-height-plus">+</button>
+                    </div>
+                </div>
+            </div>
         `;
+
         document.body.appendChild(popup);
             // === Popup Styling ===
             const style = document.createElement("style");
@@ -750,31 +912,6 @@ if (!window.glowifyObserverInitialized) {
             if (!document.querySelector("#glowify-style")) document.head.appendChild(style);
 
 
-        // === Add Transparent Controls Inputs ===
-        const popupInner = popup.querySelector(".glowify-popup-inner");
-        popupInner.insertAdjacentHTML(
-            "beforeend",
-            `
-                <div class="accent-row">
-                    <label>Transparent Controls Width:</label>
-                    <div class="radius-control">
-                        <button id="tc-width-minus">-</button>
-                        <input type="number" id="tc-width" min="50" max="400" step="1">
-                        <button id="tc-width-plus">+</button>
-                    </div>
-                </div>
-
-                <div class="accent-row">
-                    <label>Transparent Controls Height:</label>
-                    <div class="radius-control">
-                        <button id="tc-height-minus">-</button>
-                        <input type="number" id="tc-height" min="20" max="300" step="1">
-                        <button id="tc-height-plus">+</button>
-                    </div>
-                </div>
-            `
-        );
-
         // === Logic ===
         const picker = document.getElementById("accent-picker");
         const modeSelect = document.getElementById("accent-mode");
@@ -838,7 +975,7 @@ if (!window.glowifyObserverInitialized) {
                 applyAccent(picker.value);
             } else if (value === "dynamic") {
                 picker.style.display = "none";
-                lastDynamicColor = null; // <-- hier zurücksetzen
+                lastDynamicColor = null;
                 applyDynamicAccent();
             } else {
                 picker.style.display = "none";

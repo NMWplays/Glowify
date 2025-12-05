@@ -2247,3 +2247,19 @@ aside video {
   mask-image: none;
   transition: none;
 }
+
+.dIWS3ZWSJa6pi6C3T6Du {
+  overflow: visible;
+}
+
+.LKBm9mjM0WHE9JrOG5Mw {
+  border-radius: 20px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease
+}
+
+.LKBm9mjM0WHE9JrOG5Mw:hover {
+  background-color: rgba(var(--spice-rgb-selected-row), .1);
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  border-radius: 20px;
+  transform: scale(1.01);
+}

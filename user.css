@@ -2263,3 +2263,8 @@ aside video {
   border-radius: 20px;
   transform: scale(1.01);
 }
+
+/*Fix Tracklist-Header-Blur*/
+[data-transition=sponsoredPlaylistContent] {
+  view-transition-name: none;
+}

@@ -2269,10 +2269,16 @@ aside video {
   view-transition-name: none;
 }
 
+/*Artist Page Scroll Zoom & Blur*/
 @keyframes yPSdY9z6bkI2272drRTw {
   80% {
     -webkit-transform: scale(2);
     transform: scale(2);
     filter: blur(15px);
   }
+}
+
+.ypRXnuoVWtJjFQCXhpFb,
+.ypRXnuoVWtJjFQCXhpFb:hover {
+  background-color: transparent;
 }

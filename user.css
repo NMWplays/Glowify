@@ -2268,3 +2268,11 @@ aside video {
 [data-transition=sponsoredPlaylistContent] {
   view-transition-name: none;
 }
+
+@keyframes yPSdY9z6bkI2272drRTw {
+  80% {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+    filter: blur(15px);
+  }
+}

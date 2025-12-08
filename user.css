@@ -2282,3 +2282,10 @@ aside video {
 .ypRXnuoVWtJjFQCXhpFb:hover {
   background-color: transparent;
 }
+
+.go167266335 {
+  background-color: transparent !important;
+  backdrop-filter: blur(2rem);
+  border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}

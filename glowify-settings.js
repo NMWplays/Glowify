@@ -108,21 +108,32 @@ if (!window.glowifyObserverInitialized) {
 
     (async function () {
         while (!Spicetify?.Player || !Spicetify?.Player?.data) {
-            await new Promise(r => setTimeout(r, 300));
+            await new Promise(r => setTimeout(r, 250));
         }
 
         let lastSvg = null;
         let lastIndicator = null;
 
+        function safeHeight(el, fallback = 20) {
+            if (!el) return fallback;
+            const h = el.offsetHeight;
+            return h && h > 5 ? h : fallback;
+        }
+
         function createBars(indicator) {
+            if (!indicator) return;
+
             if (lastSvg) {
                 lastSvg.remove();
                 lastSvg = null;
             }
 
             const parent = indicator.parentNode;
-            const rectHeight = parent.offsetHeight;
+            if (!parent) return;
+
+            const rectHeight = safeHeight(parent, 18);
             const bottom = rectHeight - 2;
+
             const svgNS = "http://www.w3.org/2000/svg";
             const svg = document.createElementNS(svgNS, "svg");
 
@@ -141,9 +152,10 @@ if (!window.glowifyObserverInitialized) {
                 const bar = document.createElementNS(svgNS, "rect");
                 bar.setAttribute("x", i * 4);
                 bar.setAttribute("width", "3");
+                bar.setAttribute("height", "4");
                 bar.setAttribute("y", bottom - 4);
-                bar.setAttribute("height", 4);
                 bar.classList.add("custom-playing-bar");
+
                 svg.appendChild(bar);
                 bars.push(bar);
 
@@ -160,8 +172,10 @@ if (!window.glowifyObserverInitialized) {
             function animate() {
                 if (!lastSvg || !lastIndicator) return;
 
-                const playButton = lastIndicator?.parentNode?.querySelector(".main-trackList-rowImagePlayButton");
-                const isPlaying = Spicetify.Player.isPlaying() && (!playButton || window.getComputedStyle(playButton).opacity === "0");
+                const playBtn = lastIndicator?.parentNode?.querySelector(".main-trackList-rowImagePlayButton");
+                const isPlaying =
+                    Spicetify.Player.isPlaying() &&
+                    (!playBtn || window.getComputedStyle(playBtn).opacity === "0");
 
                 if (!isPlaying) {
                     lastSvg.remove();
@@ -173,12 +187,16 @@ if (!window.glowifyObserverInitialized) {
                 const now = performance.now();
                 const t = now - start;
 
+                const parentHeight = safeHeight(lastIndicator.parentNode, 18);
+                const newBottom = parentHeight - 2;
+
                 bars.forEach((bar, i) => {
-                    const maxHeight = lastIndicator.parentNode.offsetHeight * 0.7;
+                    const maxHeight = parentHeight * 0.7;
                     const minHeight = 3;
+
                     const height = minHeight + (Math.sin(t * speeds[i] + phases[i]) + 1) / 2 * (maxHeight - minHeight);
                     bar.setAttribute("height", height);
-                    bar.setAttribute("y", bottom - height);
+                    bar.setAttribute("y", newBottom - height);
                 });
 
                 requestAnimationFrame(animate);
@@ -198,12 +216,13 @@ if (!window.glowifyObserverInitialized) {
                     lastSvg = null;
                     lastIndicator = null;
                 }
-                return false;
+                return;
             }
 
-            // check if track is paused
-            const playButton = indicator.parentNode.querySelector(".main-trackList-rowImagePlayButton");
-            const isPlaying = Spicetify.Player.isPlaying() && (!playButton || window.getComputedStyle(playButton).opacity === "0");
+            const playBtn = indicator.parentNode.querySelector(".main-trackList-rowImagePlayButton");
+            const isPlaying =
+                Spicetify.Player.isPlaying() &&
+                (!playBtn || window.getComputedStyle(playBtn).opacity === "0");
 
             if (lastSvg && !isPlaying) {
                 lastSvg.remove();
@@ -211,9 +230,9 @@ if (!window.glowifyObserverInitialized) {
                 lastIndicator = null;
             }
 
-            if (indicator !== lastIndicator) createBars(indicator);
-
-            return true;
+            if (indicator !== lastIndicator) {
+                createBars(indicator);
+            }
         }
 
         Spicetify.Player.addEventListener("songchange", () => {
@@ -225,15 +244,22 @@ if (!window.glowifyObserverInitialized) {
             updateIndicator();
         });
 
-        setInterval(updateIndicator, 100);
+        setInterval(updateIndicator, 150);
     })();
 
-    /*Homescreen SVG*/
+    /* ================================
+    Glowify Home Screen Visualizer
+    ================================= */
 
     (function () {
-
         const homeSvgs = new Map();
         const svgNS = "http://www.w3.org/2000/svg";
+
+        function safeHeight(el, fallback = 20) {
+            if (!el) return fallback;
+            const h = el.offsetHeight;
+            return h && h > 5 ? h : fallback;
+        }
 
         function createHomeVisualizer(img) {
             if (homeSvgs.has(img)) return;
@@ -243,7 +269,7 @@ if (!window.glowifyObserverInitialized) {
 
             parent.style.setProperty("position", "relative", "important");
 
-            const rectHeight = parent.offsetHeight || 20;
+            const rectHeight = safeHeight(parent, 20);
             const bottom = rectHeight - 2;
 
             const svg = document.createElementNS(svgNS, "svg");
@@ -257,10 +283,12 @@ if (!window.glowifyObserverInitialized) {
                 const bar = document.createElementNS(svgNS, "rect");
                 bar.setAttribute("x", i * 4);
                 bar.setAttribute("width", "3");
+                bar.setAttribute("height", "4");
                 bar.setAttribute("y", bottom - 4);
-                bar.setAttribute("height", 4);
-                bar.classList.add("home-visualizer-bar"); // CSS-Class for color
+                bar.classList.add("home-visualizer-bar");
+
                 svg.appendChild(bar);
+
                 bars.push({
                     element: bar,
                     speed: 0.008 + Math.random() * 0.007,
@@ -276,33 +304,40 @@ if (!window.glowifyObserverInitialized) {
 
         function updateHomeScreenVisualizer() {
             document.querySelectorAll("img.H70qcBekoGWOlskuON5R").forEach(img => {
-                if (img.style.display !== "none") createHomeVisualizer(img);
+                if (img.style.display !== "none") {
+                    createHomeVisualizer(img);
+                }
             });
         }
 
         const homeObserver = new MutationObserver(updateHomeScreenVisualizer);
         homeObserver.observe(document.body, { childList: true, subtree: true });
 
-        // global animation loop
         const start = performance.now();
+
         function animate() {
             const t = performance.now() - start;
 
-            homeSvgs.forEach(data => {
+            homeSvgs.forEach((data, img) => {
                 if (!document.body.contains(data.svg)) {
-                    homeSvgs.delete(data);
+                    homeSvgs.delete(img);
                     return;
                 }
 
                 const shortcut = data.svg.closest(".view-homeShortcutsGrid-shortcut");
-                data.svg.style.display = (shortcut && shortcut.matches(":hover")) ? "none" : "block";
+                data.svg.style.display = shortcut?.matches(":hover") ? "none" : "block";
 
                 data.bars.forEach(barData => {
-                    const maxHeight = data.rectHeight * 0.7;
+                    const h = safeHeight(data.svg.parentNode, 20);
+                    const bot = h - 2;
+
+                    const maxHeight = h * 0.7;
                     const minHeight = 3;
+
                     const height = minHeight + (Math.sin(t * barData.speed + barData.phase) + 1) / 2 * (maxHeight - minHeight);
+
                     barData.element.setAttribute("height", height);
-                    barData.element.setAttribute("y", data.bottom - height);
+                    barData.element.setAttribute("y", bot - height);
                 });
             });
 
@@ -314,13 +349,12 @@ if (!window.glowifyObserverInitialized) {
 
         Spicetify.Player.addEventListener("onplaypause", () => {
             if (!Spicetify.Player.isPlaying()) {
-                homeSvgs.forEach(data => data.svg.remove());
+                homeSvgs.forEach(v => v.svg.remove());
                 homeSvgs.clear();
             } else {
                 updateHomeScreenVisualizer();
             }
         });
-
     })();
 
     // === Glow Accent Handling ===

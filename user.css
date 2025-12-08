@@ -2289,3 +2289,8 @@ aside video {
   border-radius: 20px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }
+
+.XR9tiExSLOuxgWTKxzse {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}

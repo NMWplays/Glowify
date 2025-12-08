@@ -336,6 +336,183 @@ if (!window.glowifyObserverInitialized) {
         localStorage.setItem("glowify-glow-mode", "default");
     }
 
+    // === Artist Background Controller ===
+    (function ArtistBackgroundController() {
+        const ORIGINALS = new WeakMap();
+        const ART_SELECTOR = ".XR9tiExSLOuxgWTKxzse";
+        const STORAGE_KEY_MODE = "glowify-artist-bg-mode";
+        const STORAGE_KEY_CUSTOM = "glowify-bg-image";
+
+        // helpers
+        function getSavedMode() { return localStorage.getItem(STORAGE_KEY_MODE) || "theme"; }
+        function setSavedMode(mode) { localStorage.setItem(STORAGE_KEY_MODE, mode); }
+        function getCustomImage() { return localStorage.getItem(STORAGE_KEY_CUSTOM); }
+
+        function isArtistPage() {
+            try { return (location && location.pathname && location.pathname.includes("/artist")) || !!document.querySelector(ART_SELECTOR); }
+            catch (e) { return false; }
+        }
+
+        function getImgElem(el) { if (!el) return null; return el.tagName === "IMG" ? el : el.querySelector("img"); }
+
+        function saveOriginalIfNeeded(el) {
+            if (ORIGINALS.has(el)) return;
+            const img = getImgElem(el);
+            if (img) ORIGINALS.set(el, { type: "img", src: img.src || "" });
+            else {
+                const inlineBg = el.style.backgroundImage;
+                if (inlineBg) ORIGINALS.set(el, { type: "bg", bg: inlineBg });
+                else ORIGINALS.set(el, { type: "bg", bg: getComputedStyle(el).backgroundImage || "" });
+            }
+        }
+
+        function restoreOriginal(el) {
+            if (!ORIGINALS.has(el)) return;
+            const orig = ORIGINALS.get(el);
+            const img = getImgElem(el);
+            if (orig.type === "img" && img) img.src = orig.src || "";
+            else if (orig.type === "bg") {
+                el.style.backgroundImage = orig.bg || "";
+                el.style.backgroundRepeat = "";
+                el.style.backgroundSize = "";
+                el.style.backgroundPosition = "";
+            }
+        }
+
+        function applyMode(mode) {
+            if (!isArtistPage()) return;
+            const nodes = document.querySelectorAll(ART_SELECTOR);
+            if (!nodes || nodes.length === 0) return;
+            const customImage = getCustomImage();
+
+            nodes.forEach((el) => {
+                try {
+                    saveOriginalIfNeeded(el);
+                    const img = getImgElem(el);
+
+                    // default: hide first, damit kein Aufblitzen
+                    el.style.opacity = "0";
+
+                    if (mode === "theme") {
+                        restoreOriginal(el);
+                        el.style.opacity = "1";
+                    } else if (mode === "custom" && customImage) {
+                        if (img) img.src = customImage;
+                        else {
+                            el.style.backgroundImage = `url("${customImage}")`;
+                            el.style.backgroundRepeat = "no-repeat";
+                            el.style.backgroundSize = "cover";
+                            el.style.backgroundPosition = "center center";
+                        }
+                        el.style.opacity = "1";
+                    }
+                    // mode === "none" -> opacity bleibt 0, nichts weiter tun
+                } catch (err) { console.warn("applyMode element error", err); }
+            });
+        }
+
+        function applySavedModeIfArtist() { if (!isArtistPage()) return; applyMode(getSavedMode()); }
+
+        function initPopupHandlers() {
+            const artistSelect = document.getElementById("artist-bg-mode");
+            const artistFile = document.getElementById("artist-bg-file");
+            if (!artistSelect) return false;
+            if (artistSelect._glowify_inited) return true;
+            artistSelect._glowify_inited = true;
+
+            artistSelect.addEventListener("change", (e) => {
+                const val = e.target.value;
+                setSavedMode(val);
+                if (val === "custom" && !getCustomImage() && artistFile) { artistFile.click(); return; }
+                if (isArtistPage()) applyMode(val);
+            });
+
+            if (artistFile) {
+                artistFile.addEventListener("change", async (ev) => {
+                    try {
+                        if (ev.target.files && ev.target.files[0]) {
+                            await applyCustomBackground(ev.target.files[0]);
+                            if (getSavedMode() === "custom" && isArtistPage()) applyMode("custom");
+                        }
+                    } catch (err) { console.warn("artistFile change failed", err); }
+                });
+            }
+
+            try { artistSelect.value = getSavedMode(); } catch (e) {}
+            return true;
+        }
+
+        const bodyObserver = new MutationObserver((mutations) => {
+            let popupFound = false;
+            let artistFound = false;
+
+            for (const m of mutations) {
+                if (m.addedNodes && m.addedNodes.length) {
+                    for (const n of m.addedNodes) {
+                        if (n.nodeType !== 1) continue;
+                        if (!popupFound && n.querySelector && (n.querySelector("#artist-bg-mode") || n.id === "glowify-settings-popup")) popupFound = true;
+                        if (!artistFound && (n.matches && n.matches(ART_SELECTOR) || (n.querySelector && n.querySelector(ART_SELECTOR)))) artistFound = true;
+                    }
+                }
+                if (!artistFound && m.type === "attributes" && m.target && m.target.matches && m.target.matches(ART_SELECTOR)) artistFound = true;
+            }
+
+            if (popupFound) initPopupHandlers();
+            if (artistFound) {
+                if (bodyObserver._debounce) clearTimeout(bodyObserver._debounce);
+                bodyObserver._debounce = setTimeout(() => { applySavedModeIfArtist(); }, 60);
+            }
+        });
+
+        function startObservers() {
+            if (!document.body) return false;
+            bodyObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["style", "src", "class"] });
+            return true;
+        }
+
+        (function hookHistory() {
+            const wrap = (fn) => {
+                const orig = history[fn];
+                return function (...args) {
+                    const res = orig.apply(this, args);
+                    setTimeout(() => { if (isArtistPage()) applySavedModeIfArtist(); }, 80);
+                    return res;
+                };
+            };
+            history.pushState = wrap("pushState");
+            history.replaceState = wrap("replaceState");
+            window.addEventListener("popstate", () => setTimeout(() => { if (isArtistPage()) applySavedModeIfArtist(); }, 80));
+        })();
+
+        // --- Robust glowifyBackgroundChange handler ---
+        (function installBgChangeHandler() {
+            const RETRY_COUNT = 4;
+            const RETRY_DELAY = 80;
+            let debounceTimer = null;
+
+            async function doApplyCustomWithRetries() {
+                if (getSavedMode() !== "custom") return;
+                if (!isArtistPage()) return;
+                for (let i = 0; i < RETRY_COUNT; i++) {
+                    try { applyMode("custom"); } catch (e) { console.warn("applyMode(custom) failed", i, e); }
+                    await new Promise(r => setTimeout(r, RETRY_DELAY));
+                }
+            }
+
+            window.removeEventListener("glowifyBackgroundChange", window._glowifyArtistBgHandler || (()=>{}));
+            window._glowifyArtistBgHandler = () => {
+                if (debounceTimer) clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => { doApplyCustomWithRetries().catch(console.warn); debounceTimer = null; }, 60);
+            };
+            window.addEventListener("glowifyBackgroundChange", window._glowifyArtistBgHandler);
+        })();
+
+        (function tryInit() {
+            if (!startObservers()) { setTimeout(tryInit, 200); return; }
+            initPopupHandlers();
+            if (isArtistPage()) applySavedModeIfArtist();
+        })();
+    })();
 
     // === Background Handling ===
     async function fileToBase64(file) {
@@ -531,159 +708,175 @@ if (!window.glowifyObserverInitialized) {
     // === Popup Languages ===
 
         const glowifyTranslations = {
-            de: {
-                settingsTitle: "Glowify Einstellungen",
-                title: "Glowify Einstellungen",
-                accentColor: "Button-Farbe:",
-                glowColor: "Glow-Farbe:",
-                background: "Hintergrund:",
-                playerWidth: "Player-Breite:",
-                playerRadius: "Player Border Radius:",
-                backgroundBlur: "Hintergrund-Unschärfe:",
-                transparentWidth: "Transparente Controls Breite:",
-                transparentHeight: "Transparente Controls Höhe:",
-                close: "Schließen",
-                dropdown: {
-                    default: "Standard",
-                    custom: "Benutzerdefiniert",
-                    dynamic: "Dynamisch",
-                    theme: "Theme"
-                }
-            },
-            en: {
-                settingsTitle: "Glowify Settings",
-                title: "Glowify Settings",
-                accentColor: "Button Accent Color:",
-                glowColor: "Glow Accent Color:",
-                background: "Background:",
-                playerWidth: "Player Width:",
-                playerRadius: "Player Border Radius:",
-                backgroundBlur: "Background Blur:",
-                transparentWidth: "Transparent Controls Width:",
-                transparentHeight: "Transparent Controls Height:",
-                close: "Close",
-                dropdown: {
-                    default: "Default",
-                    custom: "Custom",
-                    dynamic: "Dynamic",
-                    theme: "Theme"
-                }
-            },
-            ru: {
-                settingsTitle: "Настройки Glowify",
-                title: "Настройки Glowify",
-                accentColor: "Цвет акцента кнопок:",
-                glowColor: "Цвет свечения:",
-                background: "Фон:",
-                playerWidth: "Ширина плеера:",
-                playerRadius: "Скругление углов плеера:",
-                backgroundBlur: "Размытие фона:",
-                transparentWidth: "Ширина прозрачных элементов:",
-                transparentHeight: "Высота прозрачных элементов:",
-                close: "Закрыть",
-                dropdown: {
-                    default: "Стандартно",
-                    custom: "Пользовательский",
-                    dynamic: "Динамический",
-                    theme: "Тема"
-                }
-            },
-            es: {
-                settingsTitle: "Configuración de Glowify",
-                title: "Configuración de Glowify",
-                accentColor: "Color de acento del botón:",
-                glowColor: "Color del brillo:",
-                background: "Fondo:",
-                playerWidth: "Ancho del reproductor:",
-                playerRadius: "Radio del borde del reproductor:",
-                backgroundBlur: "Desenfoque del fondo:",
-                transparentWidth: "Ancho de controles transparentes:",
-                transparentHeight: "Altura de controles transparentes:",
-                close: "Cerrar",
-                dropdown: {
-                    default: "Predeterminado",
-                    custom: "Personalizado",
-                    dynamic: "Dinámico",
-                    theme: "Tema"
-                }
-            },
-            fr: {
-                settingsTitle: "Paramètres Glowify",
-                title: "Paramètres Glowify",
-                accentColor: "Couleur d’accent du bouton:",
-                glowColor: "Couleur de l’effet lumineux:",
-                background: "Arrière-plan:",
-                playerWidth: "Largeur du lecteur:",
-                playerRadius: "Rayon de bord du lecteur:",
-                backgroundBlur: "Flou de l’arrière-plan:",
-                transparentWidth: "Largeur des contrôles transparents:",
-                transparentHeight: "Hauteur des contrôles transparents:",
-                close: "Fermer",
-                dropdown: {
-                    default: "Par défaut",
-                    custom: "Personnalisé",
-                    dynamic: "Dynamique",
-                    theme: "Thème"
-                }
-            },
-            pt: {
-                settingsTitle: "Configurações do Glowify",
-                title: "Configurações do Glowify",
-                accentColor: "Cor de destaque do botão:",
-                glowColor: "Cor do brilho:",
-                background: "Fundo:",
-                playerWidth: "Largura do player:",
-                playerRadius: "Raio do canto do player:",
-                backgroundBlur: "Desfoque do fundo:",
-                transparentWidth: "Largura dos controles transparentes:",
-                transparentHeight: "Altura dos controles transparentes:",
-                close: "Fechar",
-                dropdown: {
-                    default: "Padrão",
-                    custom: "Personalizado",
-                    dynamic: "Dinâmico",
-                    theme: "Tema"
-                }
-            },
-            tr: {
-                settingsTitle: "Glowify Ayarları",
-                title: "Glowify Ayarları",
-                accentColor: "Düğme vurgu rengi:",
-                glowColor: "Parlama rengi:",
-                background: "Arka plan:",
-                playerWidth: "Oynatıcı genişliği:",
-                playerRadius: "Oynatıcı köşe yuvarlama:",
-                backgroundBlur: "Arka plan bulanıklığı:",
-                transparentWidth: "Şeffaf kontroller genişliği:",
-                transparentHeight: "Şeffaf kontroller yüksekliği:",
-                close: "Kapat",
-                dropdown: {
-                    default: "Varsayılan",
-                    custom: "Özel",
-                    dynamic: "Dinamik",
-                    theme: "Tema"
-                }
-            },
-            hi: {
-                settingsTitle: "Glowify सेटिंग्स",
-                title: "Glowify सेटिंग्स",
-                accentColor: "बटन एक्सेंट रंग:",
-                glowColor: "ग्लो एक्सेंट रंग:",
-                background: "पृष्ठभूमि:",
-                playerWidth: "प्लेयर चौड़ाई:",
-                playerRadius: "प्लेयर बॉर्डर रेडियस:",
-                backgroundBlur: "पृष्ठभूमि धुंधलापन:",
-                transparentWidth: "पारदर्शी कंट्रोल चौड़ाई:",
-                transparentHeight: "पारदर्शी कंट्रोल ऊँचाई:",
-                close: "बंद करें",
-                dropdown: {
-                    default: "डिफ़ॉल्ट",
-                    custom: "कस्टम",
-                    dynamic: "डायनेमिक",
-                    theme: "थीम"
-                }
+        de: {
+            settingsTitle: "Glowify Einstellungen",
+            title: "Glowify Einstellungen",
+            accentColor: "Button-Farbe:",
+            glowColor: "Glow-Farbe:",
+            background: "Hintergrund:",
+            apbackground: "Künstler Seiten Hintergrund:",
+            playerWidth: "Player-Breite:",
+            playerRadius: "Player Border Radius:",
+            backgroundBlur: "Hintergrund-Unschärfe:",
+            transparentWidth: "Transparente Controls Breite:",
+            transparentHeight: "Transparente Controls Höhe:",
+            close: "Schließen",
+            dropdown: {
+                default: "Standard",
+                custom: "Benutzerdefiniert",
+                dynamic: "Dynamisch",
+                theme: "Theme",
+                none: "Keiner"
             }
-        };
+        },
+        en: {
+            settingsTitle: "Glowify Settings",
+            title: "Glowify Settings",
+            accentColor: "Button Accent Color:",
+            glowColor: "Glow Accent Color:",
+            background: "Background:",
+            apbackground: "Artist Page Background:",
+            playerWidth: "Player Width:",
+            playerRadius: "Player Border Radius:",
+            backgroundBlur: "Background Blur:",
+            transparentWidth: "Transparent Controls Width:",
+            transparentHeight: "Transparent Controls Height:",
+            close: "Close",
+            dropdown: {
+                default: "Default",
+                custom: "Custom",
+                dynamic: "Dynamic",
+                theme: "Theme",
+                none: "None"
+            }
+        },
+        ru: {
+            settingsTitle: "Настройки Glowify",
+            title: "Настройки Glowify",
+            accentColor: "Цвет акцента кнопок:",
+            glowColor: "Цвет свечения:",
+            background: "Фон:",
+            apbackground: "Фон страницы артиста:",
+            playerWidth: "Ширина плеера:",
+            playerRadius: "Скругление углов плеера:",
+            backgroundBlur: "Размытие фона:",
+            transparentWidth: "Ширина прозрачных элементов:",
+            transparentHeight: "Высота прозрачных элементов:",
+            close: "Закрыть",
+            dropdown: {
+                default: "Стандартно",
+                custom: "Пользовательский",
+                dynamic: "Динамический",
+                theme: "Тема",
+                none: "Нет"
+            }
+        },
+        es: {
+            settingsTitle: "Configuración de Glowify",
+            title: "Configuración de Glowify",
+            accentColor: "Color de acento del botón:",
+            glowColor: "Color del brillo:",
+            background: "Fondo:",
+            apbackground: "Fondo de la página del artista:",
+            playerWidth: "Ancho del reproductor:",
+            playerRadius: "Radio del borde del reproductor:",
+            backgroundBlur: "Desenfoque del fondo:",
+            transparentWidth: "Ancho de controles transparentes:",
+            transparentHeight: "Altura de controles transparentes:",
+            close: "Cerrar",
+            dropdown: {
+                default: "Predeterminado",
+                custom: "Personalizado",
+                dynamic: "Dinámico",
+                theme: "Tema",
+                none: "Ninguno"
+            }
+        },
+        fr: {
+            settingsTitle: "Paramètres Glowify",
+            title: "Paramètres Glowify",
+            accentColor: "Couleur d’accent du bouton:",
+            glowColor: "Couleur de l’effet lumineux:",
+            background: "Arrière-plan:",
+            apbackground: "Arrière-plan de la page de l’artiste:",
+            playerWidth: "Largeur du lecteur:",
+            playerRadius: "Rayon de bord du lecteur:",
+            backgroundBlur: "Flou de l’arrière-plan:",
+            transparentWidth: "Largeur des contrôles transparents:",
+            transparentHeight: "Hauteur des contrôles transparents:",
+            close: "Fermer",
+            dropdown: {
+                default: "Par défaut",
+                custom: "Personnalisé",
+                dynamic: "Dynamique",
+                theme: "Thème",
+                none: "Aucun"
+            }
+        },
+        pt: {
+            settingsTitle: "Configurações do Glowify",
+            title: "Configurações do Glowify",
+            accentColor: "Cor de destaque do botão:",
+            glowColor: "Cor do brilho:",
+            background: "Fundo:",
+            apbackground: "Fundo da página do artista:",
+            playerWidth: "Largura do player:",
+            playerRadius: "Raio do canto do player:",
+            backgroundBlur: "Desfoque do fundo:",
+            transparentWidth: "Largura dos controles transparentes:",
+            transparentHeight: "Altura dos controles transparentes:",
+            close: "Fechar",
+            dropdown: {
+                default: "Padrão",
+                custom: "Personalizado",
+                dynamic: "Dinâmico",
+                theme: "Tema",
+                none: "Nenhum"
+            }
+        },
+        tr: {
+            settingsTitle: "Glowify Ayarları",
+            title: "Glowify Ayarları",
+            accentColor: "Düğme vurgu rengi:",
+            glowColor: "Parlama rengi:",
+            background: "Arka plan:",
+            apbackground: "Sanatçı Sayfası Arka Planı:",
+            playerWidth: "Oynatıcı genişliği:",
+            playerRadius: "Oynatıcı köşe yuvarlama:",
+            backgroundBlur: "Arka plan bulanıklığı:",
+            transparentWidth: "Şeffaf kontroller genişliği:",
+            transparentHeight: "Şeffaf kontroller yüksekliği:",
+            close: "Kapat",
+            dropdown: {
+                default: "Varsayılan",
+                custom: "Özel",
+                dynamic: "Dinamik",
+                theme: "Tema",
+                none: "Hiçbiri"
+            }
+        },
+        hi: {
+            settingsTitle: "Glowify सेटिंग्स",
+            title: "Glowify सेटिंग्स",
+            accentColor: "बटन एक्सेंट रंग:",
+            glowColor: "ग्लो एक्सेंट रंग:",
+            background: "पृष्ठभूमि:",
+            apbackground: "कलाकार पृष्ठ पृष्ठभूमि:",
+            playerWidth: "प्लेयर चौड़ाई:",
+            playerRadius: "प्लेयर बॉर्डर रेडियस:",
+            backgroundBlur: "पृष्ठभूमि धुंधलापन:",
+            transparentWidth: "पारदर्शी कंट्रोल चौड़ाई:",
+            transparentHeight: "पारदर्शी कंट्रोल ऊँचाई:",
+            close: "बंद करें",
+            dropdown: {
+                default: "डिफ़ॉल्ट",
+                custom: "कस्टम",
+                dynamic: "डायनेमिक",
+                theme: "थीम",
+                none: "कोई नहीं"
+            }
+        }
+    };
 
         const clientLocale = (Spicetify?.Platform?.Session?.locale || navigator.language || "en").split("-")[0];
         const lang = glowifyTranslations[clientLocale] ? clientLocale : "en";
@@ -760,6 +953,16 @@ if (!window.glowifyObserverInitialized) {
                         <option value="custom">${t.dropdown.custom}</option>
                     </select>
                     <input type="file" id="background-file" accept="image/*" style="display:none;">
+                </div>
+
+                <div class="accent-row">
+                    <label for="artist-bg-mode">${t.apbackground}</label>
+                    <select id="artist-bg-mode">
+                        <option value="theme">${t.dropdown.theme}</option>
+                        <option value="none">${t.dropdown.none}</option>
+                        <option value="custom">${t.dropdown.custom}</option>
+                    </select>
+                    <input type="file" id="artist-bg-file" accept="image/*" style="display:none;">
                 </div>
 
                 <div class="accent-row">

@@ -160,7 +160,7 @@ if (!window.glowifyObserverInitialized) {
             function animate() {
                 if (!lastSvg || !lastIndicator) return;
 
-                const playButton = lastIndicator?.parentNode?.querySelector(".main-trackList-rowImagePlayButton");
+                const playButton = lastIndicator.parentNode.querySelector(".main-trackList-rowImagePlayButton");
                 const isPlaying = Spicetify.Player.isPlaying() && (!playButton || window.getComputedStyle(playButton).opacity === "0");
 
                 if (!isPlaying) {

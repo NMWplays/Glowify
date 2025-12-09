@@ -626,7 +626,19 @@ if (!window.glowifyObserverInitialized) {
     }
 
     // === Transparent Controls Handling (Fixed for Spotify UI) ===
+    
+    function getOsName() {
+        return (Spicetify?.Platform?.PlatformData?.os_name || navigator.platform || "").toString().toLowerCase();
+    }
+
+    function isUnixLikeOS() {
+        const os = getOsName();
+        return os.includes("linux") || os.includes("mac") || os.includes("darwin") || os.includes("osx") || os.includes("macos");
+    }
+
     function applyTransparentControls(width, height) {
+        const opacity = isUnixLikeOS() ? 0 : 1;
+
         const css = `
             .Root__top-container::after {
                 content: "";
@@ -639,6 +651,7 @@ if (!window.glowifyObserverInitialized) {
                 height: ${height}px !important;
                 pointer-events: none;
                 transition: all 0.25s ease;
+                opacity: ${opacity} !important;
             }
         `;
         let styleTag = document.getElementById("glowify-transparent-controls");

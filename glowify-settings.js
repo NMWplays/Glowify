@@ -1025,6 +1025,7 @@ if (!window.glowifyObserverInitialized) {
         `;
 
         document.body.appendChild(popup);
+        disableTransparentControlsInPopup(popup);
             // === Popup Styling ===
             const style = document.createElement("style");
             style.id = "glowify-style";
@@ -1146,6 +1147,36 @@ if (!window.glowifyObserverInitialized) {
             `;
             if (!document.querySelector("#glowify-style")) document.head.appendChild(style);
 
+
+        function disableTransparentControlsInPopup(popup) {
+            const disable = isUnixLikeOS();
+
+            const ids = [
+                "#tc-width",
+                "#tc-height",
+                "#tc-width-minus",
+                "#tc-width-plus",
+                "#tc-height-minus",
+                "#tc-height-plus"
+            ];
+
+            ids.forEach(sel => {
+                const el = popup.querySelector(sel);
+                if (!el) return;
+                try { el.disabled = disable; } catch (e) {}
+                try { el.readOnly = disable; } catch (e) {}
+                el.style.pointerEvents = disable ? "none" : "";
+                el.style.opacity = disable ? "0.5" : "";
+                el.style.cursor = disable ? "not-allowed" : "";
+                if (disable) {
+                    el.setAttribute("aria-disabled", "true");
+                    el.setAttribute("tabindex", "-1");
+                } else {
+                    el.removeAttribute("aria-disabled");
+                    el.removeAttribute("tabindex");
+                }
+            });
+        }
 
         // === Logic ===
         const picker = document.getElementById("accent-picker");

@@ -1088,7 +1088,7 @@ if (!window.glowifyObserverInitialized) {
                 }
 
                 #glowify-settings-popup label { 
-                    min-width: 206px; 
+                    min-width: 210px; 
                     text-align: left; 
                 }
 
@@ -1348,5 +1348,6 @@ if (!window.glowifyObserverInitialized) {
             .querySelector("#close-glowify-popup")
             .addEventListener("click", () => popup.remove());
     };
+
 
 }

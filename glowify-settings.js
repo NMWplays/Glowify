@@ -38,6 +38,10 @@ if (!window.glowifyObserverInitialized) {
                 background-color: ${color} !important;
             }
 
+            .encore-dark-theme .encore-inverted-light-set {
+                --background-base: ${color} !important;
+            }
+
             .custom-playing-bar {
                 fill: ${color} !important;
             }
@@ -88,6 +92,10 @@ if (!window.glowifyObserverInitialized) {
 
             .e-91000-button-primary:active .e-91000-button-primary__inner {
                 background-color: #3be477;
+            }
+
+            .encore-dark-theme .encore-inverted-light-set {
+                --background-base: #FFFFFF !important;
             }
 
             .custom-playing-bar {

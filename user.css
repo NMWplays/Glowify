@@ -920,7 +920,7 @@ img.marketplace-customCSS-image-preview {
 .wYh1xzwa92PgrKfek6iR {
   background: transparent !important;
   backdrop-filter: blur(2rem);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
 }
 
 .wYh1xzwa92PgrKfek6iR:hover {
@@ -2293,4 +2293,8 @@ aside video {
 .XR9tiExSLOuxgWTKxzse {
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+
+.e-91000-button {
+  transition: transform 0.3s ease !important;
 }

@@ -42,6 +42,14 @@ if (!window.glowifyObserverInitialized) {
                 --background-base: ${color} !important;
             }
 
+            .LegacyChip__LegacyChipComponent-sc-tzfq94-0:hover > .ChipInnerComponent-sm-selected.ChipInnerComponent-sm-selected {
+                background-color: ${color} !important;
+            }
+
+            .button-module__button___hf2qg_marketplace {
+                background-color: ${color} !important;
+            }
+
             .custom-playing-bar {
                 fill: ${color} !important;
             }
@@ -96,6 +104,14 @@ if (!window.glowifyObserverInitialized) {
 
             .encore-dark-theme .encore-inverted-light-set {
                 --background-base: #FFFFFF !important;
+            }
+
+            .LegacyChip__LegacyChipComponent-sc-tzfq94-0:hover > .ChipInnerComponent-sm-selected.ChipInnerComponent-sm-selected {
+                background-color: #f0f0f0 !important;
+            }
+
+            .button-module__button___hf2qg_marketplace {
+                background-color: #FFFFFF !important;
             }
 
             .custom-playing-bar {

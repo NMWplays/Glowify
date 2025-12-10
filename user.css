@@ -54,7 +54,7 @@
 /*Filter auf Home für Musik Podcasts etc*/
 .main-home-filterChipsSection {
   background-color: transparent;
-  width: 22%;
+  width: 338px;
   backdrop-filter: blur(2rem);
   border-radius: 20px;
   margin-left: 25px;

@@ -140,6 +140,7 @@
 
 .Root__globalNav .DoxYADBBjYMvoYwl7QPg {
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  transition: transform 0.2s ease !important;
 }
 
 .custom-navlinks-scrollable_container {
@@ -2296,5 +2297,5 @@ aside video {
 }
 
 .e-91000-button {
-  transition: transform 0.3s ease !important;
+  transition: transform 0.2s ease !important;
 }

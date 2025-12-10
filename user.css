@@ -2299,3 +2299,11 @@ aside video {
 .e-91000-button {
   transition: transform 0.2s ease !important;
 }
+
+.L7Q0vlYYEzm_VlplzWgI:hover>:first-child {
+  transform: translateY(-1px);
+}
+
+.L7Q0vlYYEzm_VlplzWgI>:first-child {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}

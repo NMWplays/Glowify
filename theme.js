@@ -142,3 +142,99 @@
 
   setInterval(updateBackgroundAndAccent, 500);
 })();
+
+/*Popup Bounce Animation*/
+(() => {
+  const STYLE_ID = 'popup-bounce-style';
+  if (!document.getElementById(STYLE_ID)) {
+    const style = document.createElement('style');
+    style.id = STYLE_ID;
+    style.textContent = `
+      @keyframes popupBounce {
+        0%   { transform: scale(0.85); }
+        40%  { transform: scale(1.05); }
+        60%  { transform: scale(0.98); }
+        80%  { transform: scale(1.02); }
+        100% { transform: scale(1); }
+      }
+
+      .popup-bounce {
+        animation-name: popupBounce;
+        animation-duration: 300ms;
+        animation-timing-function: cubic-bezier(.22,.9,.3,1);
+        animation-fill-mode: forwards;
+        transform-origin: top center;
+      }
+
+      .main-contextMenu-menu::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        backdrop-filter: blur(2rem);
+        border-radius: inherit;
+        z-index: -1;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  const expandedState = new WeakMap();
+
+  function bounce(el, triggerBtn) {
+    if (!el) return;
+    if (triggerBtn?.id === "glowify-settings-btn") return;
+
+    el.classList.remove("popup-bounce");
+    void el.offsetWidth;
+    el.classList.add("popup-bounce");
+    el.addEventListener("animationend", () => {
+      el.classList.remove("popup-bounce");
+    }, { once: true });
+  }
+
+  const prevVisible = new WeakMap();
+  function isVisible(el) {
+    if (!el) return false;
+    const s = getComputedStyle(el);
+    if (s.display === "none" || s.visibility === "hidden" || s.opacity === "0") return false;
+    return el.offsetParent !== null;
+  }
+
+  function scanMainPopups() {
+    document.querySelectorAll(".main-contextMenu-menu").forEach(p => {
+      const was = !!prevVisible.get(p);
+      const now = isVisible(p);
+      if (!was && now) bounce(p);
+      prevVisible.set(p, now);
+    });
+  }
+
+  const mo = new MutationObserver(mutations => {
+    for (const m of mutations) {
+      if (m.attributeName === "aria-expanded") {
+        const btn = m.target;
+        const now = btn.getAttribute("aria-expanded");
+        const was = expandedState.get(btn);
+
+        if (was === "false" && now === "true") {
+          const popup = btn.parentElement?.querySelector(".main-contextMenu-menu");
+          bounce(popup, btn);
+        }
+
+        expandedState.set(btn, now);
+      }
+    }
+
+    requestAnimationFrame(scanMainPopups);
+  });
+
+  mo.observe(document.body, {
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["aria-expanded", "style", "class"]
+  });
+
+  document.querySelectorAll("[aria-expanded]").forEach(btn => {
+    expandedState.set(btn, btn.getAttribute("aria-expanded"));
+  });
+})();

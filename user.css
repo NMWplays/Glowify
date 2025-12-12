@@ -993,9 +993,12 @@ main section .search-searchCategory-categoryGrid {
   background: transparent !important;
 }
 
+.LegacyChip__LegacyChipComponent-sc-tzfq94-0>.ChipInnerComponent-sm-selected.ChipInnerComponent-sm-selected {
+  transition: box-shadow 0.3s ease !important;
+}
+
 .LegacyChip__LegacyChipComponent-sc-tzfq94-0:hover>.ChipInnerComponent-sm-selected.ChipInnerComponent-sm-selected {
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
-  transition: box-shadow 0.3s ease;
 }
 
 .iyhPyoc2dxd1Eno74TCO {
@@ -2307,4 +2310,12 @@ aside video {
 .L7Q0vlYYEzm_VlplzWgI>:first-child {
   transition: transform 0.3s ease, background-color 0.3s ease;
   border-radius: 20px;
+}
+
+.bZu9z5uN3CYG_zTFA97L:focus-visible,
+.bZu9z5uN3CYG_zTFA97L:hover {
+  background-color: transparent;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  cursor: pointer;
+  transform: scale(1.01);
 }

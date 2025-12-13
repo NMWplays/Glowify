@@ -178,6 +178,12 @@
   const expandedState = new WeakMap();
   const prevVisible = new WeakMap();
 
+  const POPUP_SELECTOR = `
+    .main-contextMenu-menu,
+    .jHt3xA6ovwVKkMJKqOhO,
+    .HwAlGCDD0hvEKSl4MqyQ
+  `;
+
   function bounce(el, triggerBtn) {
     if (!el) return;
     if (triggerBtn?.id === "glowify-settings-btn") return;
@@ -185,6 +191,7 @@
     el.classList.remove("popup-bounce");
     void el.offsetWidth;
     el.classList.add("popup-bounce");
+
     el.addEventListener("animationend", () => {
       el.classList.remove("popup-bounce");
     }, { once: true });
@@ -198,9 +205,7 @@
   }
 
   function scanPopups() {
-    document.querySelectorAll(
-      ".main-contextMenu-menu, .jHt3xA6ovwVKkMJKqOhO"
-    ).forEach(el => {
+    document.querySelectorAll(POPUP_SELECTOR).forEach(el => {
       const was = !!prevVisible.get(el);
       const now = isVisible(el);
       if (!was && now) bounce(el);
@@ -216,9 +221,7 @@
         const was = expandedState.get(btn);
 
         if (was === "false" && now === "true") {
-          const popup = btn.parentElement?.querySelector(
-            ".main-contextMenu-menu, .jHt3xA6ovwVKkMJKqOhO"
-          );
+          const popup = btn.parentElement?.querySelector(POPUP_SELECTOR);
           bounce(popup, btn);
         }
 

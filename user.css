@@ -641,6 +641,7 @@ img.main-image-image.main-trackList-rowImage.main-image-loaded {
   scrollbar-width: thin;
   transition: none !important;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  scrollbar-width: none;
 }
 
 .main-contextMenu-menu {

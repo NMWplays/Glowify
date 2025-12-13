@@ -159,10 +159,7 @@
       }
 
       .popup-bounce {
-        animation-name: popupBounce;
-        animation-duration: 300ms;
-        animation-timing-function: cubic-bezier(.22,.9,.3,1);
-        animation-fill-mode: forwards;
+        animation: popupBounce 300ms cubic-bezier(.22,.9,.3,1) forwards;
         transform-origin: top center;
       }
 
@@ -179,6 +176,7 @@
   }
 
   const expandedState = new WeakMap();
+  const prevVisible = new WeakMap();
 
   function bounce(el, triggerBtn) {
     if (!el) return;
@@ -192,7 +190,6 @@
     }, { once: true });
   }
 
-  const prevVisible = new WeakMap();
   function isVisible(el) {
     if (!el) return false;
     const s = getComputedStyle(el);
@@ -200,12 +197,14 @@
     return el.offsetParent !== null;
   }
 
-  function scanMainPopups() {
-    document.querySelectorAll(".main-contextMenu-menu").forEach(p => {
-      const was = !!prevVisible.get(p);
-      const now = isVisible(p);
-      if (!was && now) bounce(p);
-      prevVisible.set(p, now);
+  function scanPopups() {
+    document.querySelectorAll(
+      ".main-contextMenu-menu, .jHt3xA6ovwVKkMJKqOhO"
+    ).forEach(el => {
+      const was = !!prevVisible.get(el);
+      const now = isVisible(el);
+      if (!was && now) bounce(el);
+      prevVisible.set(el, now);
     });
   }
 
@@ -217,7 +216,9 @@
         const was = expandedState.get(btn);
 
         if (was === "false" && now === "true") {
-          const popup = btn.parentElement?.querySelector(".main-contextMenu-menu");
+          const popup = btn.parentElement?.querySelector(
+            ".main-contextMenu-menu, .jHt3xA6ovwVKkMJKqOhO"
+          );
           bounce(popup, btn);
         }
 
@@ -225,16 +226,19 @@
       }
     }
 
-    requestAnimationFrame(scanMainPopups);
+    requestAnimationFrame(scanPopups);
   });
 
   mo.observe(document.body, {
     subtree: true,
     attributes: true,
+    childList: true,
     attributeFilter: ["aria-expanded", "style", "class"]
   });
 
   document.querySelectorAll("[aria-expanded]").forEach(btn => {
     expandedState.set(btn, btn.getAttribute("aria-expanded"));
   });
+
+  scanPopups();
 })();

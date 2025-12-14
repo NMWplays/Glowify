@@ -446,6 +446,8 @@ img.main-image-image.main-trackList-rowImage.main-image-loaded {
 .e-91000-box.e-91000-baseline.e-91000-box--naked.e-91000-box--interactive.e-91000-box--browser-default-focus.e-91000-box--padding-custom.e-91000-box--min-size.e-91000-Box-sc-8t9c76-0.Box-group-naked-listRow-isInteractive-hasLeadingOrMedia-minBlockSize_48px.Q4e5h5G6qGXM2uKkgUyo.Box-sc-8t9c76-0.Box-group-naked-listRow-isInteractive-hasLeadingOrMedia-minBlockSize_48px.Q4e5h5G6qGXM2uKkgUyo {
   width: 95% !important;
   margin: auto;
+  transition: box-shadow 0.3s ease !important;
+  border-radius: 20px;
 }
 
 .e-91000-box--interactive.e-91000-box--contrasting:active,
@@ -2319,4 +2321,15 @@ aside video {
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
   cursor: pointer;
   transform: scale(1.01);
+}
+
+.Button-buttonSecondary-small-iconLeading-useBrowserDefaultFocusStyle {
+  border: none;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  backdrop-filter: blur(2rem);
+  transition: transform 0.3s ease !important;
+}
+
+.Button-buttonSecondary-small-iconLeading-useBrowserDefaultFocusStyle:hover {
+  border: none;
 }

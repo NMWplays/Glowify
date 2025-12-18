@@ -97,8 +97,6 @@
 /*Rechte Sidebar*/
 .UrfDp0_mKGL9hkfh9g_R {
   border-radius: 20px;
-  margin-bottom: 5px;
-  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }
 
 .main-topBar-background,
@@ -2340,4 +2338,24 @@ aside video {
 
 .main-embedWidgetGenerator-contentCode.main-embedWidgetGenerator-visible {
   opacity: 1;
+}
+
+.Root__nav-bar {
+  background-color: transparent;
+  border-radius: 20px;
+  margin-bottom: 5px;
+}
+
+.bVJH37qfz55VdpglJjHJ {
+  background-color: transparent;
+  border-radius: 20px;
+}
+
+.pP41asBpzic1bRlrsDcs {
+  border-radius: 20px;
+}
+
+.Root__right-sidebar {
+  margin-bottom: 5px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }

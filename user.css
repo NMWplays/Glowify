@@ -2358,4 +2358,5 @@ aside video {
 .Root__right-sidebar {
   margin-bottom: 5px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  border-radius: 20px;
 }

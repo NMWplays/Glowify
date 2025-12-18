@@ -978,10 +978,6 @@ img.marketplace-customCSS-image-preview {
   align-items: center;
 }
 
-.lyrics-lyricsContent-lyric {
-  width: fit-content !important;
-}
-
 main section .search-searchCategory-categoryGrid {
   margin-top: -2.5rem;
   margin-bottom: 2rem;
@@ -2141,7 +2137,6 @@ svg.e-91000-icon.e-91000-baseline {
 /*Focused lyrics*/
 
 .lyrics-lyricsContent-lyric {
-  width: fit-content !important;
   filter: blur(1.5px);
   transform: scale(1.1);
   padding-top: 15px;

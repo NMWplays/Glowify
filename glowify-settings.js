@@ -387,6 +387,7 @@ if (!window.glowifyObserverInitialized) {
         });
 
     })();
+    
 
     // === Glow Accent Handling ===
     function applyGlowAccent(color) {

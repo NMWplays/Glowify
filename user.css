@@ -1097,6 +1097,7 @@ main section .search-searchCategory-categoryGrid {
 .Z35LRd6m4Po7n12dYmKu:not([disabled]) {
   border-radius: 20px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background-color: transparent;
 }
 
 .Z35LRd6m4Po7n12dYmKu:focus-within,
@@ -2366,4 +2367,24 @@ aside video {
 .OwsIyGIUSADBO6hvtdEE.gfA9yiYhxYvTfdPrs_4s:has(.B43sqVwnlieN9pFapo54:focus-visible) .uYfQVmF6J8ESfrb6dG6D,
 .OwsIyGIUSADBO6hvtdEE.gfA9yiYhxYvTfdPrs_4s:hover .uYfQVmF6J8ESfrb6dG6D {
   opacity: 1;
+}
+
+.mWktZnvirv5K8ssiI4vC {
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.qSZ_ggNRWVfmr9V3H2Pw,
+.XoarTWkRMvFtZcuxHVfP {
+  color: white;
+}
+
+.Z35LRd6m4Po7n12dYmKu.JFITZPkvP8evQ3h7K2UQ {
+  background-color: transparent;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.ddCpW7GjZekszJgiykci {
+  border-radius: 8px;
 }

@@ -140,12 +140,13 @@ if (!window.glowifyObserverInitialized) {
 
         function createBars(indicator) {
             if (lastSvg) {
-                lastSvg.remove();
+                try { lastSvg.remove(); } catch (e) {}
                 lastSvg = null;
             }
 
+            if (!indicator || !indicator.parentNode) return;
             const parent = indicator.parentNode;
-            const rectHeight = parent.offsetHeight;
+            const rectHeight = parent.offsetHeight || 20;
             const bottom = rectHeight - 2;
             const svgNS = "http://www.w3.org/2000/svg";
             const svg = document.createElementNS(svgNS, "svg");
@@ -171,7 +172,7 @@ if (!window.glowifyObserverInitialized) {
                 svg.appendChild(bar);
                 bars.push(bar);
 
-                speeds.push(0.008 + Math.random() * 0.007);
+                speeds.push(0.007 + Math.random() * 0.006);
                 phases.push(Math.random() * Math.PI * 2);
             }
 
@@ -183,12 +184,19 @@ if (!window.glowifyObserverInitialized) {
 
             function animate() {
                 if (!lastSvg || !lastIndicator) return;
+                const parentNode = lastIndicator.parentNode;
+                if (!parentNode) {
+                    try { lastSvg.remove(); } catch (e) {}
+                    lastSvg = null;
+                    lastIndicator = null;
+                    return;
+                }
 
-                const playButton = lastIndicator.parentNode.querySelector(".main-trackList-rowImagePlayButton");
+                const playButton = parentNode.querySelector?.(".main-trackList-rowImagePlayButton");
                 const isPlaying = Spicetify.Player.isPlaying() && (!playButton || window.getComputedStyle(playButton).opacity === "0");
 
                 if (!isPlaying) {
-                    lastSvg.remove();
+                    try { lastSvg.remove(); } catch (e) {}
                     lastSvg = null;
                     lastIndicator = null;
                     return;
@@ -197,12 +205,16 @@ if (!window.glowifyObserverInitialized) {
                 const now = performance.now();
                 const t = now - start;
 
+                const currentRectHeight = parentNode.offsetHeight || rectHeight;
+                const maxHeight = currentRectHeight * 0.7;
+                const minHeight = 3;
+                const bottomNow = currentRectHeight - 2;
+                lastSvg.setAttribute("height", currentRectHeight);
+
                 bars.forEach((bar, i) => {
-                    const maxHeight = lastIndicator.parentNode.offsetHeight * 0.7;
-                    const minHeight = 3;
                     const height = minHeight + (Math.sin(t * speeds[i] + phases[i]) + 1) / 2 * (maxHeight - minHeight);
                     bar.setAttribute("height", height);
-                    bar.setAttribute("y", bottom - height);
+                    bar.setAttribute("y", bottomNow - height);
                 });
 
                 requestAnimationFrame(animate);
@@ -218,19 +230,27 @@ if (!window.glowifyObserverInitialized) {
 
             if (!indicator) {
                 if (lastSvg) {
-                    lastSvg.remove();
+                    try { lastSvg.remove(); } catch (e) {}
                     lastSvg = null;
                     lastIndicator = null;
                 }
                 return false;
             }
 
-            // check if track is paused
-            const playButton = indicator.parentNode.querySelector(".main-trackList-rowImagePlayButton");
+            if (!indicator.parentNode) {
+                if (lastSvg) {
+                    try { lastSvg.remove(); } catch (e) {}
+                    lastSvg = null;
+                    lastIndicator = null;
+                }
+                return false;
+            }
+
+            const playButton = indicator.parentNode.querySelector?.(".main-trackList-rowImagePlayButton");
             const isPlaying = Spicetify.Player.isPlaying() && (!playButton || window.getComputedStyle(playButton).opacity === "0");
 
             if (lastSvg && !isPlaying) {
-                lastSvg.remove();
+                try { lastSvg.remove(); } catch (e) {}
                 lastSvg = null;
                 lastIndicator = null;
             }
@@ -242,7 +262,7 @@ if (!window.glowifyObserverInitialized) {
 
         Spicetify.Player.addEventListener("songchange", () => {
             if (lastSvg) {
-                lastSvg.remove();
+                try { lastSvg.remove(); } catch (e) {}
                 lastSvg = null;
                 lastIndicator = null;
             }
@@ -252,12 +272,13 @@ if (!window.glowifyObserverInitialized) {
         setInterval(updateIndicator, 100);
     })();
 
-    /*Homescreen SVG*/
+    /* Homescreen SVG */
 
     (function () {
 
         const homeSvgs = new Map();
         const svgNS = "http://www.w3.org/2000/svg";
+        let wasPlaying = false;
 
         function createHomeVisualizer(img) {
             if (homeSvgs.has(img)) return;
@@ -275,6 +296,7 @@ if (!window.glowifyObserverInitialized) {
             svg.setAttribute("height", rectHeight);
             svg.style.pointerEvents = "none";
             svg.style.zIndex = "999999";
+            svg.style.position = "absolute";
 
             const bars = [];
             for (let i = 0; i < 4; i++) {
@@ -283,11 +305,12 @@ if (!window.glowifyObserverInitialized) {
                 bar.setAttribute("width", "3");
                 bar.setAttribute("y", bottom - 4);
                 bar.setAttribute("height", 4);
-                bar.classList.add("home-visualizer-bar"); // CSS-Class for color
+                bar.classList.add("home-visualizer-bar");
                 svg.appendChild(bar);
+
                 bars.push({
                     element: bar,
-                    speed: 0.008 + Math.random() * 0.007,
+                    speed: 0.007 + Math.random() * 0.006,
                     phase: Math.random() * Math.PI * 2
                 });
             }
@@ -295,7 +318,7 @@ if (!window.glowifyObserverInitialized) {
             parent.appendChild(svg);
             img.style.display = "none";
 
-            homeSvgs.set(img, { svg, bars, rectHeight, bottom });
+            homeSvgs.set(img, { svg, bars, rectHeight, bottom, parent });
         }
 
         function updateHomeScreenVisualizer() {
@@ -304,31 +327,41 @@ if (!window.glowifyObserverInitialized) {
             });
         }
 
-        const homeObserver = new MutationObserver(updateHomeScreenVisualizer);
+        const homeObserver = new MutationObserver(() => {
+            updateHomeScreenVisualizer();
+        });
         homeObserver.observe(document.body, { childList: true, subtree: true });
 
-        // global animation loop
         const start = performance.now();
         function animate() {
             const t = performance.now() - start;
 
-            homeSvgs.forEach(data => {
+            for (const [img, data] of homeSvgs.entries()) {
                 if (!document.body.contains(data.svg)) {
-                    homeSvgs.delete(data);
-                    return;
+                    homeSvgs.delete(img);
+                    continue;
                 }
 
+                const rectHeight = data.parent.offsetHeight || 20;
+                const bottom = rectHeight - 2;
+
+                data.svg.setAttribute("height", rectHeight);
+
                 const shortcut = data.svg.closest(".view-homeShortcutsGrid-shortcut");
-                data.svg.style.display = (shortcut && shortcut.matches(":hover")) ? "none" : "block";
+                try {
+                    data.svg.style.display = (shortcut && shortcut.matches(":hover")) ? "none" : "block";
+                } catch {
+                    data.svg.style.display = "block";
+                }
 
                 data.bars.forEach(barData => {
-                    const maxHeight = data.rectHeight * 0.7;
+                    const maxHeight = rectHeight * 0.7;
                     const minHeight = 3;
                     const height = minHeight + (Math.sin(t * barData.speed + barData.phase) + 1) / 2 * (maxHeight - minHeight);
                     barData.element.setAttribute("height", height);
-                    barData.element.setAttribute("y", data.bottom - height);
+                    barData.element.setAttribute("y", bottom - height);
                 });
-            });
+            }
 
             requestAnimationFrame(animate);
         }
@@ -337,12 +370,20 @@ if (!window.glowifyObserverInitialized) {
         updateHomeScreenVisualizer();
 
         Spicetify.Player.addEventListener("onplaypause", () => {
-            if (!Spicetify.Player.isPlaying()) {
-                homeSvgs.forEach(data => data.svg.remove());
+            const isPlaying = Spicetify.Player.isPlaying();
+
+            if (wasPlaying && !isPlaying) {
+                for (const [, data] of homeSvgs.entries()) {
+                    try { data.svg?.remove(); } catch {}
+                }
                 homeSvgs.clear();
-            } else {
+            }
+
+            if (!wasPlaying && isPlaying) {
                 updateHomeScreenVisualizer();
             }
+
+            wasPlaying = isPlaying;
         });
 
     })();

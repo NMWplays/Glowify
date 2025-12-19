@@ -2226,7 +2226,7 @@ img.H70qcBekoGWOlskuON5R {
 
 .LayoutResizer__inline-end:after,
 .LayoutResizer__inline-start:after {
-  background-color: transparent;
+  background-color: #0000001c;
   border-radius: 5px;
   width: 5px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
@@ -2235,7 +2235,7 @@ img.H70qcBekoGWOlskuON5R {
 
 .LayoutResizer__resize-bar--resizing.LayoutResizer__inline-end:after,
 .LayoutResizer__resize-bar--resizing.LayoutResizer__inline-start:after {
-  background-color: #00000014;
+  background-color: #0000002e;
 }
 
 .sl_aPp6GDg05ItSfmsS7 {

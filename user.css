@@ -1022,23 +1022,22 @@ main section .search-searchCategory-categoryGrid {
   border-radius: 20px !important;
   margin-bottom: 20px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .artist-artistDiscography-topBar {
-  padding-left: 62px;
-}
-
-.Button-combobox-buttonTertiary-small-iconTrailing-useBrowserDefaultFocusStyle {
-  margin-right: 30px;
+  padding-left: 35px;
 }
 
 .artist-artistDiscography-topBar.d84DMXKrEmJd3hjqfhBw {
   background-color: transparent;
   backdrop-filter: blur(2rem);
-  width: 93%;
+  width: 95%;
   margin: auto;
   border-radius: 20px;
-  padding: 6px;
+  padding-left: 15px;
+  padding-right: 0px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
   top: 70px;
 }

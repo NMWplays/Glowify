@@ -1028,6 +1028,7 @@ main section .search-searchCategory-categoryGrid {
 
 .artist-artistDiscography-topBar {
   padding-left: 35px;
+  transition: top 0.5s ease;
 }
 
 .artist-artistDiscography-topBar.d84DMXKrEmJd3hjqfhBw {
@@ -1040,6 +1041,10 @@ main section .search-searchCategory-categoryGrid {
   padding-right: 0px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
   top: 70px;
+}
+
+.artist-artistDiscography-headerContainer.artist-artistDiscography-firstAlbum {
+  margin-top: 95px;
 }
 
 .fV7K0WKOKzGdPkbhoHPF {

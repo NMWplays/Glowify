@@ -2418,3 +2418,17 @@ aside video {
 .YEXWOdiHjsEepA97mhza {
   border-radius: 20px;
 }
+
+.d1ytmgea2yryYrj2wOlw {
+  border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.zJPU_JpC13g8CJ_tgKIV {
+  transition: backdrop-filter 0.3s ease !important;
+}
+
+.zJPU_JpC13g8CJ_tgKIV:hover {
+  background-color: transparent;
+  backdrop-filter: blur(2rem);
+}

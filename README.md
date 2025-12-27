@@ -13,10 +13,22 @@ For support join:
   <img src="images/discord-icon.png" alt="Discord-server-link" width="64" />
 </a>
 
-<img width="2557" height="1377" alt="home view" src="https://github.com/user-attachments/assets/f1aff4b2-9f51-4bd5-81e8-8751a78a9a75" />
+<img width="2556" height="1380" alt="Homescreen" src="https://github.com/user-attachments/assets/6e26e067-bdea-44db-a632-995ffc3c65b8" />
 
-<img width="2556" height="1377" alt="playlist view" src="https://github.com/user-attachments/assets/f3ae828b-d49b-4aba-a05c-6e6594383dfc" />
+<img width="2557" height="1378" alt="Playlist-View" src="https://github.com/user-attachments/assets/fb7c34fd-a907-45f8-9ae3-14bebfd0d85f" />
 
-<img width="2557" height="1377" alt="artist view" src="https://github.com/user-attachments/assets/f5b2574b-0241-43a4-b34f-72e8b0eb02e6" />
+<img width="2556" height="1378" alt="Explore-Playlist" src="https://github.com/user-attachments/assets/7faaa452-2ca4-46f1-b912-fe014822aa47" />
 
-<img width="2556" height="1377" alt="glowify-settings" src="https://github.com/user-attachments/assets/3994ec7b-530d-4a20-860e-400b78f78c79" />
+<img width="2556" height="1377" alt="Search" src="https://github.com/user-attachments/assets/000798d0-c612-457b-8aa9-5149ebe872d6" />
+
+<img width="2558" height="1377" alt="Artist-Page" src="https://github.com/user-attachments/assets/651995f1-6d43-41ef-b3e3-2a06ebe854db" />
+
+<img width="2557" height="1376" alt="Artist-Page2" src="https://github.com/user-attachments/assets/db3e1ab8-f6dd-43b8-95f1-e550051d2f5b" />
+
+<img width="2556" height="1375" alt="Fullscreen-View" src="https://github.com/user-attachments/assets/ea7b20f7-28e5-4bc5-adfa-71f06ae80506" />
+
+<img width="2559" height="1439" alt="Fullscreen-View2" src="https://github.com/user-attachments/assets/09acba08-3c50-44b3-b217-b25f300610b4" />
+
+<img width="2556" height="1377" alt="Glowify-Settings" src="https://github.com/user-attachments/assets/8d9a1178-912c-4311-b348-8df936e0e0a6" />
+
+<img width="2557" height="1378" alt="Settings" src="https://github.com/user-attachments/assets/67b6f3ab-bf51-4266-9208-32c94d0817e3" />

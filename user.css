@@ -2450,3 +2450,11 @@ aside video {
 .FHeeS0iyFKz0aaEUkQRU {
   border-radius: 20px;
 }
+
+@keyframes Tu87pPf6eAedZs7wlrub {
+  80% {
+    -webkit-transform: scale(1);
+    transform: scale(2);
+    filter: blur(15px);
+  }
+}

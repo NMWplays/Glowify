@@ -2467,8 +2467,3 @@ aside video {
     filter: blur(15px);
   }
 }
-
-.ChipInnerComponent-sm {
-  background-color: transparent;
-  backdrop-filter: blur(2rem);
-}

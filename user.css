@@ -885,6 +885,7 @@ img.marketplace-customCSS-image-preview {
 
 .StyledTabItem-tab-tabItem-useBrowserDefaultFocusStyle {
   transition: backdrop-filter 0.3s ease, box-shadow 0.3s ease !important;
+  border-radius: 15px;
 }
 
 .StyledTabItem-tab-tabItem-useBrowserDefaultFocusStyle:hover {

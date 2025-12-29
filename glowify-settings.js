@@ -1237,32 +1237,115 @@ if (!window.glowifyObserverInitialized) {
         const lang = glowifyTranslations[clientLocale] ? clientLocale : "en";
         const t = glowifyTranslations[lang];
 
-    // === Context-Menu Integration ===
-    const observer = new MutationObserver(() => {
-        const menu = document.querySelector("#context-menu");
-        if (!menu || menu.querySelector("#glowify-settings-btn")) return;
+    // === Top-Nav Integration (Gear Icon) ===
+    const GLOWIFY_GEAR_HOST_SELECTOR = ".vRrKblnUUQV5eMbvUdv8";
 
-        const buttons = menu.querySelectorAll("button.main-contextMenu-menuItemButton");
-        for (const btn of buttons) {
-            if (btn.textContent.trim() === "Experimental features") {
-                const newItem = document.createElement("li");
-                newItem.className = "main-contextMenu-menuItem";
-                newItem.innerHTML = `
-                    <button class="main-contextMenu-menuItemButton" id="glowify-settings-btn">
-                        <span class="e-91000-text encore-text-body-small main-contextMenu-menuItemLabel">
-                            ${t.settingsTitle}
-                        </span>
-                    </button>
-                `;
-                btn.closest("li").after(newItem);
-                document
-                    .querySelector("#glowify-settings-btn")
-                    .addEventListener("click", showGlowifySettingsMenu);
-                break;
+    function ensureGlowifyGearStyle() {
+        if (document.getElementById("glowify-gear-style")) return;
+        const style = document.createElement("style");
+        style.id = "glowify-gear-style";
+        style.textContent = `
+            #glowify-settings-gear-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border: 0;
+                background: transparent;
+                cursor: pointer;
+                color: var(--text-subdued);
+                margin-inline-end: -13px;
+                z-index: 2;
+                align-self: center;
             }
+            #glowify-settings-gear-btn:hover {
+                color: var(--text-base);
+            }
+            #glowify-settings-gear-btn:focus-visible {
+                outline: 2px solid var(--spice-button, var(--glowify-accent));
+                outline-offset: 2px;
+            }
+            #glowify-settings-gear-btn svg {
+                width: 18px;
+                height: 18px;
+                display: block;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    function getGearSvg() {
+        return `
+            <svg role="img" viewBox="0 0 24 24" aria-hidden="true" focusable="false"
+                 fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="butt" stroke-linejoin="miter">
+                <path vector-effect="non-scaling-stroke" d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065" />
+                <path vector-effect="non-scaling-stroke" d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+            </svg>
+        `;
+    }
+
+    function ensureGlowifyGearButton() {
+        const host = document.querySelector(GLOWIFY_GEAR_HOST_SELECTOR);
+        if (!host) return false;
+        if (host.querySelector("#glowify-settings-gear-btn")) return true;
+
+        ensureGlowifyGearStyle();
+
+        const btn = document.createElement("button");
+        btn.id = "glowify-settings-gear-btn";
+        btn.type = "button";
+        btn.setAttribute("aria-label", t.settingsTitle);
+        btn.setAttribute("title", t.settingsTitle);
+        btn.innerHTML = getGearSvg();
+
+        btn.style.setProperty("-webkit-app-region", "no-drag");
+        btn.style.pointerEvents = "auto";
+
+        btn.addEventListener("click", () => {
+            if (typeof window.showGlowifySettingsMenu === "function") window.showGlowifySettingsMenu();
+        });
+
+        host.insertBefore(btn, host.firstChild);
+        return true;
+    }
+
+    (function initGlowifyGearInjection() {
+        const tryInsert = () => {
+            try { ensureGlowifyGearButton(); } catch (e) {}
+        };
+
+        tryInsert();
+        if (!window._glowifyGearInsertTimer) {
+            const startedAt = Date.now();
+            window._glowifyGearInsertTimer = setInterval(() => {
+                const host = document.querySelector(GLOWIFY_GEAR_HOST_SELECTOR);
+                const hasBtn = !!document.querySelector("#glowify-settings-gear-btn");
+                if (hasBtn) {
+                    clearInterval(window._glowifyGearInsertTimer);
+                    window._glowifyGearInsertTimer = null;
+                    return;
+                }
+                if (Date.now() - startedAt > 10000) {
+                    clearInterval(window._glowifyGearInsertTimer);
+                    window._glowifyGearInsertTimer = null;
+                    return;
+                }
+                if (host) tryInsert();
+            }, 200);
         }
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
+
+        if (!window._glowifyGearObserver) {
+            window._glowifyGearObserver = new MutationObserver(() => {
+                if (window._glowifyGearObserver._debounce) clearTimeout(window._glowifyGearObserver._debounce);
+                window._glowifyGearObserver._debounce = setTimeout(() => {
+                    tryInsert();
+                    window._glowifyGearObserver._debounce = null;
+                }, 60);
+            });
+            window._glowifyGearObserver.observe(document.body, { childList: true, subtree: true });
+        }
+    })();
 
 
     // === Popup Window ===

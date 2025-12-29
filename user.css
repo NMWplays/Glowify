@@ -92,6 +92,9 @@
   width: 65%;
   margin: 0 auto 5px;
   border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /*Rechte Sidebar*/

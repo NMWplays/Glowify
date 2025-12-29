@@ -645,21 +645,177 @@ if (!window.glowifyObserverInitialized) {
         }
     }
 
-    // === Player Width Handling ===
-    function applyPlayerWidth(mode) {
-        const player = document.querySelector(".Root__now-playing-bar");
-        if (!player) return;
+    // Player Width Handling
+    (function initGlowifyPlayerWidthCustom() {
+        const MODE_KEY = "glowify-player-width"; 
+        const CUSTOM_W_KEY = "glowify-player-custom-width";
+        const CUSTOM_H_KEY = "glowify-player-custom-height";
 
-        if (mode === "theme") {
-            player.style.width = "65%";
-            player.style.margin = "0 auto 5px";
-        } else {
-            player.style.margin = "calc(var(--panel-gap) * -1)";
-            player.style.width = "unset";
+        const DEFAULT_CUSTOM_WIDTH = 80;
+        const DEFAULT_CUSTOM_HEIGHT = 88;
+
+        function getPlayerElement() {
+            return document.querySelector(".Root__now-playing-bar");
         }
 
-        localStorage.setItem("glowify-player-width", mode);
-    }
+        function applyPlayerMode(mode) {
+            const player = getPlayerElement();
+            if (!player) return;
+
+            if (mode === "theme") {
+                player.style.width = "65%";
+                player.style.margin = "0 auto 5px";
+                player.style.height = "";
+            } else if (mode === "default") {
+                player.style.width = "unset";
+                player.style.margin = "calc(var(--panel-gap) * -1)";
+                player.style.height = "";
+            } else if (mode === "custom") {
+                const w = parseFloat(localStorage.getItem(CUSTOM_W_KEY) || DEFAULT_CUSTOM_WIDTH);
+                const h = parseInt(localStorage.getItem(CUSTOM_H_KEY) || DEFAULT_CUSTOM_HEIGHT, 10);
+                player.style.width = Number.isFinite(w) ? (w + "%") : (DEFAULT_CUSTOM_WIDTH + "%");
+                player.style.height = Number.isFinite(h) ? (h + "px") : (DEFAULT_CUSTOM_HEIGHT + "px");
+                player.style.margin = "0 auto 5px";
+            }
+        }
+
+        function applySavedPlayerWidth() {
+            const saved = localStorage.getItem(MODE_KEY) || "theme";
+            applyPlayerMode(saved);
+        }
+
+        function wirePopupControls() {
+            const popup = document.getElementById("glowify-settings-popup");
+            if (!popup) return;
+
+            const select = popup.querySelector("#player-width");
+            const customContainer = popup.querySelector("#player-custom-controls");
+            const inputW = popup.querySelector("#player-custom-width");
+            const inputH = popup.querySelector("#player-custom-height");
+            const wMinus = popup.querySelector("#pcw-minus");
+            const wPlus = popup.querySelector("#pcw-plus");
+            const hMinus = popup.querySelector("#pch-minus");
+            const hPlus = popup.querySelector("#pch-plus");
+
+            if (!select || !customContainer || !inputW || !inputH) return;
+            if (select.dataset._glowify_wired === "1") return;
+
+            const savedMode = localStorage.getItem(MODE_KEY) || "theme";
+            select.value = savedMode;
+
+            const savedW = localStorage.getItem(CUSTOM_W_KEY);
+            const savedH = localStorage.getItem(CUSTOM_H_KEY);
+            inputW.value = (savedW !== null) ? savedW : String(DEFAULT_CUSTOM_WIDTH);
+            inputH.value = (savedH !== null) ? savedH : String(DEFAULT_CUSTOM_HEIGHT);
+
+            customContainer.style.display = (select.value === "custom") ? "flex" : "none";
+
+            function saveAndApplyCustom() {
+                const rawW = (inputW.value || "").toString().trim();
+                const rawH = (inputH.value || "").toString().trim();
+
+                const parsedW = parseInt(rawW, 10);
+                const parsedH = parseInt(rawH, 10);
+
+                if (rawW !== "" && Number.isFinite(parsedW)) {
+                    localStorage.setItem(CUSTOM_W_KEY, String(parsedW));
+                }
+
+                if (rawH !== "" && Number.isFinite(parsedH)) {
+                    localStorage.setItem(CUSTOM_H_KEY, String(parsedH));
+                }
+
+                applyPlayerMode("custom");
+            }
+
+            select.addEventListener("change", (e) => {
+                const mode = e.target.value;
+                localStorage.setItem(MODE_KEY, mode);
+                customContainer.style.display = (mode === "custom") ? "flex" : "none";
+                applyPlayerMode(mode);
+            });
+
+            inputW.addEventListener("input", () => {
+                let cur = parseFloat(inputW.value);
+                if (Number.isFinite(cur)) {
+                    cur = Math.min(100, Math.max(0, cur));
+                    inputW.value = cur.toString();
+                    localStorage.setItem(CUSTOM_W_KEY, cur.toString());
+                    applyPlayerMode("custom");
+                }
+            });
+
+            inputH.addEventListener("input", () => {
+                let cur = parseInt(inputH.value, 10);
+                if (Number.isFinite(cur)) {
+                    cur = Math.max(0, cur); // Clamp >=0
+                    inputH.value = cur.toString();
+                    localStorage.setItem(CUSTOM_H_KEY, cur.toString());
+                    applyPlayerMode("custom");
+                }
+            });
+
+            wMinus.addEventListener("click", () => {
+                let cur = parseFloat(inputW.value) || DEFAULT_CUSTOM_WIDTH;
+                cur = Math.max(0, cur - 1);
+                inputW.value = cur.toString();
+                localStorage.setItem(CUSTOM_W_KEY, cur.toString());
+                applyPlayerMode("custom");
+            });
+            wPlus.addEventListener("click", () => {
+                let cur = parseFloat(inputW.value) || DEFAULT_CUSTOM_WIDTH;
+                cur = Math.min(100, cur + 1);
+                inputW.value = cur.toString();
+                localStorage.setItem(CUSTOM_W_KEY, cur.toString());
+                applyPlayerMode("custom");
+            });
+
+            hMinus.addEventListener("click", () => {
+                let cur = parseInt(inputH.value, 10) || DEFAULT_CUSTOM_HEIGHT;
+                cur = Math.max(0, cur - 1);
+                inputH.value = cur.toString();
+                localStorage.setItem(CUSTOM_H_KEY, cur.toString());
+                applyPlayerMode("custom");
+            });
+            hPlus.addEventListener("click", () => {
+                let cur = parseInt(inputH.value, 10) || DEFAULT_CUSTOM_HEIGHT;
+                cur = cur + 1;
+                inputH.value = cur.toString();
+                localStorage.setItem(CUSTOM_H_KEY, cur.toString());
+                applyPlayerMode("custom");
+            });
+
+            select.dataset._glowify_wired = "1";
+        }
+
+        if (!window._glowifyPlayerWidthPopupObserver) {
+            window._glowifyPlayerWidthPopupObserver = new MutationObserver(() => {
+                wirePopupControls();
+            });
+            window._glowifyPlayerWidthPopupObserver.observe(document.body, { childList: true, subtree: true });
+        }
+
+        wirePopupControls();
+
+        function tryApplyWhenPlayerReady() {
+            const p = getPlayerElement();
+            if (p) {
+                applySavedPlayerWidth();
+                return;
+            }
+            const obs = new MutationObserver(() => {
+                const found = getPlayerElement();
+                if (found) {
+                    applySavedPlayerWidth();
+                    obs.disconnect();
+                }
+            });
+            obs.observe(document.body, { childList: true, subtree: true });
+        }
+        tryApplyWhenPlayerReady();
+
+        window.glowifyApplySavedPlayerWidth = applySavedPlayerWidth;
+    })();
 
     // === Player Border Radius Handling ===
     function applyPlayerRadius(px) {
@@ -738,8 +894,86 @@ if (!window.glowifyObserverInitialized) {
         applyTransparentControls(width, height);
     }
 
+    // Playlist Header Handling
+    function initGlowifyPlaylistHeader() {
+        const STORAGE_KEY = "glowify-playlist-header-mode";
+        const STYLE_ID = "glowify-playlist-header-style";
+
+        function ensureStyleTag() {
+            let s = document.getElementById(STYLE_ID);
+            if (!s) {
+                s = document.createElement("style");
+                s.id = STYLE_ID;
+                document.head.appendChild(s);
+            }
+            return s;
+        }
+
+        function updatePlaylistHeaderCss(show) {
+            const css = show
+                ? `.main-entityHeader-container.gmKBgPCnX785KDicbdJu {
+                    backdrop-filter: blur(1rem) !important;
+                    box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color)) !important;
+                }`
+                : `.main-entityHeader-container.gmKBgPCnX785KDicbdJu {
+                    backdrop-filter: none !important;
+                    box-shadow: none !important;
+                }`;
+            ensureStyleTag().textContent = css;
+        }
+
+        function applyPlaylistHeader(mode) {
+            const m = (mode === "show") ? "show" : "hide";
+            localStorage.setItem(STORAGE_KEY, m);
+            updatePlaylistHeaderCss(m === "show");
+        }
+
+        function applySavedPlaylistHeader() {
+            const saved = localStorage.getItem(STORAGE_KEY) || "show";
+            updatePlaylistHeaderCss(saved === "show");
+        }
+
+        function wirePopupSelectIfPresent() {
+            const popup = document.querySelector("#glowify-settings-popup");
+            if (!popup) return;
+
+            const select = popup.querySelector("#playlist-header-box");
+            if (!select) return;
+
+            if (select.dataset._glowify_wired === "1") return;
+
+            const current = localStorage.getItem(STORAGE_KEY) || "show";
+            try { select.value = current; } catch (e) {}
+
+            select.addEventListener("change", (ev) => {
+                applyPlaylistHeader(ev.target.value);
+            });
+
+            select.dataset._glowify_wired = "1";
+        }
+
+        if (!window._glowifyPlaylistPopupObserver) {
+            window._glowifyPlaylistPopupObserver = new MutationObserver(() => {
+                wirePopupSelectIfPresent();
+            });
+            window._glowifyPlaylistPopupObserver.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        }
+
+        wirePopupSelectIfPresent();
+
+        applySavedPlaylistHeader();
+
+        window.glowifyApplyPlaylistHeader = applyPlaylistHeader;
+        window.glowifyApplySavedPlaylistHeader = applySavedPlaylistHeader;
+    }
+
+    initGlowifyPlaylistHeader();
+
+
     // === Backgorund-Picture-Blur ===
-    // === Background Blur Handling ===
     function applyBackgroundBlur(px) {
         document.documentElement.style.setProperty("--glowify-bg-blur", px + "px");
         localStorage.setItem("glowify-bg-blur", px);
@@ -800,12 +1034,17 @@ if (!window.glowifyObserverInitialized) {
             transparentWidth: "Transparente Controls Breite:",
             transparentHeight: "Transparente Controls Höhe:",
             close: "Schließen",
+            playlistHeaderBox: "Playlist-Header-Box:",
+            playerCustomWidth: "Player-Breite (%):",
+            playerCustomHeight: "Player-Höhe (px):",
             dropdown: {
                 default: "Standard",
                 custom: "Benutzerdefiniert",
                 dynamic: "Dynamisch",
                 theme: "Theme",
-                none: "Keiner"
+                none: "Keiner",
+                show: "Anzeigen",
+                hide: "Ausblenden"
             }
         },
         en: {
@@ -821,12 +1060,17 @@ if (!window.glowifyObserverInitialized) {
             transparentWidth: "Transparent Controls Width:",
             transparentHeight: "Transparent Controls Height:",
             close: "Close",
+            playlistHeaderBox: "Playlist Header Box:",
+            playerCustomWidth: "Player Width (%):",
+            playerCustomHeight: "Player Height (px):",
             dropdown: {
                 default: "Default",
                 custom: "Custom",
                 dynamic: "Dynamic",
                 theme: "Theme",
-                none: "None"
+                none: "None",
+                show: "Show",
+                hide: "Hide"
             }
         },
         ru: {
@@ -842,12 +1086,17 @@ if (!window.glowifyObserverInitialized) {
             transparentWidth: "Ширина прозрачных элементов:",
             transparentHeight: "Высота прозрачных элементов:",
             close: "Закрыть",
+            playlistHeaderBox: "Блок заголовка плейлиста:",
+            playerCustomWidth: "Ширина плеера (%):",
+            playerCustomHeight: "Высота плеера (px):",
             dropdown: {
                 default: "Стандартно",
                 custom: "Пользовательский",
                 dynamic: "Динамический",
                 theme: "Тема",
-                none: "Нет"
+                none: "Нет",
+                show: "Показать",
+                hide: "Скрыть"
             }
         },
         es: {
@@ -863,12 +1112,17 @@ if (!window.glowifyObserverInitialized) {
             transparentWidth: "Ancho de controles transparentes:",
             transparentHeight: "Altura de controles transparentes:",
             close: "Cerrar",
+            playlistHeaderBox: "Caja del encabezado de la playlist:",
+            playerCustomWidth: "Ancho del reproductor (%):",
+            playerCustomHeight: "Altura del reproductor (px):",
             dropdown: {
                 default: "Predeterminado",
                 custom: "Personalizado",
                 dynamic: "Dinámico",
                 theme: "Tema",
-                none: "Ninguno"
+                none: "Ninguno",
+                show: "Mostrar",
+                hide: "Ocultar"
             }
         },
         fr: {
@@ -884,12 +1138,17 @@ if (!window.glowifyObserverInitialized) {
             transparentWidth: "Largeur des contrôles transparents:",
             transparentHeight: "Hauteur des contrôles transparents:",
             close: "Fermer",
+            playlistHeaderBox: "Boîte d’en-tête de la playlist:",
+            playerCustomWidth: "Largeur du lecteur (%):",
+            playerCustomHeight: "Hauteur du lecteur (px):",
             dropdown: {
                 default: "Par défaut",
                 custom: "Personnalisé",
                 dynamic: "Dynamique",
                 theme: "Thème",
-                none: "Aucun"
+                none: "Aucun",
+                show: "Afficher",
+                hide: "Masquer"
             }
         },
         pt: {
@@ -905,12 +1164,17 @@ if (!window.glowifyObserverInitialized) {
             transparentWidth: "Largura dos controles transparentes:",
             transparentHeight: "Altura dos controles transparentes:",
             close: "Fechar",
+            playlistHeaderBox: "Caixa do cabeçalho da playlist:",
+            playerCustomWidth: "Largura do player (%):",
+            playerCustomHeight: "Altura do player (px):",
             dropdown: {
                 default: "Padrão",
                 custom: "Personalizado",
                 dynamic: "Dinâmico",
                 theme: "Tema",
-                none: "Nenhum"
+                none: "Nenhum",
+                show: "Mostrar",
+                hide: "Ocultar"
             }
         },
         tr: {
@@ -926,12 +1190,17 @@ if (!window.glowifyObserverInitialized) {
             transparentWidth: "Şeffaf kontroller genişliği:",
             transparentHeight: "Şeffaf kontroller yüksekliği:",
             close: "Kapat",
+            playlistHeaderBox: "Çalma listesi başlık kutusu:",
+            playerCustomWidth: "Oynatıcı genişliği (%):",
+            playerCustomHeight: "Oynatıcı yüksekliği (px):",
             dropdown: {
                 default: "Varsayılan",
                 custom: "Özel",
                 dynamic: "Dinamik",
                 theme: "Tema",
-                none: "Hiçbiri"
+                none: "Hiçbiri",
+                show: "Göster",
+                hide: "Gizle"
             }
         },
         hi: {
@@ -946,13 +1215,18 @@ if (!window.glowifyObserverInitialized) {
             backgroundBlur: "पृष्ठभूमि धुंधलापन:",
             transparentWidth: "पारदर्शी कंट्रोल चौड़ाई:",
             transparentHeight: "पारदर्शी कंट्रोल ऊँचाई:",
+            playlistHeaderBox: "प्लेलिस्ट हेडर बॉक्स",
+            playerCustomWidth: "प्लेयर चौड़ाई (%):",
+            playerCustomHeight: "प्लेयर ऊँचाई (px):",
             close: "बंद करें",
             dropdown: {
                 default: "डिफ़ॉल्ट",
                 custom: "कस्टम",
                 dynamic: "डायनेमिक",
                 theme: "थीम",
-                none: "कोई नहीं"
+                none: "कोई नहीं",
+                show: "दिखाएँ",
+                hide: "छिपाएँ"
             }
         }
     };
@@ -1049,6 +1323,37 @@ if (!window.glowifyObserverInitialized) {
                     <select id="player-width">
                         <option value="default">${t.dropdown.default}</option>
                         <option value="theme">${t.dropdown.theme}</option>
+                        <option value="custom">${t.dropdown.custom}</option>
+                    </select>
+                </div>
+                
+                <div id="player-custom-controls" class="accent-row" style="display:none; flex-direction:column; gap:8px; width:100%;">
+                    <div class="accent-row" style="align-items:center; gap:10px; width:100%;">
+                        <label for="player-custom-width" style="min-width:210px; text-align:left;">${t.playerCustomWidth}</label>
+                        <div class="radius-control" style="display:flex; align-items:center; gap:6px;">
+                            <button id="pcw-minus" style="background:#00000057; border:none; color:white; border-radius:6px; width:24px; height:24px; cursor:pointer;">-</button>
+                            <input type="number" id="player-custom-width" step="1" value="800" max="100"
+                                style="width:80px; text-align:center; border:none; border-radius:6px; padding:4px; background:#00000057; color:white;">
+                            <button id="pcw-plus" style="background:#00000057; border:none; color:white; border-radius:6px; width:24px; height:24px; cursor:pointer;">+</button>
+                        </div>
+                    </div>
+
+                    <div class="accent-row" style="align-items:center; gap:10px; width:100%; margin-top:6px;">
+                        <label for="player-custom-height" style="min-width:210px; text-align:left;">${t.playerCustomHeight}</label>
+                        <div class="radius-control" style="display:flex; align-items:center; gap:6px;">
+                            <button id="pch-minus" style="background:#00000057; border:none; color:white; border-radius:6px; width:24px; height:24px; cursor:pointer;">-</button>
+                            <input type="number" id="player-custom-height" step="1" value="64"
+                                style="width:80px; text-align:center; border:none; border-radius:6px; padding:4px; background:#00000057; color:white;">
+                            <button id="pch-plus" style="background:#00000057; border:none; color:white; border-radius:6px; width:24px; height:24px; cursor:pointer;">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accent-row">
+                    <label for="playlist-header-box">${t.playlistHeaderBox}</label>
+                    <select id="playlist-header-box">
+                        <option value="show">${t.dropdown.show}</option>
+                        <option value="hide">${t.dropdown.hide}</option>
                     </select>
                 </div>
 
@@ -1195,7 +1500,7 @@ if (!window.glowifyObserverInitialized) {
                 }
 
                 #glowify-settings-popup .radius-control button:hover { 
-                    background: var(--accent-color); 
+                    background: var(--accent-color) !important;
                 }
 
                 #glowify-settings-popup #player-radius,
@@ -1414,6 +1719,5 @@ if (!window.glowifyObserverInitialized) {
             .querySelector("#close-glowify-popup")
             .addEventListener("click", () => popup.remove());
     };
-
 
 }

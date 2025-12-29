@@ -679,6 +679,8 @@ if (!window.glowifyObserverInitialized) {
             }
         }
 
+        window.applyPlayerWidth = applyPlayerMode;
+
         function applySavedPlayerWidth() {
             const saved = localStorage.getItem(MODE_KEY) || "theme";
             applyPlayerMode(saved);

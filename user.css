@@ -879,10 +879,19 @@ img.marketplace-customCSS-image-preview {
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }
 
+.StyledTabList-tablist-tabList {
+  overflow-x: visible !important;
+}
+
+.StyledTabItem-tab-tabItem-useBrowserDefaultFocusStyle {
+  transition: backdrop-filter 0.3s ease, box-shadow 0.3s ease !important;
+}
+
 .StyledTabItem-tab-tabItem-useBrowserDefaultFocusStyle:hover {
   background-color: transparent;
   backdrop-filter: blur(2rem);
   border-radius: 15px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }
 
 .StyledTabItem-tab-tabItem-useBrowserDefaultFocusStyle:active {

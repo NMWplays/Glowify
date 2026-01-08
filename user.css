@@ -2515,3 +2515,8 @@ aside video {
 .JkvrLi4Txzq1Oo8ckPM7 {
   z-index: 999999 !important;
 }
+
+.main-entityHeader-container.main-entityHeader-withBackgroundImage.NUi6SfjGmKAXb2XYVrxo {
+  background-color: transparent;
+  backdrop-filter: blur(2rem);
+}

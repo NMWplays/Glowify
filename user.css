@@ -2520,3 +2520,7 @@ aside video {
   background-color: transparent;
   backdrop-filter: blur(2rem);
 }
+
+.main-trackCreditsModal-mainSection {
+  scrollbar-width: none;
+}

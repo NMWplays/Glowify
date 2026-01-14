@@ -1035,7 +1035,7 @@ main section .search-searchCategory-categoryGrid {
   border-radius: 20px !important;
   margin-bottom: 20px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
-  padding-top: 30px;
+  padding-top: 30px !important;
   padding-bottom: 30px;
 }
 
@@ -2539,4 +2539,26 @@ aside video {
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
   backdrop-filter: blur(2rem);
   border-radius: 10px;
+}
+
+.mqjhsuNPs2qjSMW4oukw {
+  background-color: transparent;
+  border-radius: 20px;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.p9npxOfYUuThJnofLvAL {
+  color: white;
+}
+
+.Button-buttonSecondary-textBase-small-useBrowserDefaultFocusStyle {
+  border: none;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  transition: transform 0.3s ease !important;
+}
+
+.Button-buttonSecondary-textBase-small-useBrowserDefaultFocusStyle:hover {
+  border: none;
+  transform: scale(1.05) !important;
 }

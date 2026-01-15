@@ -29,6 +29,6 @@ For support join:
 
 <img width="2559" height="1439" alt="Fullscreen-View2" src="https://github.com/user-attachments/assets/09acba08-3c50-44b3-b217-b25f300610b4" />
 
-<img width="2556" height="1377" alt="Glowify-Settings" src="https://github.com/user-attachments/assets/8d9a1178-912c-4311-b348-8df936e0e0a6" />
+<img width="1919" height="1029" alt="glowify-settings v2" src="https://github.com/user-attachments/assets/13a21393-eeea-4987-8e41-0f0f33c1d62c" />
 
 <img width="2557" height="1378" alt="Settings" src="https://github.com/user-attachments/assets/67b6f3ab-bf51-4266-9208-32c94d0817e3" />

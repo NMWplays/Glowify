@@ -25,10 +25,10 @@ For support join:
 
 <img width="2557" height="1376" alt="Artist-Page2" src="https://github.com/user-attachments/assets/db3e1ab8-f6dd-43b8-95f1-e550051d2f5b" />
 
-<img width="2556" height="1375" alt="Fullscreen-View" src="https://github.com/user-attachments/assets/ea7b20f7-28e5-4bc5-adfa-71f06ae80506" />
-
-<img width="2559" height="1439" alt="Fullscreen-View2" src="https://github.com/user-attachments/assets/09acba08-3c50-44b3-b217-b25f300610b4" />
-
 <img width="1919" height="1029" alt="glowify-settings v2" src="https://github.com/user-attachments/assets/13a21393-eeea-4987-8e41-0f0f33c1d62c" />
 
 <img width="2557" height="1378" alt="Settings" src="https://github.com/user-attachments/assets/67b6f3ab-bf51-4266-9208-32c94d0817e3" />
+
+<img width="2556" height="1375" alt="Fullscreen-View" src="https://github.com/user-attachments/assets/ea7b20f7-28e5-4bc5-adfa-71f06ae80506" />
+
+<img width="2559" height="1439" alt="Fullscreen-View2" src="https://github.com/user-attachments/assets/09acba08-3c50-44b3-b217-b25f300610b4" />

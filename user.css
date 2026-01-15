@@ -1188,7 +1188,6 @@ main section .search-searchCategory-categoryGrid {
   padding: 23px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
   height: fit-content;
-  margin-top: 20px;
 }
 
 .TXqa_5BNj1JeWzfCW8lP {
@@ -2571,4 +2570,39 @@ aside video {
 
 .uu5v8_m9KV4ognRWYmiN {
   border-radius: 20px;
+}
+
+.uzRqWyv7_3F3_BOY6D8Q {
+  background-color: transparent;
+  border-radius: 20px;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.liykmvbmealurE5hiulH {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+}
+
+.liykmvbmealurE5hiulH:hover {
+  background-color: transparent;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  border-radius: 20px;
+  transform: scale(1.03);
+}
+
+.rakvmnMm1Z9h7dQFTOUG {
+  background-color: transparent;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.jC_G6UD5x2FH2BZjKPzh {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jC_G6UD5x2FH2BZjKPzh:is(:hover, :focus-visible) {
+  background-color: transparent;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  transform: scale(1.05);
 }

@@ -3,7 +3,7 @@ Glowify is a glow-infused Spicetify theme for Spotify featuring a modern, lumino
 
 It also offers many customization options and Beatiful Lyrics, Spicy Lyrics and Lucid Lyrics are supported out of the box.
 
-For everyone who wants to install the theme manually, just go to https://nmw.it.com/projects/glowify/installation/. You will find a detailed installation guide there.
+Want to install the theme manually? Just go to https://nmw.it.com/projects/glowify/installation/. You will find a detailed installation guide there.
 
 If your transparent controls don’t look fully transparent — for example when zooming in on Spotify — you can easily change the width and height of them in the Glowify Settings to make them fully transparent again.
 

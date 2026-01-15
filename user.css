@@ -157,6 +157,12 @@
   margin-top: 20px !important;
   margin: auto;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  min-height: 0px;
+  padding-bottom: 0px;
+}
+
+.muL8q38hxkp8U_hokrvB.contentSpacing {
+  padding: 25px !important;
 }
 
 .playlist-playlist-playlistContent {

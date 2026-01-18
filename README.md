@@ -1,8 +1,7 @@
-<h1 align="center">🎨 Glowify </h1>
+<h1 align="center"> ✨ Glowify Theme Spicetify ✨ </h1>
 
 <p align="center">
-  <b>I heard you search for Spotify modern theme?</b><br>
-  <i>Here am I, hello!</i>
+  <b>A modern, rounded and glowified theme for spicetify</b><br>
 </p>
 
 ## Contents
@@ -21,7 +20,9 @@
 
 If your transparent controls don’t look fully transparent — for example when zooming in on Spotify — you can easily change the width and height of them in the Glowify Settings to make them fully transparent again.
 
-**For support join to Discord!**:
+If you like the theme, consider starring the repository on GitHub! ⭐
+
+**For support join the Discord!**:
 
 <a href="https://discord.gg/QRMnrgjhvq" target="_blank">
   <img src="images/discord-icon.png" alt="Discord-server-link" width="64" />
@@ -56,18 +57,17 @@ If your transparent controls don’t look fully transparent — for example when
 
 ## Features
 
-**Glowify can suggest you:**
+**Glowify offers:**
 
-- Many customization options and `Beatiful Lyrics`, `Spicy Lyrics` and `Lucid Lyrics` are supported by default
-- Very beautiful colors (if you enable sync theme colors with song playlist, sure)
-- Very rounded angle (Because who dont like rounded angle in our times?)
-- And etc more!
+- Many customization options
+-  `Beatiful Lyrics`, `Spicy Lyrics` and `Lucid Lyrics` are supported by default
+- Beautiful dynamic colors (Just enable dynamic button colors in the settings and your good to go)
+- Modern, rounded UI
+- And much more!
 
 ---
 
 ## Installation
 
-Want to install the theme manually? [Just press here](https://nmw.it.com/projects/glowify/installation/)
+Want to install the theme manually? [Just click here](https://nmw.it.com/projects/glowify/installation/)
 And you will find a _detailed installation guide there_!
-
-If you like the theme, consider starring the repository on GitHub! ⭐

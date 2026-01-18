@@ -2606,3 +2606,8 @@ aside video {
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
   transform: scale(1.05);
 }
+
+/*Rotating cover art sidebar*/
+.XaEbPDaeLKeVysqGGwS5 {
+  overflow: hidden;
+}

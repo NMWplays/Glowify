@@ -1,20 +1,37 @@
-# ✨ Glowify Theme Spicetify ✨
-Glowify is a glow-infused Spicetify theme for Spotify featuring a modern, luminous interface and smooth animations.
+<h1 align="center"> ✨ Glowify Theme Spicetify ✨ </h1>
 
-It also offers many customization options and Beatiful Lyrics, Spicy Lyrics and Lucid Lyrics are supported out of the box.
+<p align="center">
+  <b>A modern, rounded and glowified theme for spicetify</b><br>
+</p>
 
-Want to install the theme manually? Just go to https://nmw.it.com/projects/glowify/installation/. You will find a detailed installation guide there.
+## Contents
+
+<!-- toc -->
+
+- [Introduction](#introduction)
+- [Theme screenshots](#theme-screenshots)
+- [Features](#features)
+- [Installation](#installation)
+<!-- tocstop -->
+
+## Introduction
+
+**Glowify** - is a glow-infused Spicetify theme for Spotify featuring a modern, luminous interface and smooth animations.
 
 If your transparent controls don’t look fully transparent — for example when zooming in on Spotify — you can easily change the width and height of them in the Glowify Settings to make them fully transparent again.
 
 If you like the theme, consider starring the repository on GitHub! ⭐
 
-For support join:
+**For support join the Discord!**:
 
 <a href="https://discord.gg/QRMnrgjhvq" target="_blank">
   <img src="images/discord-icon.png" alt="Discord-server-link" width="64" />
 </a>
 
+## Theme screenshots
+
+<details>
+<summary>Click to watch screenshots</summary>
 <img width="2556" height="1380" alt="Homescreen" src="https://github.com/user-attachments/assets/6e26e067-bdea-44db-a632-995ffc3c65b8" />
 
 <img width="2557" height="1378" alt="Playlist-View" src="https://github.com/user-attachments/assets/fb7c34fd-a907-45f8-9ae3-14bebfd0d85f" />
@@ -34,3 +51,23 @@ For support join:
 <img width="2556" height="1375" alt="Fullscreen-View" src="https://github.com/user-attachments/assets/ea7b20f7-28e5-4bc5-adfa-71f06ae80506" />
 
 <img width="2559" height="1439" alt="Fullscreen-View2" src="https://github.com/user-attachments/assets/09acba08-3c50-44b3-b217-b25f300610b4" />
+</details>
+
+---
+
+## Features
+
+**Glowify offers:**
+
+- Many customization options
+-  `Beatiful Lyrics`, `Spicy Lyrics` and `Lucid Lyrics` are supported by default
+- Beautiful dynamic colors (Just enable dynamic button colors in the settings and your good to go)
+- Modern, rounded UI
+- And much more!
+
+---
+
+## Installation
+
+Want to install the theme manually? [Just click here](https://nmw.it.com/projects/glowify/installation/)
+And you will find a _detailed installation guide there_!

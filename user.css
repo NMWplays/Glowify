@@ -2611,3 +2611,8 @@ aside video {
 .XaEbPDaeLKeVysqGGwS5 {
   overflow: hidden;
 }
+
+.artist-artistOnTour-date, .main-nowPlayingView-credits, .main-nowPlayingView-section {
+  background-color: transparent !important;
+  border: none !important;
+}

@@ -2616,3 +2616,20 @@ aside video {
   background-color: transparent !important;
   border: none !important;
 }
+
+.dxmO4YFbWJWft8k1u1xd {
+  background-color: transparent;
+  border-radius: 20px;
+}
+
+.j9ZOu8otCKDEdTV94xmv {
+  border-radius: 13px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.ez6VSvyLd4r5M9qTylcA {
+  background-color: transparent;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}

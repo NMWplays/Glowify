@@ -552,11 +552,11 @@ img.main-image-image.main-trackList-rowImage.main-image-loaded {
   margin-top: 20px;
   margin-bottom: 20px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }
 
 .L7sNjiJDD8O4xxgMC_Uw:hover,
 .CmdG6rptgpq5PPNEDbu5:hover {
-  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
   transform: translateY(-3px);
 }
 

@@ -2825,7 +2825,9 @@ aside video {
 :root.glowify-glow-disabled .artist-artistDiscography-headerContainer,
 :root.glowify-glow-disabled .artist-artistDiscography-topBar.d84DMXKrEmJd3hjqfhBw,
 :root.glowify-glow-disabled .Wwot_NoO8I52DIWFsJtA:hover,
-:root.glowify-glow-disabled .StyledTabItem-tab-tabItem-useBrowserDefaultFocusStyle:hover  {
+:root.glowify-glow-disabled .StyledTabItem-tab-tabItem-useBrowserDefaultFocusStyle:hover, 
+:root.glowify-glow-disabled .L7sNjiJDD8O4xxgMC_Uw:hover, .CmdG6rptgpq5PPNEDbu5:hover,
+:root.glowify-glow-disabled .ZuOMABESRg0Bpv8S9642 {
   box-shadow: none !important;
   outline: solid 1px var(--accent-color) !important;
 }
@@ -2838,4 +2840,5 @@ aside video {
   background-color: transparent;
   border-radius: 20px;
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+
 }

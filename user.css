@@ -2895,7 +2895,8 @@ aside video {
 :root.glowify-glow-disabled .iIaWJ3qSDLsKHwNCvv_g,
 :root.glowify-glow-disabled .AXKAVR_1_6sd4OEf3HPl,
 :root.glowify-glow-disabled .L7sNjiJDD8O4xxgMC_Uw:hover, .CmdG6rptgpq5PPNEDbu5:hover,
-:root.glowify-glow-disabled .jGqRK1aWJbi9E8KQfXNk {
+:root.glowify-glow-disabled .jGqRK1aWJbi9E8KQfXNk,
+:root.glowify-glow-disabled .GEo_ZmtdsGF5OCzbpaRY {
   box-shadow: none !important;
   outline: solid 1px var(--accent-color) !important;
 }
@@ -2921,4 +2922,5 @@ aside video {
   .Root__now-playing-bar {
     width: 100% !important;
   }
+
 }

@@ -2926,20 +2926,7 @@ aside video {
 
 }
 
-@property --progress-bar-transform {
-  inherits: true;
-  initial-value: 0%;
-  syntax: '<percentage>';
-}
-
-.progress-bar {
-  transition: --progress-bar-transform 1s linear !important;
-}
-
-.progress-bar--isDragging {
-  transition-duration: 150ms !important;
-}
-
 .gJM69SPy348cM1KPSqJw .q5sGK3JV6QkDrEHfwgWN {
   border-radius: 20px;
+
 }

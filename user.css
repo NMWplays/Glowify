@@ -2696,7 +2696,7 @@ aside video {
 }
 
 /* GLOW DISABLED MODE */
-   
+
 :root.glowify-glow-disabled .Root__main-view,
 :root.glowify-glow-disabled .main-home-filterChipsSection,
 :root.glowify-glow-disabled .main-yourLibraryX-entryPoints,
@@ -2888,7 +2888,8 @@ aside video {
 .yOSFN8gjw7LPo74pYe_g,
 :root.glowify-glow-disabled .iIaWJ3qSDLsKHwNCvv_g,
 :root.glowify-glow-disabled .AXKAVR_1_6sd4OEf3HPl,
-:root.glowify-glow-disabled .L7sNjiJDD8O4xxgMC_Uw:hover, .CmdG6rptgpq5PPNEDbu5:hover,
+:root.glowify-glow-disabled .L7sNjiJDD8O4xxgMC_Uw:hover,
+.CmdG6rptgpq5PPNEDbu5:hover,
 :root.glowify-glow-disabled .jGqRK1aWJbi9E8KQfXNk,
 :root.glowify-glow-disabled .GEo_ZmtdsGF5OCzbpaRY {
   box-shadow: none !important;
@@ -2922,4 +2923,11 @@ aside video {
 .gJM69SPy348cM1KPSqJw .q5sGK3JV6QkDrEHfwgWN {
   border-radius: 20px;
 
+}
+
+.qC4GlxGtxeTM1gGsftbJ {
+  background-color: transparent;
+  border-radius: 10px;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }

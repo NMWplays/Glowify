@@ -2850,7 +2850,7 @@ aside video {
 :root.glowify-glow-disabled .yiRHu4qsmlXpKcnFQsm2:hover,
 :root.glowify-glow-disabled .main-yourLibraryX-libraryItemContainer .os-scrollbar-vertical:active .os-scrollbar-handle[data-group-by]:after,
 :root.glowify-glow-disabled .main-contextMenu-tippy,
-.main-contextMenu-tippyEnterActive,
+:root.glowify-glow-disabled .main-contextMenu-tippyEnterActive,
 :root.glowify-glow-disabled .search-searchCategory-carouselButton,
 :root.glowify-glow-disabled .AZ6uIUy8_YPogVERteBi:hover,
 :root.glowify-glow-disabled .Q8TIE2Y2AX304EkuFSZh,
@@ -2885,13 +2885,15 @@ aside video {
 :root.glowify-glow-disabled .TXqa_5BNj1JeWzfCW8lP,
 :root.glowify-glow-disabled .ZuOMABESRg0Bpv8S9642,
 :root.glowify-glow-disabled .jX1eb5CcZMAuXo_wmZI0,
-.yOSFN8gjw7LPo74pYe_g,
+:root.glowify-glow-disabled .yOSFN8gjw7LPo74pYe_g,
 :root.glowify-glow-disabled .iIaWJ3qSDLsKHwNCvv_g,
 :root.glowify-glow-disabled .AXKAVR_1_6sd4OEf3HPl,
 :root.glowify-glow-disabled .L7sNjiJDD8O4xxgMC_Uw:hover,
-.CmdG6rptgpq5PPNEDbu5:hover,
+:root.glowify-glow-disabled .CmdG6rptgpq5PPNEDbu5:hover,
 :root.glowify-glow-disabled .jGqRK1aWJbi9E8KQfXNk,
-:root.glowify-glow-disabled .GEo_ZmtdsGF5OCzbpaRY {
+:root.glowify-glow-disabled .GEo_ZmtdsGF5OCzbpaRY,
+:root.glowify-glow-disabled .jQeUuPxWXRSzU5SZ4EFw:focus-within,
+:root.glowify-glow-disabled .jQeUuPxWXRSzU5SZ4EFw:hover {
   box-shadow: none !important;
   outline: solid 1px var(--accent-color) !important;
 }

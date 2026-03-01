@@ -2940,3 +2940,8 @@ aside video {
   backdrop-filter: blur(2rem);
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }
+
+.q5yNYsAl_GMkOgQnquWI:before,
+.YrVXiSMvnPFGqwDCePCf[aria-checked=true] {
+  border-radius: 13px;
+}

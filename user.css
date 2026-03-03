@@ -2893,7 +2893,8 @@ aside video {
 :root.glowify-glow-disabled .jGqRK1aWJbi9E8KQfXNk,
 :root.glowify-glow-disabled .GEo_ZmtdsGF5OCzbpaRY,
 :root.glowify-glow-disabled .jQeUuPxWXRSzU5SZ4EFw:focus-within,
-:root.glowify-glow-disabled .jQeUuPxWXRSzU5SZ4EFw:hover {
+:root.glowify-glow-disabled .jQeUuPxWXRSzU5SZ4EFw:hover,
+:root.glowify-glow-disabled .ECPp6IdvnpVhwSdTplfc {
   box-shadow: none !important;
   outline: solid 1px var(--accent-color) !important;
 }

@@ -2894,7 +2894,12 @@ aside video {
 :root.glowify-glow-disabled .GEo_ZmtdsGF5OCzbpaRY,
 :root.glowify-glow-disabled .jQeUuPxWXRSzU5SZ4EFw:focus-within,
 :root.glowify-glow-disabled .jQeUuPxWXRSzU5SZ4EFw:hover,
-:root.glowify-glow-disabled .ECPp6IdvnpVhwSdTplfc {
+:root.glowify-glow-disabled .ECPp6IdvnpVhwSdTplfc,
+:root.glowify-glow-disabled .Q4LnnBmyoXc5ojyZzR5V,
+:root.glowify-glow-disabled .Q4e5h5G6qGXM2uKkgUyo:hover,
+:root.glowify-glow-disabled .Q4e5h5G6qGXM2uKkgUyo:hover:after,
+:root.glowify-glow-disabled .SgZMfBWLnJtiwqMVOdQv,
+:root.glowify-glow-disabled .LZo8XBUMlhBb08g0x975 {
   box-shadow: none !important;
   outline: solid 1px var(--accent-color) !important;
 }

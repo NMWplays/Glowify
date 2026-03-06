@@ -2951,3 +2951,13 @@ aside video {
 .YrVXiSMvnPFGqwDCePCf[aria-checked=true] {
   border-radius: 13px;
 }
+
+@media (max-width: 1600px) {
+  .BntgkZDiA74b6eLOX2rQ {
+    margin-top: 15px;
+  }
+}
+
+span.e-91000-text.encore-text-headline-large.encore-internal-color-text-base {
+    white-space: nowrap;
+}

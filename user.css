@@ -10,14 +10,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  filter: blur(var(--glowify-bg-blur, 7px)) brightness(var(--glowify-bg-brightness, 80%));
+  filter: blur(var(--glowify-bg-blur, 7px)) brightness(var(--glowify-bg-brightness, 45%));
   opacity: 0;
   transition: opacity 0.6s ease;
 }
 
 .layer-a.active,
 .layer-b.active {
-  opacity: 0.55;
+  opacity: 1;
 }
 
 /* Animated Background - Apple Music Style */

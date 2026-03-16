@@ -2243,6 +2243,30 @@ svg.e-91000-icon.e-91000-baseline {
   transform: scale(1.4);
 }
 
+.lmcItfTROIyVIjVB6cEd {
+  text-align: center;
+}
+
+.lmcItfTROIyVIjVB6cEd .HGG8AmiJv1g1rsfM9iXp .lyrics-lyricsContent-lyric {
+  filter: blur(1.5px);
+  transform: scale(0.9);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.lmcItfTROIyVIjVB6cEd .HGG8AmiJv1g1rsfM9iXp .lyrics-lyricsContent-lyric.lyrics-lyricsContent-active {
+  filter: none;
+  transform: scale(1.0);
+}
+
+.lmcItfTROIyVIjVB6cEd.Li269NgzkU2gI4KOP9sM {
+  background-color: transparent;
+}
+
+.lmcItfTROIyVIjVB6cEd.RXRGSIFllAhUYWKYlANd {
+  max-height: 265px;
+}
+
 /*Focused Lyrics End*/
 
 div#lyrics-background-root {

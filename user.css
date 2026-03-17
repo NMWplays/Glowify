@@ -2927,7 +2927,8 @@ aside video {
 :root.glowify-glow-disabled .glowifyPopover,
 :root.glowify-glow-disabled .glowifyTooltipPopup,
 :root.glowify-glow-disabled .glowifyColorSwatch,
-:root.glowify-glow-disabled .G7Iy1rF5gVWMtmsJ5EDX:hover {
+:root.glowify-glow-disabled .G7Iy1rF5gVWMtmsJ5EDX:hover,
+:root.glowify-glow-disabled .main-trackList-trackListRow:focus-within {
   box-shadow: none !important;
   outline: solid 1px var(--glowify-outline-accent, var(--accent-color)) !important;
 }

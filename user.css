@@ -3009,7 +3009,8 @@ aside video {
 :root.glowify-glow-disabled .CO34wNPAbR8mpcdD:hover,
 :root.glowify-glow-disabled .EpfIE3glwAOGcNT6,
 :root.glowify-glow-disabled .x-keyboard,
-:root.glowify-glow-disabled .laOEpXn67bgflATz:hover {
+:root.glowify-glow-disabled .laOEpXn67bgflATz:hover,
+:root.glowify-glow-disabled .WuleKmKt7kwEObvJ {
   box-shadow: none !important;
   outline: solid 1px var(--glowify-outline-accent, var(--accent-color)) !important;
 }
@@ -3890,5 +3891,16 @@ button.encore-text-body-small-bold.e-10180-legacy-button-primary.e-10180-legacy-
 
 .laOEpXn67bgflATz:hover {
   transform: scale(1.02);
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.iq16tKI_q90F_cM1 {
+  border-radius: 15px;
+}
+
+.WuleKmKt7kwEObvJ {
+  border-radius: 20px;
+  background-color: transparent;
+  backdrop-filter: blur(2rem);
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }

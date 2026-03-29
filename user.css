@@ -3007,7 +3007,9 @@ aside video {
 :root.glowify-glow-disabled .tlq9Tt69FX4bauLX,
 :root.glowify-glow-disabled .JthDv0xUCm8rLhu6,
 :root.glowify-glow-disabled .CO34wNPAbR8mpcdD:hover,
-:root.glowify-glow-disabled .EpfIE3glwAOGcNT6 {
+:root.glowify-glow-disabled .EpfIE3glwAOGcNT6,
+:root.glowify-glow-disabled .x-keyboard,
+:root.glowify-glow-disabled .laOEpXn67bgflATz:hover {
   box-shadow: none !important;
   outline: solid 1px var(--glowify-outline-accent, var(--accent-color)) !important;
 }
@@ -3855,5 +3857,38 @@ span.e-10180-text.encore-text-body-medium.encore-internal-color-text-base {
   background-color: transparent;
   border-radius: 8px;
   backdrop-filter: blur(2rem);
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+button.encore-text-body-small-bold.e-10180-legacy-button-primary.e-10180-legacy-button {
+  display: none;
+}
+
+.ScclvBC0NsMgQLQC {
+  display: none;
+}
+
+.x-keyboard {
+  border-radius: 8px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+  border: none;
+}
+
+.UnGj03v3OsgoPvQp video {
+  border-radius: 20px;
+}
+
+.L_TmbGV6e5MUauO3 {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.laOEpXn67bgflATz {
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.laOEpXn67bgflATz:hover {
+  transform: scale(1.03);
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }

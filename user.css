@@ -2962,7 +2962,7 @@ aside video {
 :root.glowify-glow-disabled .e-10180-box--tinted,
 :root.glowify-glow-disabled .main-yourLibraryX-listItem:hover,
 :root.glowify-glow-disabled .main-nowPlayingView-headerWrapper,
-:root.glowify-glow-disabled button#queue-tab:hover, 
+:root.glowify-glow-disabled button#queue-tab:hover,
 :root.glowify-glow-disabled button#history-tab:hover,
 :root.glowify-glow-disabled .Root__globalNav .main-globalNav-navLink,
 :root.glowify-glow-disabled .Xju6pjWnQEjwZpra,
@@ -2999,13 +2999,15 @@ aside video {
 :root.glowify-glow-disabled .yXN52o27ZsCRQpNt:after,
 :root.glowify-glow-disabled .DKC3v0zmTNY45nJY,
 :root.glowify-glow-disabled .iaaQKMqcyZQBT9bn:hover,
-:root.glowify-glow-disabled .iGrz9_1aUhECnc_S:hover, .iGrz9_1aUhECnc_S:focus-within,
+:root.glowify-glow-disabled .iGrz9_1aUhECnc_S:hover,
+.iGrz9_1aUhECnc_S:focus-within,
 :root.glowify-glow-disabled .e-10180-box--elevated,
 :root.glowify-glow-disabled .main-nowPlayingView-actionButton,
 :root.glowify-glow-disabled .cTnmA013TQbGR3SF,
 :root.glowify-glow-disabled .tlq9Tt69FX4bauLX,
 :root.glowify-glow-disabled .JthDv0xUCm8rLhu6,
-:root.glowify-glow-disabled .CO34wNPAbR8mpcdD:hover {
+:root.glowify-glow-disabled .CO34wNPAbR8mpcdD:hover,
+:root.glowify-glow-disabled .EpfIE3glwAOGcNT6 {
   box-shadow: none !important;
   outline: solid 1px var(--glowify-outline-accent, var(--accent-color)) !important;
 }
@@ -3808,7 +3810,8 @@ p.e-10180-text.encore-text-body-small.encore-internal-color-text-base {
   opacity: 0;
 }
 
-._1_RTnc4byw00IbL .TLo_mZ7hWAaT3fsA, .UJhO24covsIMd2nP .TLo_mZ7hWAaT3fsA {
+._1_RTnc4byw00IbL .TLo_mZ7hWAaT3fsA,
+.UJhO24covsIMd2nP .TLo_mZ7hWAaT3fsA {
   background-color: transparent;
 }
 
@@ -3845,5 +3848,12 @@ span.e-10180-text.encore-text-body-medium.encore-internal-color-text-base {
 
 .Gg1Ahel4Ik0T9YSl {
   border-radius: 20px;
+  box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
+}
+
+.EpfIE3glwAOGcNT6 {
+  background-color: transparent;
+  border-radius: 8px;
+  backdrop-filter: blur(2rem);
   box-shadow: 0 0 25px 8px var(--glowify-glow-accent, var(--accent-color));
 }

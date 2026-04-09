@@ -4160,11 +4160,3 @@ img.e-10180-legacy-image.e-10180-legacy-list-row-image {
 }
 
 /*Podcast Page End*/
-
-/*Extensions Quick Que Fix*/
-
-.main-trackList-trackListRowGrid {
-  grid-template-columns: var(--grid-template-columns) !important;
-}
-
-/*Extensions Quick Que Fix End*/

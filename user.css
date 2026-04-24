@@ -4281,3 +4281,7 @@ span.e-10310-overflow-wrap-anywhere.e-10310-button-primary__inner.encore-inverte
   box-shadow: 0 0 var(--glowify-glow-blur, 25px) var(--glowify-glow-spread, 8px) var(--glowify-glow-accent, var(--accent-color));
   backdrop-filter: blur(2rem);
 }
+
+.main-userWidget-box {
+  background-color: transparent;
+}

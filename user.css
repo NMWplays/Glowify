@@ -4285,3 +4285,14 @@ span.e-10310-overflow-wrap-anywhere.e-10310-button-primary__inner.encore-inverte
 .main-userWidget-box {
   background-color: transparent;
 }
+
+.e-10310-box--elevated {
+  background-color: transparent;
+  box-shadow: 0 0 var(--glowify-glow-blur, 25px) var(--glowify-glow-spread, 8px) var(--glowify-glow-accent, var(--accent-color));
+  border-radius: 17px;
+  backdrop-filter: blur(2rem);
+}
+
+span.e-10310-text.encore-text-body-medium.encore-internal-color-text-base {
+  color: white;
+}

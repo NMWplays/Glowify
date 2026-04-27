@@ -1,4 +1,5 @@
 "use strict";
+console.log("Glowify-Settings: File loaded!");
 (() => {
   // Extensions/_src/react-shim.ts
   function getReact() {
@@ -52,7 +53,7 @@
 
   // node_modules/react-colorful/dist/index.mjs
   function u() {
-    return (u = Object.assign || function(e) {
+    return (u = Object.assign || function (e) {
       for (var r = 1; r < arguments.length; r++) {
         var t = arguments[r];
         for (var n in t) Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
@@ -67,44 +68,44 @@
     return o;
   }
   function i(e) {
-    var t = useRef(e), n = useRef(function(e2) {
+    var t = useRef(e), n = useRef(function (e2) {
       t.current && t.current(e2);
     });
     return t.current = e, n.current;
   }
-  var s = function(e, r, t) {
+  var s = function (e, r, t) {
     return void 0 === r && (r = 0), void 0 === t && (t = 1), e > t ? t : e < r ? r : e;
   };
-  var f = function(e) {
+  var f = function (e) {
     return "touches" in e;
   };
-  var v = function(e) {
+  var v = function (e) {
     return e && e.ownerDocument.defaultView || self;
   };
-  var d = function(e, r, t) {
-    var n = e.getBoundingClientRect(), o = f(r) ? (function(e2, r2) {
+  var d = function (e, r, t) {
+    var n = e.getBoundingClientRect(), o = f(r) ? (function (e2, r2) {
       for (var t2 = 0; t2 < e2.length; t2++) if (e2[t2].identifier === r2) return e2[t2];
       return e2[0];
     })(r.touches, t) : r;
     return { left: s((o.pageX - (n.left + v(e).pageXOffset)) / n.width), top: s((o.pageY - (n.top + v(e).pageYOffset)) / n.height) };
   };
-  var h = function(e) {
+  var h = function (e) {
     !f(e) && e.preventDefault();
   };
-  var m = react_shim_default.memo(function(o) {
-    var a = o.onMove, l = o.onKey, s2 = c(o, ["onMove", "onKey"]), m2 = useRef(null), g2 = i(a), p2 = i(l), b2 = useRef(null), _2 = useRef(false), x2 = useMemo(function() {
-      var e = function(e2) {
+  var m = react_shim_default.memo(function (o) {
+    var a = o.onMove, l = o.onKey, s2 = c(o, ["onMove", "onKey"]), m2 = useRef(null), g2 = i(a), p2 = i(l), b2 = useRef(null), _2 = useRef(false), x2 = useMemo(function () {
+      var e = function (e2) {
         h(e2), (f(e2) ? e2.touches.length > 0 : e2.buttons > 0) && m2.current ? g2(d(m2.current, e2, b2.current)) : t(false);
-      }, r = function() {
+      }, r = function () {
         return t(false);
       };
       function t(t2) {
         var n = _2.current, o2 = v(m2.current), a2 = t2 ? o2.addEventListener : o2.removeEventListener;
         a2(n ? "touchmove" : "mousemove", e), a2(n ? "touchend" : "mouseup", r);
       }
-      return [function(e2) {
+      return [function (e2) {
         var r2 = e2.nativeEvent, n = m2.current;
-        if (n && (h(r2), !(function(e3, r3) {
+        if (n && (h(r2), !(function (e3, r3) {
           return r3 && !f(e3);
         })(r2, _2.current) && n)) {
           if (f(r2)) {
@@ -114,100 +115,104 @@
           }
           n.focus(), g2(d(n, r2, b2.current)), t(true);
         }
-      }, function(e2) {
+      }, function (e2) {
         var r2 = e2.which || e2.keyCode;
         r2 < 37 || r2 > 40 || (e2.preventDefault(), p2({ left: 39 === r2 ? 0.05 : 37 === r2 ? -0.05 : 0, top: 40 === r2 ? 0.05 : 38 === r2 ? -0.05 : 0 }));
       }, t];
     }, [p2, g2]), C2 = x2[0], E = x2[1], H = x2[2];
-    return useEffect(function() {
+    return useEffect(function () {
       return H;
     }, [H]), react_shim_default.createElement("div", u({}, s2, { onTouchStart: C2, onMouseDown: C2, className: "react-colorful__interactive", ref: m2, onKeyDown: E, tabIndex: 0, role: "slider" }));
   });
-  var g = function(e) {
+  var g = function (e) {
     return e.filter(Boolean).join(" ");
   };
-  var p = function(r) {
+  var p = function (r) {
     var t = r.color, n = r.left, o = r.top, a = void 0 === o ? 0.5 : o, l = g(["react-colorful__pointer", r.className]);
     return react_shim_default.createElement("div", { className: l, style: { top: 100 * a + "%", left: 100 * n + "%" } }, react_shim_default.createElement("div", { className: "react-colorful__pointer-fill", style: { backgroundColor: t } }));
   };
-  var b = function(e, r, t) {
+  var b = function (e, r, t) {
     return void 0 === r && (r = 0), void 0 === t && (t = Math.pow(10, r)), Math.round(t * e) / t;
   };
   var _ = { grad: 0.9, turn: 360, rad: 360 / (2 * Math.PI) };
-  var x = function(e) {
+  var x = function (e) {
     return L(C(e));
   };
-  var C = function(e) {
+  var C = function (e) {
     return "#" === e[0] && (e = e.substring(1)), e.length < 6 ? { r: parseInt(e[0] + e[0], 16), g: parseInt(e[1] + e[1], 16), b: parseInt(e[2] + e[2], 16), a: 4 === e.length ? b(parseInt(e[3] + e[3], 16) / 255, 2) : 1 } : { r: parseInt(e.substring(0, 2), 16), g: parseInt(e.substring(2, 4), 16), b: parseInt(e.substring(4, 6), 16), a: 8 === e.length ? b(parseInt(e.substring(6, 8), 16) / 255, 2) : 1 };
   };
-  var w = function(e) {
+  var w = function (e) {
     return K(I(e));
   };
-  var y = function(e) {
+  var y = function (e) {
     var r = e.s, t = e.v, n = e.a, o = (200 - r) * t / 100;
     return { h: b(e.h), s: b(o > 0 && o < 200 ? r * t / 100 / (o <= 100 ? o : 200 - o) * 100 : 0), l: b(o / 2), a: b(n, 2) };
   };
-  var q = function(e) {
+  var q = function (e) {
     var r = y(e);
     return "hsl(" + r.h + ", " + r.s + "%, " + r.l + "%)";
   };
-  var I = function(e) {
+  var I = function (e) {
     var r = e.h, t = e.s, n = e.v, o = e.a;
     r = r / 360 * 6, t /= 100, n /= 100;
     var a = Math.floor(r), l = n * (1 - t), u2 = n * (1 - (r - a) * t), c2 = n * (1 - (1 - r + a) * t), i2 = a % 6;
     return { r: b(255 * [n, u2, l, l, c2, n][i2]), g: b(255 * [c2, n, n, u2, l, l][i2]), b: b(255 * [l, l, c2, n, n, u2][i2]), a: b(o, 2) };
   };
-  var D = function(e) {
+  var D = function (e) {
     var r = e.toString(16);
     return r.length < 2 ? "0" + r : r;
   };
-  var K = function(e) {
+  var K = function (e) {
     var r = e.r, t = e.g, n = e.b, o = e.a, a = o < 1 ? D(b(255 * o)) : "";
     return "#" + D(r) + D(t) + D(n) + a;
   };
-  var L = function(e) {
+  var L = function (e) {
     var r = e.r, t = e.g, n = e.b, o = e.a, a = Math.max(r, t, n), l = a - Math.min(r, t, n), u2 = l ? a === r ? (t - n) / l : a === t ? 2 + (n - r) / l : 4 + (r - t) / l : 0;
     return { h: b(60 * (u2 < 0 ? u2 + 6 : u2)), s: b(a ? l / a * 100 : 0), v: b(a / 255 * 100), a: o };
   };
-  var S = react_shim_default.memo(function(r) {
+  var S = react_shim_default.memo(function (r) {
     var t = r.hue, n = r.onChange, o = g(["react-colorful__hue", r.className]);
-    return react_shim_default.createElement("div", { className: o }, react_shim_default.createElement(m, { onMove: function(e) {
-      n({ h: 360 * e.left });
-    }, onKey: function(e) {
-      n({ h: s(t + 360 * e.left, 0, 360) });
-    }, "aria-label": "Hue", "aria-valuenow": b(t), "aria-valuemax": "360", "aria-valuemin": "0" }, react_shim_default.createElement(p, { className: "react-colorful__hue-pointer", left: t / 360, color: q({ h: t, s: 100, v: 100, a: 1 }) })));
+    return react_shim_default.createElement("div", { className: o }, react_shim_default.createElement(m, {
+      onMove: function (e) {
+        n({ h: 360 * e.left });
+      }, onKey: function (e) {
+        n({ h: s(t + 360 * e.left, 0, 360) });
+      }, "aria-label": "Hue", "aria-valuenow": b(t), "aria-valuemax": "360", "aria-valuemin": "0"
+    }, react_shim_default.createElement(p, { className: "react-colorful__hue-pointer", left: t / 360, color: q({ h: t, s: 100, v: 100, a: 1 }) })));
   });
-  var T = react_shim_default.memo(function(r) {
+  var T = react_shim_default.memo(function (r) {
     var t = r.hsva, n = r.onChange, o = { backgroundColor: q({ h: t.h, s: 100, v: 100, a: 1 }) };
-    return react_shim_default.createElement("div", { className: "react-colorful__saturation", style: o }, react_shim_default.createElement(m, { onMove: function(e) {
-      n({ s: 100 * e.left, v: 100 - 100 * e.top });
-    }, onKey: function(e) {
-      n({ s: s(t.s + 100 * e.left, 0, 100), v: s(t.v - 100 * e.top, 0, 100) });
-    }, "aria-label": "Color", "aria-valuetext": "Saturation " + b(t.s) + "%, Brightness " + b(t.v) + "%" }, react_shim_default.createElement(p, { className: "react-colorful__saturation-pointer", top: 1 - t.v / 100, left: t.s / 100, color: q(t) })));
+    return react_shim_default.createElement("div", { className: "react-colorful__saturation", style: o }, react_shim_default.createElement(m, {
+      onMove: function (e) {
+        n({ s: 100 * e.left, v: 100 - 100 * e.top });
+      }, onKey: function (e) {
+        n({ s: s(t.s + 100 * e.left, 0, 100), v: s(t.v - 100 * e.top, 0, 100) });
+      }, "aria-label": "Color", "aria-valuetext": "Saturation " + b(t.s) + "%, Brightness " + b(t.v) + "%"
+    }, react_shim_default.createElement(p, { className: "react-colorful__saturation-pointer", top: 1 - t.v / 100, left: t.s / 100, color: q(t) })));
   });
-  var F = function(e, r) {
+  var F = function (e, r) {
     if (e === r) return true;
     for (var t in e) if (e[t] !== r[t]) return false;
     return true;
   };
-  var X = function(e, r) {
+  var X = function (e, r) {
     return e.toLowerCase() === r.toLowerCase() || F(C(e), C(r));
   };
   function Y(e, t, l) {
-    var u2 = i(l), c2 = useState(function() {
+    var u2 = i(l), c2 = useState(function () {
       return e.toHsva(t);
     }), s2 = c2[0], f2 = c2[1], v2 = useRef({ color: t, hsva: s2 });
-    useEffect(function() {
+    useEffect(function () {
       if (!e.equal(t, v2.current.color)) {
         var r = e.toHsva(t);
         v2.current = { hsva: r, color: t }, f2(r);
       }
-    }, [t, e]), useEffect(function() {
+    }, [t, e]), useEffect(function () {
       var r;
       F(s2, v2.current.hsva) || e.equal(r = e.fromHsva(s2), v2.current.color) || (v2.current = { hsva: s2, color: r }, u2(r));
     }, [s2, e, u2]);
-    var d2 = useCallback(function(e2) {
-      f2(function(r) {
+    var d2 = useCallback(function (e2) {
+      f2(function (r) {
         return Object.assign({}, r, e2);
       });
     }, []);
@@ -215,12 +220,12 @@
   }
   var R;
   var V = "undefined" != typeof window ? useLayoutEffect : useEffect;
-  var $ = function() {
+  var $ = function () {
     return R || ("undefined" != typeof __webpack_nonce__ ? __webpack_nonce__ : void 0);
   };
   var J = /* @__PURE__ */ new Map();
-  var Q = function(e) {
-    V(function() {
+  var Q = function (e) {
+    V(function () {
       var r = e.current ? e.current.ownerDocument : document;
       if (void 0 !== r && !J.has(r)) {
         var t = r.createElement("style");
@@ -230,16 +235,18 @@
       }
     }, []);
   };
-  var U = function(t) {
+  var U = function (t) {
     var n = t.className, o = t.colorModel, a = t.color, l = void 0 === a ? o.defaultColor : a, i2 = t.onChange, s2 = c(t, ["className", "colorModel", "color", "onChange"]), f2 = useRef(null);
     Q(f2);
     var v2 = Y(o, l, i2), d2 = v2[0], h2 = v2[1], m2 = g(["react-colorful", n]);
     return react_shim_default.createElement("div", u({}, s2, { ref: f2, className: m2 }), react_shim_default.createElement(T, { hsva: d2, onChange: h2 }), react_shim_default.createElement(S, { hue: d2.h, onChange: h2, className: "react-colorful__last-control" }));
   };
-  var W = { defaultColor: "000", toHsva: x, fromHsva: function(e) {
-    return w({ h: e.h, s: e.s, v: e.v, a: 1 });
-  }, equal: X };
-  var Z = function(r) {
+  var W = {
+    defaultColor: "000", toHsva: x, fromHsva: function (e) {
+      return w({ h: e.h, s: e.s, v: e.v, a: 1 });
+    }, equal: X
+  };
+  var Z = function (r) {
     return react_shim_default.createElement(U, u({}, r, { colorModel: W }));
   };
 
@@ -257,6 +264,11 @@
   function readNum(key, fallback) {
     const raw = localStorage.getItem(key);
     const parsed = raw === null ? NaN : parseInt(raw, 10);
+    return Number.isFinite(parsed) ? parsed : fallback;
+  }
+  function readFloat(key, fallback) {
+    const raw = localStorage.getItem(key);
+    const parsed = raw === null ? NaN : parseFloat(raw);
     return Number.isFinite(parsed) ? parsed : fallback;
   }
   function ensureStyleTag(id) {
@@ -384,6 +396,10 @@
       ensureHighPerformanceModeApplied();
       ensurePopupBounceModeApplied();
       window.dispatchEvent(new Event("glowifyBackgroundChange"));
+      document.documentElement.classList.remove("glowify-library-full-height");
+      document.documentElement.classList.remove("glowify-library-custom-height");
+      document.documentElement.style.setProperty("--glowify-library-height-increase", "0px");
+      document.documentElement.style.setProperty("--glowify-player-center-offset", "48px");
       window.dispatchEvent(new Event("glowifyAccentBoostChange"));
       window.dispatchEvent(new Event("glowifyLyricsModeChange"));
       window.dispatchEvent(new Event("glowifyNpvcUpdate"));
@@ -553,6 +569,23 @@
     if (!root) return;
     if (mode === "custom" && image) root.style.setProperty("--image_url", `url("${image}")`);
     else if (mode === "url" && bgUrl) root.style.setProperty("--image_url", `url("${bgUrl}")`);
+
+    // Library Left Bar Initial Load
+    const libMode = localStorage.getItem("glowify-library-left-bar") || "default";
+    if (libMode === "custom" || libMode === "full-height") {
+      document.documentElement.classList.add("glowify-library-custom-height");
+      const inc = libMode === "full-height" ? "77" : (localStorage.getItem("glowify-library-height-increase") || "0");
+      document.documentElement.style.setProperty("--glowify-library-height-increase", inc + "px");
+    } else {
+      document.documentElement.classList.remove("glowify-library-custom-height");
+      document.documentElement.classList.remove("glowify-library-full-height");
+    }
+
+    // Player Offset Initial Load
+    const offset = localStorage.getItem("glowify-player-center-offset") || "48";
+    document.documentElement.style.setProperty("--glowify-player-center-offset", offset + "px");
+    const pMode = localStorage.getItem("glowify-player-width") || "default";
+    applyPlayerWidth(pMode);
   }
   function updateBackground() {
     const mode = localStorage.getItem("glowify-bg-mode") || "dynamic";
@@ -697,7 +730,7 @@
     (function hookHistory() {
       const wrap = (fn) => {
         const orig = history[fn];
-        history[fn] = function(...args) {
+        history[fn] = function (...args) {
           const res = orig.apply(this, args);
           setTimeout(() => {
             if (isArtistPage()) applySavedModeIfArtist();
@@ -759,7 +792,7 @@
   var PLAYER_WIDTH_MODE_KEY = "glowify-player-width";
   var PLAYER_CUSTOM_W_KEY = "glowify-player-custom-width";
   var PLAYER_CUSTOM_H_KEY = "glowify-player-custom-height";
-  var DEFAULT_CUSTOM_WIDTH = 80;
+  var DEFAULT_CUSTOM_WIDTH = 60;
   var DEFAULT_CUSTOM_HEIGHT = 88;
   function getPlayerElement() {
     return document.querySelector(".Root__now-playing-bar");
@@ -767,20 +800,27 @@
   function applyPlayerWidth(mode) {
     const player = getPlayerElement();
     if (!player) return;
+    const offset = localStorage.getItem("glowify-player-center-offset") || "48";
+    document.documentElement.style.setProperty("--glowify-player-center-offset", offset + "px");
+
     if (mode === "theme") {
-      player.style.width = "65%";
+      player.style.width = "60%";
       player.style.margin = "0 auto 5px";
       player.style.height = "";
+      document.documentElement.style.setProperty("--glowify-player-height", "69px");
     } else if (mode === "default") {
-      player.style.width = "unset";
-      player.style.margin = "calc(var(--panel-gap) * -1)";
+      player.style.width = "60%";
+      player.style.margin = "0 auto 5px";
       player.style.height = "";
+      document.documentElement.style.setProperty("--glowify-player-height", "69px");
     } else if (mode === "custom") {
       const w2 = parseFloat(localStorage.getItem(PLAYER_CUSTOM_W_KEY) || String(DEFAULT_CUSTOM_WIDTH));
       const h2 = parseInt(localStorage.getItem(PLAYER_CUSTOM_H_KEY) || String(DEFAULT_CUSTOM_HEIGHT), 10);
-      player.style.width = Number.isFinite(w2) ? w2 + "%" : DEFAULT_CUSTOM_WIDTH + "%";
-      player.style.height = Number.isFinite(h2) ? h2 + "px" : DEFAULT_CUSTOM_HEIGHT + "px";
+      const finalH = Number.isFinite(h2) ? h2 : 88;
+      player.style.width = Number.isFinite(w2) ? Math.min(w2, 97) + "%" : "80%";
+      player.style.height = finalH + "px";
       player.style.margin = "0 auto 5px";
+      document.documentElement.style.setProperty("--glowify-player-height", finalH + "px");
     }
   }
   function applyPlayerRadius(px) {
@@ -904,7 +944,7 @@
     applyBackgroundBrightness(saved);
   }
   function installPlaylistIndicatorVisualizer() {
-    (async function() {
+    (async function () {
       var _a;
       while (!(Spicetify == null ? void 0 : Spicetify.Player) || !((_a = Spicetify == null ? void 0 : Spicetify.Player) == null ? void 0 : _a.data)) await sleep(300);
       let lastSvg = null;
@@ -1058,7 +1098,7 @@
     })();
   }
   function installHomeScreenVisualizer() {
-    (function() {
+    (function () {
       const homeSvgs = /* @__PURE__ */ new Map();
       let wasPlaying = false;
       function createHomeVisualizer(img) {
@@ -1755,11 +1795,12 @@
       const bottom = pbRect ? window.innerHeight - pbRect.top + gp : 72 + gp;
       const leftPos = pbRect ? pbRect.left : 0;
       const rightPos = pbRect ? window.innerWidth - pbRect.right : 0;
+      const nscOffset = readNum("glowify-nsc-offset", 0);
       return `
       #glowify-nsc {
         position: fixed;
         bottom: ${bottom}px;
-        ${pos === "left" ? `left: ${leftPos}px;` : `right: ${rightPos}px;`}
+        ${pos === "left" ? `left: ${leftPos + nscOffset + 6}px;` : `right: ${rightPos - nscOffset + 6}px;`}
         z-index: 9999;
         width: fit-content;
         max-width: ${mw}px;
@@ -2058,6 +2099,9 @@
       apbackground: "K\xFCnstler Seiten Hintergrund:",
       playerWidth: "Player-Breite:",
       playerRadius: "Player Border Radius:",
+      libraryLeftBar: "Linke Library-Leiste:",
+      libraryHeightIncrease: "Library H\xF6hen-Erh\xF6hung (px):",
+      playerCenterOffset: "Player Center-Offset (px):",
       backgroundBlur: "Hintergrund-Unsch\xE4rfe:",
       backgroundBrightness: "Hintergrund-Helligkeit (%):",
       transparentWidth: "Transparente Controls Breite:",
@@ -2090,7 +2134,8 @@
         hide: "Ausblenden",
         url: "URL",
         left: "Links",
-        right: "Rechts"
+        right: "Rechts",
+        fullHeight: "Volle H\xF6he"
       },
       sections: {
         accent: "Akzent",
@@ -2098,6 +2143,7 @@
         background: "Hintergrund",
         artist: "K\xFCnstler",
         player: "Player",
+        library: "Library",
         playlist: "Playlist",
         lyrics: "Lyrics",
         transparent: "Transparente Controls",
@@ -2136,7 +2182,8 @@
         vpad: "Vertikales Padding (px):",
         gapPlayer: "Abstand zum Player (px):",
         borderRadius: "Eckenradius (px):",
-        coverRadius: "Cover-Radius (px):"
+        coverRadius: "Cover-Radius (px):",
+        nscOffset: "NSC-Versatz (px):"
       },
       tooltips: {
         accentColor: "Farbe der Buttons und interaktiven Elemente",
@@ -2158,6 +2205,9 @@
         backgroundBrightness: "Helligkeit des Hintergrundbilds",
         transparentWidth: "Breite der transparenten Fenster-Controls",
         transparentHeight: "H\xF6he der transparenten Fenster-Controls",
+        libraryLeftBar: "Erlaubt es der Library-Leiste, \xFCber den unteren Rand hinaus zu wachsen.",
+        libraryHeightIncrease: "Erh\xF6ht die H\xF6he der Library-Leiste (empfohlen: 102-104px).",
+        playerCenterOffset: "Verschiebt den Player horizontal (positiv = rechts, negativ = links).",
         artistScrollBlur: "Unsch\xE4rfe beim Scrollen auf K\xFCnstler-Seiten",
         artistScrollBrightness: "Helligkeit beim Scrollen auf K\xFCnstler-Seiten",
         playlistHeaderBox: "Box um den Playlist-Header ein-/ausblenden",
@@ -2215,6 +2265,9 @@
       apbackground: "Artist Page Background:",
       playerWidth: "Player Width:",
       playerRadius: "Player Border Radius:",
+      libraryLeftBar: "Library Left Bar:",
+      libraryHeightIncrease: "Library Height Increase (px):",
+      playerCenterOffset: "Player Center Offset (px):",
       backgroundBlur: "Background Blur:",
       backgroundBrightness: "Background Brightness (%):",
       transparentWidth: "Transparent Controls Width:",
@@ -2247,7 +2300,8 @@
         hide: "Hide",
         url: "URL",
         left: "Left",
-        right: "Right"
+        right: "Right",
+        fullHeight: "Full Height"
       },
       sections: {
         accent: "Accent",
@@ -2255,6 +2309,7 @@
         background: "Background",
         artist: "Artist",
         player: "Player",
+        library: "Library",
         playlist: "Playlist",
         lyrics: "Lyrics",
         transparent: "Transparent Controls",
@@ -2293,7 +2348,8 @@
         vpad: "Vertical Padding (px):",
         gapPlayer: "Gap to Player (px):",
         borderRadius: "Border Radius (px):",
-        coverRadius: "Cover Border Radius (px):"
+        coverRadius: "Cover Border Radius (px):",
+        nscOffset: "NSC Offset (px):"
       },
       tooltips: {
         accentColor: "Color of buttons and interactive elements",
@@ -2314,7 +2370,12 @@
         backgroundBlur: "Strength of the background blur",
         backgroundBrightness: "Brightness of the background image",
         transparentWidth: "Width of transparent window controls",
-        transparentHeight: "Height of transparent window controls",
+        transparentHeight: "Height of the transparent controls",
+        libraryLeftBar: "Allows the library bar to grow beyond the bottom edge.",
+        libraryHeightIncrease: "Increases the height of the library bar (recommended: 102-104px).",
+        playerCenterOffset: "Shifts the player horizontally (positive = right, negative = left).",
+        nscOffset: "Horizontal offset for the Next Song Card.",
+        nscOffset: "Horizontal offset for the Next Song Card.",
         artistScrollBlur: "Blur when scrolling on artist pages",
         artistScrollBrightness: "Brightness when scrolling on artist pages",
         playlistHeaderBox: "Show or hide the playlist header box",
@@ -3773,7 +3834,7 @@
     const lang = glowifyTranslations[clientLocale] ? clientLocale : "en";
     return glowifyTranslations[lang];
   }
-  var GLOWIFY_GEAR_HOST_SELECTOR = ".main-actionButtons";
+  var GLOWIFY_GEAR_HOST_SELECTOR = ".main-topBar-actionButtons, .main-actionButtons, .main-topBar-rightColumn";
   function ensureGlowifyGearStyle() {
     if (document.getElementById("glowify-gear-style")) return;
     const style = document.createElement("style");
@@ -3813,9 +3874,18 @@
   }
   function ensureGlowifyGearButton(t) {
     var _a;
-    const host = document.querySelector(GLOWIFY_GEAR_HOST_SELECTOR);
-    if (!host) return false;
+    let host = document.querySelector(GLOWIFY_GEAR_HOST_SELECTOR);
+    const bell = document.querySelector(".main-whatsNewFeed-whatsNewFeed, .main-topBar-whatsNewFeed, [class*='whatsNewFeed']");
+    if (!host && bell) host = bell.parentElement;
+    if (!host) {
+      if (window._glowifyGearLogOnce !== false) {
+        console.log("Glowify-Gear: Host not found yet. Selector:", GLOWIFY_GEAR_HOST_SELECTOR);
+        window._glowifyGearLogOnce = false;
+      }
+      return false;
+    }
     if ((_a = host.querySelector) == null ? void 0 : _a.call(host, "#glowify-settings-gear-btn")) return true;
+    console.log("Glowify-Gear: Injecting button into", host);
     ensureGlowifyGearStyle();
     ensureSettingsUiStyle();
     const btn = document.createElement("button");
@@ -3848,7 +3918,11 @@
     btn.addEventListener("click", () => {
       if (typeof window.showGlowifySettingsMenu === "function") window.showGlowifySettingsMenu();
     });
-    host.insertBefore(btn, host.firstChild);
+    if (bell && bell.parentElement === host) {
+      host.insertBefore(btn, bell);
+    } else {
+      host.insertBefore(btn, host.firstChild);
+    }
     return true;
   }
   function initGlowifyGearInjection(t) {
@@ -4644,24 +4718,25 @@
     ), menu && ((ReactDOM == null ? void 0 : ReactDOM.createPortal) ? ReactDOM.createPortal(menu, document.body) : menu));
   }
   function Stepper(props) {
+    const step = props.step || 1;
     const [text, setText] = React.useState(String(props.value));
     React.useEffect(() => {
       setText(String(props.value));
     }, [props.value]);
     const commit = (raw) => {
-      const parsed = parseInt(raw, 10);
+      const parsed = parseFloat(raw);
       if (!Number.isFinite(parsed)) {
         setText(String(props.value));
         return;
       }
-      props.onChange(clamp(parsed, props.min, props.max));
+      props.onChange(clamp(Number(parsed.toFixed(2)), props.min, props.max));
     };
     return /* @__PURE__ */ React.createElement("div", { className: "glowifyInline" }, /* @__PURE__ */ React.createElement(
       "button",
       {
         type: "button",
         className: "glowifyControlSurface glowifyStepperBtn",
-        onClick: () => props.onChange(clamp(props.value - 1, props.min, props.max))
+        onClick: () => props.onChange(clamp(Number((props.value - step).toFixed(2)), props.min, props.max))
       },
       "-"
     ), /* @__PURE__ */ React.createElement(
@@ -4669,7 +4744,7 @@
       {
         className: "glowifyControlSurface glowifyNumberInput",
         type: "text",
-        inputMode: "numeric",
+        inputMode: props.step ? "decimal" : "numeric",
         value: text,
         onChange: (e) => setText(e.target.value),
         onBlur: () => commit(text),
@@ -4682,7 +4757,7 @@
       {
         type: "button",
         className: "glowifyControlSurface glowifyStepperBtn",
-        onClick: () => props.onChange(clamp(props.value + 1, props.min, props.max))
+        onClick: () => props.onChange(clamp(Number((props.value + step).toFixed(2)), props.min, props.max))
       },
       "+"
     ));
@@ -4722,7 +4797,7 @@
     const [artistBgMode, setArtistBgMode] = React.useState(readLS("glowify-artist-bg-mode", "theme"));
     const [artistBgUrl, setArtistBgUrl] = React.useState(readLS("glowify-artist-bg-url", ""));
     const [playerWidthMode, setPlayerWidthMode] = React.useState(readLS("glowify-player-width", "default"));
-    const [playerCustomW, setPlayerCustomW] = React.useState(readNum("glowify-player-custom-width", DEFAULT_CUSTOM_WIDTH));
+    const [playerCustomW, setPlayerCustomW] = React.useState(readFloat("glowify-player-custom-width", DEFAULT_CUSTOM_WIDTH));
     const [playerCustomH, setPlayerCustomH] = React.useState(readNum("glowify-player-custom-height", DEFAULT_CUSTOM_HEIGHT));
     const [playlistHeader, setPlaylistHeader] = React.useState(readLS("glowify-playlist-header-mode", "show"));
     const [lyricsMode, setLyricsMode] = React.useState(readLS("glowify-lyrics-mode", "romanization"));
@@ -4752,9 +4827,13 @@
     const [nscVpad, setNscVpad] = React.useState(readNum(NSC_KEYS.vpad, NSC_DEFAULTS.vpad));
     const [nscGapPlayer, setNscGapPlayer] = React.useState(readNum(NSC_KEYS.gapPlayer, NSC_DEFAULTS.gapPlayer));
     const [nscBorderRadius, setNscBorderRadius] = React.useState(readNum(NSC_KEYS.borderRadius, NSC_DEFAULTS.borderRadius));
+    const [nscOffset, setNscOffset] = React.useState(readNum("glowify-nsc-offset", 0));
     const [nscCoverRadius, setNscCoverRadius] = React.useState(readNum(NSC_KEYS.coverRadius, NSC_DEFAULTS.coverRadius));
     const [highPerformance, setHighPerformance] = React.useState(readLS("glowify-high-performance", "off") === "on");
     const [popupBounceEnabled, setPopupBounceEnabled] = React.useState(readLS("glowify-popup-bounce", "on") === "on");
+    const [libraryLeftBar, setLibraryLeftBar] = React.useState(readLS("glowify-library-left-bar", "default"));
+    const [libraryHeightIncrease, setLibraryHeightIncrease] = React.useState(readNum("glowify-library-height-increase", 0));
+    const [playerCenterOffset, setPlayerCenterOffset] = React.useState(readNum("glowify-player-center-offset", 48));
     const unixLike = isUnixLikeOS();
     const bgFileRef = React.useRef(null);
     const artistFileRef = React.useRef(null);
@@ -4837,6 +4916,30 @@
       setLyricsMode(mode);
       localStorage.setItem("glowify-lyrics-mode", mode);
       window.dispatchEvent(new Event("glowifyLyricsModeChange"));
+    };
+    const applyLibraryLeftBar = (mode) => {
+      setLibraryLeftBar(mode);
+      localStorage.setItem("glowify-library-left-bar", mode);
+      if (mode === "custom" || mode === "full-height") {
+        document.documentElement.classList.add("glowify-library-custom-height");
+        const inc = mode === "full-height" ? 77 : libraryHeightIncrease;
+        document.documentElement.style.setProperty("--glowify-library-height-increase", inc + "px");
+      } else {
+        document.documentElement.classList.remove("glowify-library-custom-height");
+        document.documentElement.classList.remove("glowify-library-full-height");
+        document.documentElement.style.setProperty("--glowify-library-height-increase", "0px");
+      }
+    };
+    const applyLibraryHeightIncrease = (val) => {
+      setLibraryHeightIncrease(val);
+      localStorage.setItem("glowify-library-height-increase", String(val));
+      document.documentElement.style.setProperty("--glowify-library-height-increase", val + "px");
+    };
+    const applyPlayerCenterOffset = (val) => {
+      setPlayerCenterOffset(val);
+      localStorage.setItem("glowify-player-center-offset", String(val));
+      document.documentElement.style.setProperty("--glowify-player-center-offset", val + "px");
+      applyPlayerWidth(playerWidthMode);
     };
     const applyBlur = (value) => {
       setBgBlurState(value);
@@ -5167,13 +5270,17 @@
           if (val) (_b2 = (_a2 = props.artistCtrl) == null ? void 0 : _a2.setMode) == null ? void 0 : _b2.call(_a2, "url");
         }
       }
-    ))), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.artistScrollBlur || "Artist Scroll Blur (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.artistScrollBlur })), /* @__PURE__ */ React.createElement(Stepper, { value: artistScrollBlur, min: 0, max: 100, onChange: (v2) => {
-      setArtistScrollBlur(v2);
-      applyArtistScrollEffect(v2, artistScrollBrightness);
-    } })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.artistScrollBrightness || "Artist Scroll Brightness (%):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.artistScrollBrightness })), /* @__PURE__ */ React.createElement(Stepper, { value: artistScrollBrightness, min: 0, max: 100, onChange: (v2) => {
-      setArtistScrollBrightness(v2);
-      applyArtistScrollEffect(artistScrollBlur, v2);
-    } }))), /* @__PURE__ */ React.createElement(Section, { title: titles.canvasCoverArt || "Canvas Cover Art" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, ((_g = t.canvasCoverArt) == null ? void 0 : _g.mode) || "Track Name Cover Art:", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.tncaMode })), /* @__PURE__ */ React.createElement(
+    ))), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.artistScrollBlur || "Artist Scroll Blur (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.artistScrollBlur })), /* @__PURE__ */ React.createElement(Stepper, {
+      value: artistScrollBlur, min: 0, max: 100, onChange: (v2) => {
+        setArtistScrollBlur(v2);
+        applyArtistScrollEffect(v2, artistScrollBrightness);
+      }
+    })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.artistScrollBrightness || "Artist Scroll Brightness (%):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.artistScrollBrightness })), /* @__PURE__ */ React.createElement(Stepper, {
+      value: artistScrollBrightness, min: 0, max: 100, onChange: (v2) => {
+        setArtistScrollBrightness(v2);
+        applyArtistScrollEffect(artistScrollBlur, v2);
+      }
+    }))), /* @__PURE__ */ React.createElement(Section, { title: titles.canvasCoverArt || "Canvas Cover Art" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, ((_g = t.canvasCoverArt) == null ? void 0 : _g.mode) || "Track Name Cover Art:", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.tncaMode })), /* @__PURE__ */ React.createElement(
       Select,
       {
         value: npvcMode,
@@ -5203,11 +5310,71 @@
           window.dispatchEvent(new Event("glowifyNpvcUpdate"));
         }
       }
-    )), npvcMode === "overCanvas" && /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, ((_o = t.canvasCoverArt) == null ? void 0 : _o.blur) || "Blur (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.tncaBlur })), /* @__PURE__ */ React.createElement(Stepper, { value: npvcBlur, min: 0, max: 50, onChange: (v2) => {
-      setNpvcBlur(v2);
-      localStorage.setItem(NPVC_BLUR_KEY, String(v2));
-      window.dispatchEvent(new Event("glowifyNpvcUpdate"));
-    } }))), /* @__PURE__ */ React.createElement(Section, { title: titles.player }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.playerWidth, /* @__PURE__ */ React.createElement(Tooltip, { text: tips.playerWidth })), /* @__PURE__ */ React.createElement(
+    )), npvcMode === "overCanvas" && /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, ((_o = t.canvasCoverArt) == null ? void 0 : _o.blur) || "Blur (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.tncaBlur })), /* @__PURE__ */ React.createElement(Stepper, {
+      value: npvcBlur, min: 0, max: 50, onChange: (v2) => {
+        setNpvcBlur(v2);
+        localStorage.setItem(NPVC_BLUR_KEY, String(v2));
+        window.dispatchEvent(new Event("glowifyNpvcUpdate"));
+      }
+    }))), /* @__PURE__ */ React.createElement(Section, { title: titles.nextSongCard || "Next Song Card" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).show || "Next Song Card:", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscShow })), /* @__PURE__ */ React.createElement(
+      Select,
+      {
+        value: nscShow,
+        options: [
+          { value: "show", label: t.dropdown.show },
+          { value: "hide", label: t.dropdown.hide }
+        ],
+        onChange: (v2) => nscSet(NSC_KEYS.show, v2, setNscShow)
+      }
+    )), nscShow === "show" && /* @__PURE__ */ React.createElement("div", { className: "glowifySubBlock" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).position || "Position:", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscPosition })), /* @__PURE__ */ React.createElement(
+      Select,
+      {
+        value: nscPosition,
+        options: [
+          { value: "left", label: t.dropdown.left || "Left" },
+          { value: "right", label: t.dropdown.right || "Right" }
+        ],
+        onChange: (v2) => nscSet(NSC_KEYS.position, v2, setNscPosition)
+      }
+    )), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).height || "Card Height (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscHeight })), /* @__PURE__ */ React.createElement(Stepper, { value: nscHeight, min: 32, max: 200, onChange: (v2) => nscSet(NSC_KEYS.height, v2, setNscHeight) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).maxWidth || "Card Max Width (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscMaxWidth })), /* @__PURE__ */ React.createElement(Stepper, { value: nscMaxWidth, min: 100, max: 600, onChange: (v2) => nscSet(NSC_KEYS.maxWidth, v2, setNscMaxWidth) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).gap || "Gap (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscGap })), /* @__PURE__ */ React.createElement(Stepper, { value: nscGap, min: 0, max: 24, onChange: (v2) => nscSet(NSC_KEYS.gap, v2, setNscGap) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).coverSize || "Cover Size (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscCoverSize })), /* @__PURE__ */ React.createElement(Stepper, { value: nscCoverSize, min: 16, max: 128, onChange: (v2) => nscSet(NSC_KEYS.coverSize, v2, setNscCoverSize) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).hpad || "H Padding (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscHpad })), /* @__PURE__ */ React.createElement(Stepper, { value: nscHpad, min: 0, max: 32, onChange: (v2) => nscSet(NSC_KEYS.hpad, v2, setNscHpad) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).vpad || "V Padding (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscVpad })), /* @__PURE__ */ React.createElement(Stepper, { value: nscVpad, min: 0, max: 32, onChange: (v2) => nscSet(NSC_KEYS.vpad, v2, setNscVpad) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).gapPlayer || "Gap to Player (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscGapPlayer })), /* @__PURE__ */ React.createElement(Stepper, { value: nscGapPlayer, min: 0, max: 40, onChange: (v2) => nscSet(NSC_KEYS.gapPlayer, v2, setNscGapPlayer) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).borderRadius || "Border Radius (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscBorderRadius })), /* @__PURE__ */ React.createElement(Stepper, {
+      value: nscBorderRadius, min: 0, max: 50, onChange: (v2) => {
+        setNscBorderRadius(v2);
+        localStorage.setItem(NSC_KEYS.borderRadius, String(v2));
+        fireNscUpdate();
+      }
+    }
+    )), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).nscOffset || "NSC Offset (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscOffset })), /* @__PURE__ */ React.createElement(
+      Stepper,
+      {
+        value: nscOffset,
+        min: -500,
+        max: 500,
+        onChange: (v2) => {
+          setNscOffset(v2);
+          localStorage.setItem("glowify-nsc-offset", String(v2));
+          fireNscUpdate();
+        }
+      }
+    )), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).coverRadius || "Cover Radius (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscCoverRadius })), /* @__PURE__ */ React.createElement(Stepper, { value: nscCoverRadius, min: 0, max: 50, onChange: (v2) => nscSet(NSC_KEYS.coverRadius, v2, setNscCoverRadius) })))), /* @__PURE__ */ React.createElement(Section, { title: titles.library || "Library" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.libraryLeftBar || "Library Left Bar:", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.libraryLeftBar })), /* @__PURE__ */ React.createElement(
+      Select,
+      {
+        value: libraryLeftBar,
+        options: [
+          { value: "default", label: t.dropdown.default },
+          { value: "full-height", label: t.dropdown.fullHeight || "Full Height" },
+          { value: "custom", label: t.dropdown.custom || "Custom" }
+        ],
+        onChange: applyLibraryLeftBar
+      }
+    )), libraryLeftBar === "custom" && /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.libraryHeightIncrease || "Height Increase (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.libraryHeightIncrease })), /* @__PURE__ */ React.createElement(
+      Stepper,
+      {
+        value: libraryHeightIncrease,
+        min: 0,
+        max: 500,
+        onChange: applyLibraryHeightIncrease
+      }
+    ))), /* @__PURE__ */ React.createElement(Section, { title: titles.player }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.playerWidth, /* @__PURE__ */ React.createElement(Tooltip, { text: tips.playerWidth })), /* @__PURE__ */ React.createElement(
       Select,
       {
         value: playerWidthMode,
@@ -5224,6 +5391,7 @@
         value: playerCustomW,
         min: 0,
         max: 100,
+        step: 1,
         onChange: (v2) => {
           setPlayerCustomW(v2);
           applyPlayerCustom(v2, playerCustomH);
@@ -5240,7 +5408,7 @@
           applyPlayerCustom(playerCustomW, v2);
         }
       }
-    ))), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.playerRadius, /* @__PURE__ */ React.createElement(Tooltip, { text: tips.playerRadius })), /* @__PURE__ */ React.createElement(Stepper, { value: playerRadius, min: 0, max: 100, onChange: applyRadius })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).enabled || "Comfy Cover Art:", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtEnabled })), /* @__PURE__ */ React.createElement(
+    ))), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.playerRadius, /* @__PURE__ */ React.createElement(Tooltip, { text: tips.playerRadius })), /* @__PURE__ */ React.createElement(Stepper, { value: playerRadius, min: 0, max: 100, onChange: applyRadius })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.playerCenterOffset || "Center Offset (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.playerCenterOffset })), /* @__PURE__ */ React.createElement(Stepper, { value: playerCenterOffset, min: -500, max: 500, onChange: applyPlayerCenterOffset })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).enabled || "Comfy Cover Art:", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtEnabled })), /* @__PURE__ */ React.createElement(
       Select,
       {
         value: ccaEnabled,
@@ -5256,22 +5424,32 @@
           applyCca(CCA_BORDER_RADIUS_KEY, forcedBr);
         }
       }
-    )), ccaEnabled === "show" && /* @__PURE__ */ React.createElement("div", { className: "glowifySubBlock" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).width || "Width (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtWidth })), /* @__PURE__ */ React.createElement(Stepper, { value: ccaWidth, min: 16, max: 200, onChange: (v2) => {
-      setCcaWidth(v2);
-      applyCca(CCA_WIDTH_KEY, v2);
-    } })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).height || "Height (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtHeight })), /* @__PURE__ */ React.createElement(Stepper, { value: ccaHeight, min: 16, max: 200, onChange: (v2) => {
-      setCcaHeight(v2);
-      applyCca(CCA_HEIGHT_KEY, v2);
-    } })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).marginBottom || "Margin Bottom (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtMarginBottom })), /* @__PURE__ */ React.createElement(Stepper, { value: ccaMb, min: -50, max: 200, onChange: (v2) => {
-      setCcaMb(v2);
-      applyCca(CCA_MARGIN_BOTTOM_KEY, v2);
-    } })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).marginLeft || "Margin Left (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtMarginLeft })), /* @__PURE__ */ React.createElement(Stepper, { value: ccaMl, min: -50, max: 200, onChange: (v2) => {
-      setCcaMl(v2);
-      applyCca(CCA_MARGIN_LEFT_KEY, v2);
-    } }))), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).borderRadius || "Cover Border Radius (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtBorderRadius })), /* @__PURE__ */ React.createElement(Stepper, { value: ccaBr, min: 0, max: 100, onChange: (v2) => {
-      setCcaBr(v2);
-      applyCca(CCA_BORDER_RADIUS_KEY, v2);
-    } }))), /* @__PURE__ */ React.createElement(Section, { title: titles.playlist }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.playlistHeaderBox, /* @__PURE__ */ React.createElement(Tooltip, { text: tips.playlistHeaderBox })), /* @__PURE__ */ React.createElement(
+    )), ccaEnabled === "show" && /* @__PURE__ */ React.createElement("div", { className: "glowifySubBlock" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).width || "Width (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtWidth })), /* @__PURE__ */ React.createElement(Stepper, {
+      value: ccaWidth, min: 16, max: 200, onChange: (v2) => {
+        setCcaWidth(v2);
+        applyCca(CCA_WIDTH_KEY, v2);
+      }
+    })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).height || "Height (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtHeight })), /* @__PURE__ */ React.createElement(Stepper, {
+      value: ccaHeight, min: 16, max: 200, onChange: (v2) => {
+        setCcaHeight(v2);
+        applyCca(CCA_HEIGHT_KEY, v2);
+      }
+    })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).marginBottom || "Margin Bottom (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtMarginBottom })), /* @__PURE__ */ React.createElement(Stepper, {
+      value: ccaMb, min: -50, max: 200, onChange: (v2) => {
+        setCcaMb(v2);
+        applyCca(CCA_MARGIN_BOTTOM_KEY, v2);
+      }
+    })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).marginLeft || "Margin Left (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtMarginLeft })), /* @__PURE__ */ React.createElement(Stepper, {
+      value: ccaMl, min: -50, max: 200, onChange: (v2) => {
+        setCcaMl(v2);
+        applyCca(CCA_MARGIN_LEFT_KEY, v2);
+      }
+    }))), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.comfyCoverArt || {}).borderRadius || "Cover Border Radius (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.comfyCoverArtBorderRadius })), /* @__PURE__ */ React.createElement(Stepper, {
+      value: ccaBr, min: 0, max: 100, onChange: (v2) => {
+        setCcaBr(v2);
+        applyCca(CCA_BORDER_RADIUS_KEY, v2);
+      }
+    }))), /* @__PURE__ */ React.createElement(Section, { title: titles.playlist }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.playlistHeaderBox, /* @__PURE__ */ React.createElement(Tooltip, { text: tips.playlistHeaderBox })), /* @__PURE__ */ React.createElement(
       Select,
       {
         value: playlistHeader,
@@ -5293,27 +5471,7 @@
         ],
         onChange: applyLyricsMode
       }
-    )))), /* @__PURE__ */ React.createElement(Section, { title: titles.nextSongCard || "Next Song Card" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).show || "Next Song Card:", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscShow })), /* @__PURE__ */ React.createElement(
-      Select,
-      {
-        value: nscShow,
-        options: [
-          { value: "show", label: t.dropdown.show },
-          { value: "hide", label: t.dropdown.hide }
-        ],
-        onChange: (v2) => nscSet(NSC_KEYS.show, v2, setNscShow)
-      }
-    )), nscShow === "show" && /* @__PURE__ */ React.createElement("div", { className: "glowifySubBlock" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).position || "Position:", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscPosition })), /* @__PURE__ */ React.createElement(
-      Select,
-      {
-        value: nscPosition,
-        options: [
-          { value: "left", label: t.dropdown.left || "Left" },
-          { value: "right", label: t.dropdown.right || "Right" }
-        ],
-        onChange: (v2) => nscSet(NSC_KEYS.position, v2, setNscPosition)
-      }
-    )), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).height || "Card Height (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscHeight })), /* @__PURE__ */ React.createElement(Stepper, { value: nscHeight, min: 32, max: 200, onChange: (v2) => nscSet(NSC_KEYS.height, v2, setNscHeight) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).maxWidth || "Card Max Width (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscMaxWidth })), /* @__PURE__ */ React.createElement(Stepper, { value: nscMaxWidth, min: 100, max: 600, onChange: (v2) => nscSet(NSC_KEYS.maxWidth, v2, setNscMaxWidth) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).gap || "Gap (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscGap })), /* @__PURE__ */ React.createElement(Stepper, { value: nscGap, min: 0, max: 24, onChange: (v2) => nscSet(NSC_KEYS.gap, v2, setNscGap) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).coverSize || "Cover Size (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscCoverSize })), /* @__PURE__ */ React.createElement(Stepper, { value: nscCoverSize, min: 16, max: 128, onChange: (v2) => nscSet(NSC_KEYS.coverSize, v2, setNscCoverSize) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).hpad || "H Padding (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscHpad })), /* @__PURE__ */ React.createElement(Stepper, { value: nscHpad, min: 0, max: 32, onChange: (v2) => nscSet(NSC_KEYS.hpad, v2, setNscHpad) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).vpad || "V Padding (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscVpad })), /* @__PURE__ */ React.createElement(Stepper, { value: nscVpad, min: 0, max: 32, onChange: (v2) => nscSet(NSC_KEYS.vpad, v2, setNscVpad) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).gapPlayer || "Gap to Player (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscGapPlayer })), /* @__PURE__ */ React.createElement(Stepper, { value: nscGapPlayer, min: 0, max: 40, onChange: (v2) => nscSet(NSC_KEYS.gapPlayer, v2, setNscGapPlayer) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).borderRadius || "Border Radius (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscBorderRadius })), /* @__PURE__ */ React.createElement(Stepper, { value: nscBorderRadius, min: 0, max: 50, onChange: (v2) => nscSet(NSC_KEYS.borderRadius, v2, setNscBorderRadius) })), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow", style: { margin: 0 } }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, (t.nextSongCard || {}).coverRadius || "Cover Radius (px):", /* @__PURE__ */ React.createElement(Tooltip, { text: tips.nscCoverRadius })), /* @__PURE__ */ React.createElement(Stepper, { value: nscCoverRadius, min: 0, max: 50, onChange: (v2) => nscSet(NSC_KEYS.coverRadius, v2, setNscCoverRadius) })))), /* @__PURE__ */ React.createElement(Section, { title: titles.transparent }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.transparentWidth, /* @__PURE__ */ React.createElement(Tooltip, { text: tips.transparentWidth })), /* @__PURE__ */ React.createElement("div", { style: { opacity: unixLike ? 0.5 : 1, pointerEvents: unixLike ? "none" : "auto" } }, /* @__PURE__ */ React.createElement(Stepper, { value: tcW, min: 50, max: 400, onChange: (v2) => applyTransparent(v2, tcH) }))), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.transparentHeight, /* @__PURE__ */ React.createElement(Tooltip, { text: tips.transparentHeight })), /* @__PURE__ */ React.createElement("div", { style: { opacity: unixLike ? 0.5 : 1, pointerEvents: unixLike ? "none" : "auto" } }, /* @__PURE__ */ React.createElement(Stepper, { value: tcH, min: 20, max: 300, onChange: (v2) => applyTransparent(tcW, v2) })))), /* @__PURE__ */ React.createElement("div", { className: "glowifyResetRow" }, /* @__PURE__ */ React.createElement(
+    )))), /* @__PURE__ */ React.createElement(Section, { title: titles.transparent }, /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.transparentWidth, /* @__PURE__ */ React.createElement(Tooltip, { text: tips.transparentWidth })), /* @__PURE__ */ React.createElement("div", { style: { opacity: unixLike ? 0.5 : 1, pointerEvents: unixLike ? "none" : "auto" } }, /* @__PURE__ */ React.createElement(Stepper, { value: tcW, min: 50, max: 400, onChange: (v2) => applyTransparent(v2, tcH) }))), /* @__PURE__ */ React.createElement("div", { className: "glowifyRow" }, /* @__PURE__ */ React.createElement("div", { className: "glowifyLabel" }, t.transparentHeight, /* @__PURE__ */ React.createElement(Tooltip, { text: tips.transparentHeight })), /* @__PURE__ */ React.createElement("div", { style: { opacity: unixLike ? 0.5 : 1, pointerEvents: unixLike ? "none" : "auto" } }, /* @__PURE__ */ React.createElement(Stepper, { value: tcH, min: 20, max: 300, onChange: (v2) => applyTransparent(tcW, v2) })))), /* @__PURE__ */ React.createElement("div", { className: "glowifyResetRow" }, /* @__PURE__ */ React.createElement(
       "button",
       {
         type: "button",
@@ -5619,9 +5777,46 @@
     React = Spicetify.React;
     ReactDOM = Spicetify.ReactDOM;
   }
+  function installLibraryScrollEffect() {
+    const hook = (scroller) => {
+      const header = document.querySelector(".main-yourLibraryX-header");
+      if (!header) return false;
+      const handleScroll = () => {
+        if (scroller.scrollTop > 5) {
+          header.classList.add("glowify-header-scrolled");
+          header.style.setProperty("background", "transparent", "important");
+        } else {
+          header.classList.remove("glowify-header-scrolled");
+          header.style.setProperty("background", "#0a0a0a0a", "important");
+        }
+      };
+      scroller.addEventListener("scroll", handleScroll);
+      handleScroll();
+      return true;
+    };
+    const findScroller = () => {
+      const allScrollers = document.querySelectorAll('.os-viewport, [data-viewport], .main-yourLibraryX-libraryItemContainer div');
+      for (const s of allScrollers) {
+        if (s.scrollHeight > s.clientHeight && s.closest('.main-yourLibraryX-libraryContainer')) {
+          return s;
+        }
+      }
+      return null;
+    };
+    let retries = 0;
+    const interval = setInterval(() => {
+      const s = findScroller();
+      if (s) {
+        if (hook(s)) clearInterval(interval);
+      }
+      if (retries > 30) clearInterval(interval);
+      retries++;
+    }, 1000);
+  }
   (async function initGlowifyStandaloneTs() {
     const anyWin = window;
     if (anyWin.glowifyStandaloneTsInitialized) return;
+    console.log("Glowify: Standalone script initializing...");
     anyWin.glowifyStandaloneTsInitialized = true;
     await awaitSpicetifyReact();
     const savedGlowMode = localStorage.getItem("glowify-glow-mode") || "default";
@@ -5666,6 +5861,10 @@
       });
       anyWin.glowifyDynamicObserverTs.observe(document.body, { attributes: true, subtree: true });
     }
+    const savedLibraryMode = localStorage.getItem("glowify-library-left-bar") || "default";
+    if (savedLibraryMode === "full-height") {
+      document.documentElement.classList.add("glowify-library-full-height");
+    }
     const artistCtrl = installArtistBackgroundController();
     window.showGlowifySettingsMenu = () => {
       try {
@@ -5681,6 +5880,7 @@
     installLyricsEnhancer();
     installNextSongCard();
     installNowPlayingViewCover();
+    installLibraryScrollEffect();
     startGlowifyOnboarding();
   })();
 })();

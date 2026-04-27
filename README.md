@@ -1,3 +1,16 @@
+# I made this fork to add some small things to allow extra customization
+
+<img width="2559" height="1392" alt="image" src="https://github.com/user-attachments/assets/d1d0a4c0-01f0-450f-873e-415266b331a2" />
+
+<img width="2559" height="1391" alt="image" src="https://github.com/user-attachments/assets/fc680163-d021-45a9-997c-703e746ee03f" />
+
+as you can see the player center can now be offset aswell as the library margin bottom, uses some fancy calculations to keep that consistent at all screen sized
+i also made it dynamically marge the you're library elements, but when it comes to patching other bugs i failed i was originally attempting to update the overflow logic so the box shadow would overlap the library header element but i failed and ended up just settling with not fixing that and implementing all the other ideas i had anyways!
+
+
+
+
+
 <h1 align="center"> ✨ Glowify Theme Spicetify ✨ </h1>
 
 <p align="center">

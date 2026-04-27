@@ -4,7 +4,7 @@
 
 <img width="2559" height="1391" alt="image" src="https://github.com/user-attachments/assets/fc680163-d021-45a9-997c-703e746ee03f" />
 
-as you can see the player center can now be offset aswell as the library margin bottom, uses some fancy calculations to keep that consistent at all screen sized
+as you can see the player center can now be offset aswell as the library margin bottom, uses some fancy calculations to keep that consistent at all screen sizes
 i also made it dynamically marge the you're library elements, but when it comes to patching other bugs i failed i was originally attempting to update the overflow logic so the box shadow would overlap the library header element but i failed and ended up just settling with not fixing that and implementing all the other ideas i had anyways!
 
 

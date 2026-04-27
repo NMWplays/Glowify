@@ -6,7 +6,7 @@
 
 as you can see the player center can now be offset aswell as the library margin bottom, uses some fancy calculations to keep that consistent at all screen sizes!
 
-I also made it dynamically merge the library header to the listcontainer, but when it comes to patching other bugs I failed I was originally attempting to update the overflow logic so the box shadow would overlap the library header element but I gave up after multiple hours on that one goal and ended up just settling with not fixing that and implementing all the other ideas I had anyways!
+I also made it dynamically merge the library header to the listcontainer, but when it comes to patching other bugs I failed I was originally attempting to update the overflow logic so the box shadow on hovered list elements would overlap the library header element but I gave up after multiple hours on that one goal and ended up just settling with not fixing that and implementing all the other ideas I had anyways!
 
 
 

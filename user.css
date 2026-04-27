@@ -4267,7 +4267,8 @@ span.e-10310-overflow-wrap-anywhere.e-10310-button-primary__inner.encore-inverte
   border-radius: 20px;
 }
 
-.e-10310-box--interactive.e-10310-box--contrasting:hover, .e-10310-box--interactive:hover:after {
+.e-10310-box--interactive.e-10310-box--contrasting:hover,
+.e-10310-box--interactive:hover:after {
   background-color: transparent;
 }
 
@@ -4291,4 +4292,43 @@ span.e-10310-overflow-wrap-anywhere.e-10310-button-primary__inner.encore-inverte
 
 span.e-10310-text.encore-text-body-medium.encore-internal-color-text-base {
   color: white;
+}
+
+/* Library Custom Height & Player Offset */
+.glowify-library-custom-height .main-yourLibraryX-libraryContainer,
+.glowify-library-custom-height .main-yourLibraryX-entryPoints,
+.glowify-library-custom-height .WBFaUw_oOfN2m4aTxggt,
+.glowify-library-custom-height .Root__nav-bar {
+  /* Auto-compensate: add difference if player > 69px, subtract if < 69px */
+  height: calc(100% + var(--glowify-library-height-increase, 0px) + (var(--glowify-player-height, 69px) - 69px)) !important;
+  margin-bottom: 0 !important;
+  z-index: 1;
+}
+
+/* Fix library separator shading and blocking */
+.main-yourLibraryX-divider,
+.main-yourLibraryX-libraryContainer hr {
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+.main-yourLibraryX-header {
+  background: #0a0a0a0a !important;
+  overflow: visible !important;
+  transition: background 0.3s ease !important;
+}
+
+.main-yourLibraryX-header.glowify-header-scrolled {
+  background: transparent !important;
+}
+
+/* Ensure the sidebar doesn't clip its over-height content */
+.Root__nav-bar {
+  overflow: visible !important;
+}
+
+.Root__now-playing-bar {
+  max-width: 97% !important;
+  transform: translateX(var(--glowify-player-center-offset, 0px)) !important;
+  transition: transform 0.3s cubic-bezier(0.3, 0, 0, 1), max-width 0.3s cubic-bezier(0.3, 0, 0, 1) !important;
 }

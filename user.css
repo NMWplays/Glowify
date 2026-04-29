@@ -4275,7 +4275,8 @@ span.e-10310-overflow-wrap-anywhere.e-10310-button-primary__inner.encore-inverte
   backdrop-filter: blur(2rem);
 }
 
-.e-10310-box--interactive.e-10310-box--contrasting:hover, .e-10310-box--interactive:hover:after {
+.e-10310-box--interactive.e-10310-box--contrasting:hover,
+.e-10310-box--interactive:hover:after {
   background-color: transparent;
 }
 
@@ -4367,4 +4368,8 @@ span.e-10310-text.encore-text-body-medium.encore-internal-color-text-base {
 .e-10310-box.e-10310-box--naked.e-10310-box--interactive.e-10310-box--padding-custom.e-10310-box--padding-block-start-custom.e-10310-box--padding-block-end-custom.e-10310-box--hover-custom.e-10310-box--min-size.e-10310-legacy-list-row.e-10310-legacy-list-row--has-leading.Z557o5iO1x0aSAXt.main-useDropTarget-base:hover {
   transform: scale(1.01);
   box-shadow: 0 0 var(--glowify-glow-blur, 25px) var(--glowify-glow-spread, 8px) var(--glowify-glow-accent, var(--accent-color));
+}
+
+.marketplace-header {
+  top: 75px !important;
 }

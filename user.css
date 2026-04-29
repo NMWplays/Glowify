@@ -3459,6 +3459,7 @@ button#history-tab:hover {
   margin-top: 10px;
   top: 10px;
   margin-bottom: 10px;
+  box-shadow: 0 0 var(--glowify-glow-blur, 25px) var(--glowify-glow-spread, 8px) var(--glowify-glow-accent, var(--accent-color));
 }
 
 .iGrz9_1aUhECnc_S {
@@ -4310,6 +4311,7 @@ span.e-10310-text.encore-text-body-medium.encore-internal-color-text-base {
   width: 99%;
   align-self: center;
   margin-top: 10px;
+  contain: none;
 }
 
 .KqsfjxDhIg8NevcC {
@@ -4334,8 +4336,7 @@ span.e-10310-text.encore-text-body-medium.encore-internal-color-text-base {
   background-color: transparent;
   box-shadow: 0 0 var(--glowify-glow-blur, 25px) var(--glowify-glow-spread, 8px) var(--glowify-glow-accent, var(--accent-color));
   transform: scale(1.03);
-  --glass-filter: url(#glass-filter--r1-7);
-  backdrop-filter: var(--glass-filter) blur(2px);
+  backdrop-filter: blur(2rem);
 }
 
 .WRAJX50Owww6lGws {
@@ -4350,8 +4351,7 @@ span.e-10310-text.encore-text-body-medium.encore-internal-color-text-base {
   background-color: transparent;
   border-radius: 10px;
   box-shadow: 0 0 var(--glowify-glow-blur, 25px) var(--glowify-glow-spread, 8px) var(--glowify-glow-accent, var(--accent-color));
-  --glass-filter: url(#glass-filter--r1-7);
-  backdrop-filter: var(--glass-filter) blur(2px);
+  backdrop-filter: blur(2rem);
 }
 
 .bo8WQdPByy0UKg_1 {

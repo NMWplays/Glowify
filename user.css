@@ -3058,9 +3058,28 @@ aside video {
 :root.glowify-glow-disabled .e-10310-legacy-button-secondary,
 :root.glowify-glow-disabled .main-nowPlayingView-artistOnTourItem:focus-within, .main-nowPlayingView-artistOnTourItem:hover,
 :root.glowify-glow-disabled .e-10310-box.e-10310-box--naked.e-10310-box--interactive.e-10310-box--padding-custom.e-10310-box--padding-block-start-custom.e-10310-box--padding-block-end-custom.e-10310-box--hover-custom.e-10310-box--min-size.e-10310-legacy-list-row.e-10310-legacy-list-row--has-leading.Z557o5iO1x0aSAXt.main-useDropTarget-base:hover,
-:root.glowify-glow-disabled .HqUgEQOPyVcDu2NW:hover {
+:root.glowify-glow-disabled .HqUgEQOPyVcDu2NW:hover,
+:root.glowify-glow-disabled .p67WtOnm9lsRLOu2,
+:root.glowify-glow-disabled .mKvcoJ_veYlcHwOz:has(:focus-visible), .mKvcoJ_veYlcHwOz:hover,
+:root.glowify-glow-disabled .yZCluNwEsPD2zYyY,
+:root.glowify-glow-disabled .YYR31GkgSNQaEQIc:hover,
+:root.glowify-glow-disabled .tMcqYZ2om0nYbgrw,
+:root.glowify-glow-disabled .ladI0V8GNBwaliFh:is(:hover, :focus-visible),
+:root.glowify-glow-disabled .Htdd9HRV28F07Dwl:focus-within, .Htdd9HRV28F07Dwl:hover,
+:root.glowify-glow-disabled .sdEd4DOwfUAWrygb.NizzRkDlGwELETrE,
+:root.glowify-glow-disabled .F88QL63X0_0Pi0v8.xt8bocvKzwADeyBs,
+:root.glowify-glow-disabled .main-trackList-trackListRow.q8suB2R_XkoUyIeZ, .main-trackList-trackListRow.q8suB2R_XkoUyIeZ:hover,
+:root.glowify-glow-disabled .DGYls4SVbuwGxQhk,
+:root.glowify-glow-disabled .Gg1Ahel4Ik0T9YSl,
+:root.glowify-glow-disabled .mp57tCaTzo7_wVHK,
+:root.glowify-glow-disabled .HX8Y5HwR9P0JHU9S,
+:root.glowify-glow-disabled .e-10310-box--tinted {
   box-shadow: none !important;
   outline: solid 1px var(--glowify-outline-accent, var(--accent-color)) !important;
+}
+
+.ZUclVC4rc8sC2ueN {
+  border-radius: 15px !important;
 }
 
 .e-10180-box--elevated {
@@ -3605,7 +3624,7 @@ span.e-10180-overflow-wrap-anywhere.e-10180-button-primary__inner.encore-inverte
   backdrop-filter: blur(2rem);
   border-radius: 20px;
   box-shadow: 0 0 var(--glowify-glow-blur, 25px) var(--glowify-glow-spread, 8px) var(--glowify-glow-accent, var(--accent-color));
-  top: 70px;
+  top: 80px;
 }
 
 .F88QL63X0_0Pi0v8 {

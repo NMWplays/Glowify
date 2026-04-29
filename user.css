@@ -3048,7 +3048,17 @@ aside video {
 :root.glowify-glow-disabled .EpfIE3glwAOGcNT6,
 :root.glowify-glow-disabled .x-keyboard,
 :root.glowify-glow-disabled .laOEpXn67bgflATz:hover,
-:root.glowify-glow-disabled .WuleKmKt7kwEObvJ {
+:root.glowify-glow-disabled .WuleKmKt7kwEObvJ,
+:root.glowify-glow-disabled .main-topBar-background,
+:root.glowify-glow-disabled .e-10310-box.e-10310-box--naked.e-10310-box--interactive.e-10310-box--padding-custom.e-10310-box--padding-block-start-custom.e-10310-box--padding-block-end-custom.e-10310-box--hover-custom.e-10310-box--min-size.e-10310-legacy-list-row.e-10310-legacy-list-row--has-leading.Z557o5iO1x0aSAXt.main-useDropTarget-base:hover,
+:root.glowify-glow-disabled .e-10310-box.e-10310-box--naked.e-10310-box--interactive.e-10310-box--padding-custom.e-10310-box--padding-block-start-custom.e-10310-box--padding-block-end-custom.e-10310-box--hover-custom.e-10310-box--min-size.e-10310-legacy-list-row.e-10310-legacy-list-row--has-leading.Z557o5iO1x0aSAXt.main-useDropTarget-base:hover,
+:root.glowify-glow-disabled .HOf9H18Ya0DkJ4_K,
+:root.glowify-glow-disabled .e-10310-tag,
+:root.glowify-glow-disabled .TguLwQ522LIEgpK_.IxVxBUbV5M5tGaEx:hover, .TguLwQ522LIEgpK_.IxVxBUbV5M5tGaEx:focus-within,
+:root.glowify-glow-disabled .e-10310-legacy-button-secondary,
+:root.glowify-glow-disabled .main-nowPlayingView-artistOnTourItem:focus-within, .main-nowPlayingView-artistOnTourItem:hover,
+:root.glowify-glow-disabled .e-10310-box.e-10310-box--naked.e-10310-box--interactive.e-10310-box--padding-custom.e-10310-box--padding-block-start-custom.e-10310-box--padding-block-end-custom.e-10310-box--hover-custom.e-10310-box--min-size.e-10310-legacy-list-row.e-10310-legacy-list-row--has-leading.Z557o5iO1x0aSAXt.main-useDropTarget-base:hover,
+:root.glowify-glow-disabled .HqUgEQOPyVcDu2NW:hover {
   box-shadow: none !important;
   outline: solid 1px var(--glowify-outline-accent, var(--accent-color)) !important;
 }

@@ -177,6 +177,7 @@
 .main-topBar-background {
   backdrop-filter: blur(2rem);
   border-radius: 20px !important;
+  box-shadow: 0 0 var(--glowify-glow-blur, 25px) var(--glowify-glow-spread, 8px) var(--glowify-glow-accent, var(--accent-color));
 }
 
 .ARSbx0SA65V5vol27FS4.main-trackList-trackListHeader {

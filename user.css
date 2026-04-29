@@ -3073,7 +3073,8 @@ aside video {
 :root.glowify-glow-disabled .Gg1Ahel4Ik0T9YSl,
 :root.glowify-glow-disabled .mp57tCaTzo7_wVHK,
 :root.glowify-glow-disabled .HX8Y5HwR9P0JHU9S,
-:root.glowify-glow-disabled .e-10310-box--tinted {
+:root.glowify-glow-disabled .e-10310-box--tinted,
+:root.glowify-glow-disabled .main-contextMenu-menuItemButton:hover, .main-contextMenu-menuItemButton:not([aria-checked=true]):focus {
   box-shadow: none !important;
   outline: solid 1px var(--glowify-outline-accent, var(--accent-color)) !important;
 }

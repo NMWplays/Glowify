@@ -3075,7 +3075,25 @@ aside video {
 :root.glowify-glow-disabled .mp57tCaTzo7_wVHK,
 :root.glowify-glow-disabled .HX8Y5HwR9P0JHU9S,
 :root.glowify-glow-disabled .e-10310-box--tinted,
-:root.glowify-glow-disabled .main-contextMenu-menuItemButton:hover, .main-contextMenu-menuItemButton:not([aria-checked=true]):focus {
+:root.glowify-glow-disabled .main-contextMenu-menuItemButton:hover, .main-contextMenu-menuItemButton:not([aria-checked=true]):focus,
+:root.glowify-glow-disabled .e-10451-legacy-button-secondary,
+:root.glowify-glow-disabled .e-10451-box--elevated,
+:root.glowify-glow-disabled .e-10451-box--tinted,
+:root.glowify-glow-disabled .e-10451-box.e-10451-box--naked.e-10451-box--interactive.e-10451-box--padding-custom.e-10451-box--padding-block-start-custom.e-10451-box--padding-block-end-custom.e-10451-box--hover-custom.e-10451-box--min-size.e-10451-legacy-list-row.e-10451-legacy-list-row--has-leading.Z557o5iO1x0aSAXt.main-useDropTarget-base.main-useDropTarget-track.main-useDropTarget-local.main-useDropTarget-episode.kCuoeTp_4F8B1vXL.main-useDropTarget-album:hover,
+:root.glowify-glow-disabled .e-10451-box.e-10451-box--naked.e-10451-box--interactive.e-10451-box--padding-custom.e-10451-box--padding-block-start-custom.e-10451-box--padding-block-end-custom.e-10451-box--hover-custom.e-10451-box--min-size.e-10451-legacy-list-row.e-10451-legacy-list-row--has-leading.Z557o5iO1x0aSAXt.main-useDropTarget-base:hover,
+:root.glowify-glow-disabled .orFyQFu0kG4H73ty:hover,
+:root.glowify-glow-disabled .main-nowPlayingView-headerButton:hover, .main-nowPlayingView-headerButton:focus-visible,
+:root.glowify-glow-disabled,
+:root.glowify-glow-disabled,
+:root.glowify-glow-disabled,
+:root.glowify-glow-disabled,
+:root.glowify-glow-disabled,
+:root.glowify-glow-disabled,
+:root.glowify-glow-disabled,
+:root.glowify-glow-disabled,
+:root.glowify-glow-disabled,
+:root.glowify-glow-disabled,
+:root.glowify-glow-disabled {
   box-shadow: none !important;
   outline: solid 1px var(--glowify-outline-accent, var(--accent-color)) !important;
 }
@@ -4559,4 +4577,12 @@ svg.e-10451-icon {
 
 .main-userWidget-box:hover, .main-userWidget-box:focus-visible {
   background-color: transparent;
+}
+
+.KmN1Y8bq8eC6k8TX {
+  border-radius: 12px;
+}
+
+.erA3sHiphYkehOGX {
+  border-radius: 10px !important;
 }

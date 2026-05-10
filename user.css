@@ -4567,14 +4567,6 @@ svg.e-10451-icon {
   box-shadow: 0 0 var(--glowify-glow-blur, 25px) var(--glowify-glow-spread, 8px) var(--glowify-glow-accent, var(--accent-color));
 }
 
-.e-10451-legacy-button {
-  transition: transform 0.2s cubic-bezier(0.34, 2, 0.64, 1) !important;
-}
-
-.e-10451-legacy-button:hover {
-  transform: scale(1.05);
-}
-
 .main-userWidget-box:hover, .main-userWidget-box:focus-visible {
   background-color: transparent;
 }

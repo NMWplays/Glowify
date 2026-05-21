@@ -4601,3 +4601,9 @@ button.e-10451-legacy-button.e-10451-legacy-button-tertiary.e-10451-overflow-wra
 p.e-10451-text.encore-text-body-small.encore-internal-color-text-base {
   color: white;
 }
+
+.VwcQJ4Zsf0JKD3Ls {
+  background-color: transparent;
+  backdrop-filter: blur(2rem);
+  box-shadow: 0 0 var(--glowify-glow-blur, 25px) var(--glowify-glow-spread, 8px) var(--glowify-glow-accent, var(--accent-color));
+}

@@ -5,7 +5,7 @@
   "readme": "README.md",
   "usercss": "https://nmwplays.github.io/Glowify/user.css",
   "schemes": "color.ini",
-  "include": ["https://nmwplays.github.io/Glowify/theme.js", "https://nmwplays.github.io/Glowify/glowify-settings.js"],
+  "include": ["https://nmwplays.github.io/Glowify/theme.js", "https://nmwplays.github.io/Glowify/glowify-settings.js", https://nmwplays.github.io/Glowify/liquid-lyrics.js],
   "authors": [
     { "name": "NMWplays", "url": "https://github.com/NMWplays" }
   ],

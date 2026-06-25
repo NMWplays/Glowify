@@ -293,7 +293,6 @@ dialog {
 .KqsfjxDhIg8NevcC,
 .WRAJX50Owww6lGwsw,
 .qm0mrbeno_z0mpoo,
-.Root__cinema-view,
 .P8ZiZf6Nbowk6zjL,
 .Gg1Ahel4Ik0T9YSl,
 .e-10451-button-icon-only--large,
@@ -893,6 +892,7 @@ button.e-10451-legacy-button.e-10451-legacy-button-tertiary.e-10451-overflow-wra
 .Root__cinema-view {
   outline: none;
   border-radius: 20px !important;
+  box-shadow: var(--glowify-shadow);
 }
 
 .TLo_mZ7hWAaT3fsA {

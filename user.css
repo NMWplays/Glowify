@@ -2450,8 +2450,9 @@ span.e-10451-overflow-wrap-anywhere.e-10451-button-primary__inner.encore-negativ
 .h0PQ8sOpdOAqPvpi:focus-within,
 .h0PQ8sOpdOAqPvpi:hover {
   background-color: transparent;
-  box-shadow: var(--liquify-shadow);
+  box-shadow: var(--glowify-shadow);
   border-radius: 20px;
+  outline: var(--glowify-outline, none) !important;
 }
 
 .VpUQM5JUYIIbAaSL {
@@ -2470,4 +2471,11 @@ span.e-10451-overflow-wrap-anywhere.e-10451-button-primary__inner.encore-negativ
 
 .OV8dls1JOKM7Do3h {
   border-radius: 20px;
+}
+
+button.e-10451-legacy-button.e-10451-legacy-button-tertiary.e-10451-overflow-wrap-anywhere.e-10451-button-tertiary--icon-only-small.e-10451-button-tertiary--icon-only.encore-internal-color-text-base.main-nowPlayingView-headerButton {
+  background-color: transparent !important;
+  box-shadow: var(--glowify-shadow);
+  border-radius: 12px;
+  outline: var(--glowify-outline, none) !important;
 }

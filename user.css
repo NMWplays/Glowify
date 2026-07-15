@@ -2479,3 +2479,57 @@ button.e-10451-legacy-button.e-10451-legacy-button-tertiary.e-10451-overflow-wra
   border-radius: 12px;
   outline: var(--glowify-outline, none) !important;
 }
+
+.main-topBar-topbarContentRight {
+  width: fit-content;
+  margin-left: calc(135px / (var(--zoom-level, 100) / 100));
+}
+
+.edvX5XPBIXITSQoH {
+  background-color: transparent !important;
+  border-radius: 15px;
+  box-shadow: var(--glowify-shadow);
+  outline: var(--glowify-outline, none) !important;
+}
+
+.e8BC__dVNU4LRKf3 {
+  background-color: transparent !important;
+}
+
+.TGvpaalpJK0BKYYL {
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: var(--glowify-shadow);
+  backdrop-filter: blur(2rem);
+  outline: var(--glowify-outline, none) !important;
+}
+
+.X8iDE4nRFc6Fz1ua {
+  background-color: transparent !important;
+  border-radius: 20px;
+  transition: transform 0.28s cubic-bezier(0.3, 2.25, 0.32, 1), box-shadow 0.28s ease !important;
+}
+
+.X8iDE4nRFc6Fz1ua:not(.iWYXfFRVugfeZGTY):hover {
+  box-shadow: var(--glowify-shadow);
+  outline: var(--glowify-outline, none) !important;
+  transform: scale(1.03);
+}
+
+.o1ikq4AVMKwiMyZ8 {
+  border-radius: 15px;
+  box-shadow: var(--glowify-shadow);
+  outline: var(--glowify-outline, none) !important;
+}
+
+.iGJsDWa_PIeHMjQf:before {
+  background-color: transparent;
+}
+
+.ivknC2cwRYIYBzwd {
+  border-radius: 20px;
+}
+
+span.e-10451-overflow-wrap-anywhere.e-10451-button-primary__inner.encore-bright-accent-set.e-10451-legacy-button--medium {
+  border-radius: 15px;
+}

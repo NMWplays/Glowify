@@ -2490,6 +2490,7 @@ button.e-10451-legacy-button.e-10451-legacy-button-tertiary.e-10451-overflow-wra
   border-radius: 15px;
   box-shadow: var(--glowify-shadow);
   outline: var(--glowify-outline, none) !important;
+  backdrop-filter: blur(2rem);
 }
 
 .e8BC__dVNU4LRKf3 {

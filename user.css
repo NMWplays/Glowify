@@ -1813,10 +1813,11 @@ span.e-10451-overflow-wrap-anywhere.e-10451-button-primary__inner.encore-inverte
 }
 
 .p67WtOnm9lsRLOu2 {
-  border-radius: 20px;
+  border-radius: 15px;
   background-color: transparent;
   box-shadow: var(--glowify-shadow);
   outline: var(--glowify-outline, none) !important;
+  border: none !important;
 }
 
 .JvTwds2SLpooyYqa {
@@ -2533,4 +2534,8 @@ button.e-10451-legacy-button.e-10451-legacy-button-tertiary.e-10451-overflow-wra
 
 span.e-10451-overflow-wrap-anywhere.e-10451-button-primary__inner.encore-bright-accent-set.e-10451-legacy-button--medium {
   border-radius: 15px;
+}
+
+.e-10451-box.e-10451-box--tinted.e-10451-box--padding-inline-start-custom.e-10451-box--padding-inline-end-custom.e-10451-box--padding-block-start-custom.e-10451-box--padding-block-end-custom {
+  border-radius: 20px;
 }

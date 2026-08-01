@@ -71,3 +71,13 @@ If you like the theme, consider starring the repository on GitHub! ⭐
 
 Want to install the theme manually? [Just click here](https://nmw.it.com/projects/glowify/installation/)
 And you will find a _detailed installation guide there_!
+
+## Credits
+
+Created by NMW.
+
+Built alongside the Glowify and Liquify Spicetify themes.
+
+## License
+
+This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0). See the LICENSE file for details.

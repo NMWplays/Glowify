@@ -222,7 +222,6 @@
 .VwcQJ4Zsf0JKD3Ls,
 .wJiY1vDfuci2a4db,
 .Wzl40f9FIUD91O2o,
-.xamNkt5LX9o8aL1q,
 .x-settings-section,
 .yZCluNwEsPD2zYyY,
 .zddkQq3wlxEOg6aa,
@@ -2029,6 +2028,18 @@ button.e-10451-legacy-button.e-10451-legacy-button-tertiary.e-10451-overflow-wra
   border-radius: 20px;
   box-shadow: var(--glowify-shadow);
   outline: var(--glowify-outline, none) !important;
+}
+
+/* The "Add to playlist" popup must not carry backdrop-filter itself. A
+   backdrop-filter other than `none` makes an element a containing block for
+   absolutely/fixed positioned descendants, and this form also carries
+   Spotify's own `overflow: auto` — so the folder flyout got clipped and turned
+   into scrollbars instead of expanding outwards. Blurring the Tippy wrapper
+   gives the identical frosted look without clipping, since the wrapper has no
+   overflow restriction. */
+[data-tippy-root]:has(.xamNkt5LX9o8aL1q) {
+  backdrop-filter: blur(var(--glowify-backdrop-blur, 2rem));
+  border-radius: 20px;
 }
 
 .UmC7B1blaToOXizU {

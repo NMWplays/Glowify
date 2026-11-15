@@ -105,6 +105,16 @@
   opacity: 1;
 }
 
+.glowify-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
 .glowify-animated-bg:not(.active) .glowify-animated-tile {
   animation-play-state: paused;
 }

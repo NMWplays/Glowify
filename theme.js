@@ -4475,7 +4475,7 @@
   function installCoverSwipe() {
     (() => {
       const anyWin = window;
-      const STYLE_ID15 = "cs-cover-swipe";
+      const STYLE_ID16 = "cs-cover-swipe";
       const TRACK_ID = "cs-track";
       const TRAVEL = 2;
       const DURATION = Math.round(300 * TRAVEL * 0.9);
@@ -4493,10 +4493,10 @@
       const VIDEO_SEL = "#VideoPlayerNpv_ReactPortal";
       const CINEMA_SEL = ".Root__cinema-view";
       const CONTAINER_SEL = ".main-nowPlayingView-coverArtContainer";
-      document.getElementById(STYLE_ID15)?.remove();
+      document.getElementById(STYLE_ID16)?.remove();
       anyWin.__coverSwipeOff?.();
       const style = document.createElement("style");
-      style.id = STYLE_ID15;
+      style.id = STYLE_ID16;
       style.textContent = `
         ${CONTAINER_SEL}:has(#${TRACK_ID}) .main-nowPlayingView-coverArt {
             visibility: hidden !important;
@@ -4818,7 +4818,7 @@
         for (const el of unclipped) el.classList.remove(UNCLIP_CLASS);
         unclipped = [];
       };
-      const mount = (container) => {
+      const mount2 = (container) => {
         if (track) return;
         mountedContainer = container;
         origPosition = container.style.position;
@@ -5179,10 +5179,10 @@
         if (!shouldMount && track) {
           unmount();
         } else if (shouldMount && !track) {
-          mount(container);
+          mount2(container);
         } else if (track && container && !container.contains(track)) {
           unmount();
-          mount(container);
+          mount2(container);
         }
       }, 200);
       anyWin.__coverSwipeOff = () => {
@@ -5196,7 +5196,7 @@
           if (origNext) Spicetify.Player.next = origNext;
           if (origBack) Spicetify.Player.back = origBack;
         }
-        document.getElementById(STYLE_ID15)?.remove();
+        document.getElementById(STYLE_ID16)?.remove();
         delete anyWin.__coverSwipeOff;
       };
     })();
@@ -11469,8 +11469,190 @@ ${eachTransport(" svg")}, ${eachTransport(" path")} { fill: currentColor !import
     installFeatureControllers();
   }
 
+  // src/spotikitNotice.ts
+  var NOTICE_ID = "spotikit-move-notice";
+  var STYLE_ID15 = "spotikit-move-notice-style";
+  var DISMISSED_KEY = "spotikit-move-notice-dismissed";
+  var SITE = "https://spotikit.com/";
+  var SHOW_DELAY_MS = 1500;
+  var RIM = "inset 0 1px 1px rgba(255, 255, 255, 0.55), inset 0 -1px 1px rgba(255, 255, 255, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.06)";
+  var BOUNCE = "cubic-bezier(0.3, 2.25, 0.32, 1)";
+  var CSS = `
+#${NOTICE_ID} {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.45);
+  font-family: var(--font-family, "SpotifyMixUI", "CircularSp", system-ui, sans-serif);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+#${NOTICE_ID}.is-visible { opacity: 1; }
+#${NOTICE_ID} .smn-card {
+  width: min(580px, 100%);
+  box-sizing: border-box;
+  padding: 26px 26px 22px;
+  border-radius: 20px;
+  text-align: center;
+  background: rgba(18, 18, 22, 0.35);
+  isolation: isolate;
+  transform: scale(0.9);
+  transition: transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+#${NOTICE_ID}.is-visible .smn-card { transform: scale(1); }
+#${NOTICE_ID} h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+#${NOTICE_ID} p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+}
+#${NOTICE_ID} .smn-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+#${NOTICE_ID} button {
+  border: none;
+  border-radius: 12px;
+  padding: 9px 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.28s ${BOUNCE}, background-color 0.2s ease;
+}
+#${NOTICE_ID} button:hover { transform: scale(1.05); }
+#${NOTICE_ID} button:active { transform: scale(0.95); }
+
+#${NOTICE_ID}[data-brand="liquify"] .smn-card {
+  backdrop-filter: url(#glass-filter--r1-7) blur(5px) brightness(0.8);
+  box-shadow: var(--liquify-shadow, ${RIM});
+}
+#${NOTICE_ID}[data-brand="liquify"] button { box-shadow: var(--liquify-shadow, ${RIM}); }
+#${NOTICE_ID}[data-brand="liquify"] button:hover { background: rgba(255, 255, 255, 0.08); }
+#${NOTICE_ID}[data-brand="liquify"] .smn-primary,
+#${NOTICE_ID}[data-brand="liquify"] .smn-primary:hover {
+  background: var(--liquify-glow-accent, var(--liquify-accent, var(--spice-button, #1ed760)));
+}
+
+#${NOTICE_ID}[data-brand="glowify"] .smn-card {
+  backdrop-filter: blur(32px);
+  box-shadow: var(--glowify-shadow, 0 0 25px 8px var(--glowify-glow-accent, var(--spice-button, #1ed760)));
+  outline: var(--glowify-outline, none);
+}
+#${NOTICE_ID}[data-brand="glowify"] button {
+  box-shadow: var(--glowify-shadow, 0 0 18px 4px var(--glowify-glow-accent, var(--spice-button, #1ed760)));
+  outline: var(--glowify-outline, none);
+}
+#${NOTICE_ID}[data-brand="glowify"] button:hover { background: rgba(255, 255, 255, 0.08); }
+#${NOTICE_ID}[data-brand="glowify"] .smn-primary,
+#${NOTICE_ID}[data-brand="glowify"] .smn-primary:hover {
+  background: var(--glowify-glow-accent, var(--spice-button, #1ed760));
+}
+
+#${NOTICE_ID}[data-brand="liquid-lyrics"] .smn-card {
+  backdrop-filter: var(--liquid-lyrics-settings-backdrop, blur(20px)) brightness(0.8);
+  box-shadow: var(--liquid-lyrics-surface-shadow, ${RIM});
+  outline: var(--glowify-outline, none);
+}
+#${NOTICE_ID}[data-brand="liquid-lyrics"] button {
+  box-shadow: var(--liquid-lyrics-surface-shadow, ${RIM});
+  outline: var(--glowify-outline, none);
+}
+#${NOTICE_ID}[data-brand="liquid-lyrics"] button:hover { background: rgba(255, 255, 255, 0.08); }
+#${NOTICE_ID}[data-brand="liquid-lyrics"] .smn-primary,
+#${NOTICE_ID}[data-brand="liquid-lyrics"] .smn-primary:hover {
+  background: var(--liquid-lyrics-accent, var(--spice-button, #1ed760));
+}
+`;
+  function isDismissed() {
+    try {
+      return localStorage.getItem(DISMISSED_KEY) === "1";
+    } catch {
+      return false;
+    }
+  }
+  function dismissForever() {
+    try {
+      localStorage.setItem(DISMISSED_KEY, "1");
+    } catch {
+    }
+  }
+  function openSite() {
+    try {
+      window.open(SITE, "_blank", "noopener,noreferrer");
+    } catch {
+      location.href = SITE;
+    }
+  }
+  function mount(brand) {
+    if (document.getElementById(NOTICE_ID) || isDismissed()) return;
+    if (!document.getElementById(STYLE_ID15)) {
+      const style = document.createElement("style");
+      style.id = STYLE_ID15;
+      style.textContent = CSS;
+      document.head.appendChild(style);
+    }
+    const overlay = document.createElement("div");
+    overlay.id = NOTICE_ID;
+    overlay.dataset.brand = brand;
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.innerHTML = `
+    <div class="smn-card">
+      <h2>Liquify, Glowify and Liquid Lyrics have moved to SpotiKit</h2>
+      <p>There won't be any more updates for Spicetify. All three stay available on Spicetify, but they're made for Spotify versions below 1.3.0, so things may break on newer versions.</p>
+      <p>If you want to stay on Spicetify, downgrade Spotify to a version below 1.3.0 (for example 1.2.x) and block Spotify updates.</p>
+      <p>The SpotiKit open beta for Windows is out now, and Linux is coming soon. Everything you had on Spicetify is there too, with lots of improvements, and SpotiKit keeps everything working when Spotify updates.</p>
+      <div class="smn-actions">
+        <button type="button" data-action="never">Don't remind me again</button>
+        <button type="button" data-action="later">Remind me later</button>
+        <button type="button" class="smn-primary" data-action="site">Get SpotiKit</button>
+      </div>
+    </div>`;
+    const close = () => {
+      overlay.classList.remove("is-visible");
+      setTimeout(() => overlay.remove(), 240);
+    };
+    overlay.addEventListener("click", (event) => {
+      const action = event.target.closest("[data-action]")?.getAttribute("data-action");
+      if (action === "site") openSite();
+      if (action === "never") {
+        dismissForever();
+        close();
+      }
+      if (action === "later") close();
+    });
+    document.body.appendChild(overlay);
+    requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add("is-visible")));
+  }
+  function showSpotiKitNotice(brand) {
+    const scope = window;
+    if (scope.__spotikitMoveNotice || isDismissed()) return;
+    scope.__spotikitMoveNotice = true;
+    const later = () => setTimeout(() => mount(brand), SHOW_DELAY_MS);
+    if (document.body) later();
+    else document.addEventListener("DOMContentLoaded", later, { once: true });
+  }
+
   // src/index.ts
   function start() {
+    showSpotiKitNotice("glowify");
     startBackground();
     startPopupBounce();
     startGlowifySettings();

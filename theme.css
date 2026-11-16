@@ -2626,3 +2626,9 @@ span.e-text.encore-text-body-medium.encore-internal-color-text-base {
 img.e-legacy-image.e-legacy-list-row-image.rich-title-shelf-image {
   border-radius: 12px;
 }
+
+.entity-card {
+  background-color: transparent !important;
+  border-radius: 20px;
+  box-shadow: var(--glowify-shadow);
+}

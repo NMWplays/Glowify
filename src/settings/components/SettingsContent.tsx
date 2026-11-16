@@ -1263,6 +1263,18 @@ export function SettingsContent(props: { onClose: () => void; artistCtrl: any })
               }}
             />
           </div>
+          <div className="glowifyRow">
+            <div className="glowifyLabel">{(t.npvCoverAnim) || "Sidebar Cover Animation:"}<HelpTip text={tips.npvCoverAnim} /></div>
+            <Select
+              value={npvCoverAnim}
+              onChange={(v: string) => { setNpvCoverAnimState(v as NpvCoverAnim); setNpvCoverAnim(v as NpvCoverAnim); }}
+              options={[
+                { value: "swipe", label: (t.npvCoverAnimOptions || {}).swipe || "Swipe" },
+                { value: "flip", label: (t.npvCoverAnimOptions || {}).flip || "Flip" },
+                { value: "off", label: (t.dropdown || {}).off || "Off" },
+              ]}
+            />
+          </div>
         </SubSection>
         <SubSection title={sub.homescreen || "Homescreen"}>
           <div className="glowifyRow">
@@ -1344,18 +1356,6 @@ export function SettingsContent(props: { onClose: () => void; artistCtrl: any })
           </div>
         </SubSection>
         <SubSection title={sub.vinyl || "Vinyl Cover Art"}>
-          <div className="glowifyRow">
-            <div className="glowifyLabel">{(t.npvCoverAnim) || "Sidebar Cover Animation:"}<HelpTip text={tips.npvCoverAnim} /></div>
-            <Select
-              value={npvCoverAnim}
-              onChange={(v: string) => { setNpvCoverAnimState(v as NpvCoverAnim); setNpvCoverAnim(v as NpvCoverAnim); }}
-              options={[
-                { value: "swipe", label: (t.npvCoverAnimOptions || {}).swipe || "Swipe" },
-                { value: "flip", label: (t.npvCoverAnimOptions || {}).flip || "Flip" },
-                { value: "off", label: (t.dropdown || {}).off || "Off" },
-              ]}
-            />
-          </div>
           {(Object.keys(VINYL_SURFACES) as VinylSurface[]).map((surface) => (
             <div className="glowifyRow" key={surface}>
               <div className="glowifyLabel">
